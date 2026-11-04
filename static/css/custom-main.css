@@ -47,6 +47,16 @@ a.brand-wrap:hover {
   margin-left: 0.1rem;
 }
 
+/* Dark-mode body links: the night theme's primary is gray (#9ca3af),
+   nearly invisible against body text; use the baluard.app accent. */
+html[data-theme='goyo-dark'] .prose a {
+  color: #38bdf8;
+}
+
+html[data-theme='goyo-dark'] .prose a:hover {
+  color: #7dd3fc;
+}
+
 @media (max-width: 480px) {
   .brand-logo { width: 26px; height: 26px; }
   .brand-title { font-size: 1.2rem; }
