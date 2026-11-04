@@ -1,0 +1,34 @@
+base_url = "https://docs.baluard.app"
+title = "Baluard Docs"
+description = "Documentation for Baluard, the Git-native password manager."
+default_language = "en"
+compile_sass = false
+minify_html = false
+build_search_index = true
+
+theme = "goyo"
+
+[extra]
+# Follow the visitor's OS scheme; the toggle lets them switch at will.
+# templates/index.html (site override) resolves matchMedia before paint.
+nav = [
+    { name = "Home", url = "/", type = "url", icon = "book" },
+    { name = "baluard.app", url = "https://baluard.app", type = "url", icon = "house" },
+    { name = "GitHub", url = "https://github.com/baluard-org/baluard", type = "url", icon = "github" },
+]
+
+[extra.theme]
+colorset = "dark"
+brightness = "normal"
+dark_brightness = "darker"
+light_brightness = "normal"
+
+[extra.logo]
+text = "Baluard Docs"
+
+edit_url = "https://github.com/baluard-org/baluard-docs/edit/main"
+
+footer_html = "Part of <a href='https://baluard.app'>baluard.app</a>. Built with <a href='https://www.getzola.org'>Zola</a> and the <a href='https://github.com/hahwul/goyo'>Goyo</a> theme."
+
+[extra.sidebar]
+expand_depth = 2
