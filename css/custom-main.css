@@ -1,0 +1,64 @@
+/* Baluard brand header, mirroring baluard.app: padlock logo + "Baluard"
+   in Morris Roman, with a plain-font "Docs" suffix. */
+
+@font-face {
+  font-family: 'Morris Roman';
+  src: url('/assets/baluard-morris-roman.black.woff2') format('woff2'),
+       url('/assets/baluard-morris-roman.black.woff') format('woff'),
+       url('/assets/baluard-morris-roman.black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+a.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: none;
+  color: inherit;
+  text-decoration: none;
+  -webkit-text-fill-color: currentColor;
+  font-weight: normal;
+  line-height: 1;
+}
+
+a.brand-wrap:hover {
+  background: none;
+  opacity: 0.85;
+}
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.brand-title {
+  font-family: 'Morris Roman', serif;
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+}
+
+.brand-docs {
+  font-size: 1.05rem;
+  font-weight: 600;
+  opacity: 0.7;
+  margin-left: 0.1rem;
+}
+
+/* Dark-mode body links: the night theme's primary is gray (#9ca3af),
+   nearly invisible against body text; use the baluard.app accent. */
+html[data-theme='goyo-dark'] .prose a {
+  color: #38bdf8;
+}
+
+html[data-theme='goyo-dark'] .prose a:hover {
+  color: #7dd3fc;
+}
+
+@media (max-width: 480px) {
+  .brand-logo { width: 26px; height: 26px; }
+  .brand-title { font-size: 1.2rem; }
+  .brand-docs { font-size: 0.9rem; }
+}
