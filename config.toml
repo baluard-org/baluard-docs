@@ -9,6 +9,7 @@ build_search_index = true
 theme = "goyo"
 
 [extra]
+enable_custom_css = true
 # Follow the visitor's OS scheme; the toggle lets them switch at will.
 # templates/index.html (site override) resolves matchMedia before paint.
 nav = [
@@ -25,6 +26,7 @@ light_brightness = "normal"
 
 [extra.logo]
 text = "Baluard Docs"
+image_path = "assets/baluard-logo.svg"
 
 edit_url = "https://github.com/baluard-org/baluard-docs/edit/main"
 

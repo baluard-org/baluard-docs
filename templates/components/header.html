@@ -1,0 +1,76 @@
+{% component header(config, lang, page, section) %}
+{# Resolve logo configuration with backward compatibility #}
+{# Priority: logo.* (new) > logo_* (legacy) #}
+
+{# Check if new logo config exists #}
+{% if config.extra.logo is defined %}
+    {% set logo_text = config.extra.logo.text | default(value=config.extra.logo_text | default(value=config.title)) %}
+    {% set logo_image_path = config.extra.logo.image_path | default(value=config.extra.logo_image_path | default(value="")) %}
+    {% set logo_image_padding = config.extra.logo.image_padding | default(value=config.extra.logo_image_padding | default(value="")) %}
+    {% set logo_dark_image_path = config.extra.logo.dark_image_path | default(value="") %}
+    {% set logo_light_image_path = config.extra.logo.light_image_path | default(value="") %}
+{% else %}
+    {# Legacy configuration #}
+    {% set logo_text = config.extra.logo_text | default(value=config.title) %}
+    {% set logo_image_path = config.extra.logo_image_path | default(value="") %}
+    {% set logo_image_padding = config.extra.logo_image_padding | default(value="") %}
+    {% set logo_dark_image_path = "" %}
+    {% set logo_light_image_path = "" %}
+{% endif %}
+
+{% set has_theme_specific_logos = logo_dark_image_path != "" or logo_light_image_path != "" %}
+
+<div class="navbar opacity-95 fixed top-0 left-0 right-0 z-50 h-16 border-b border-gray-500/15 backdrop-blur-3xl">
+    <!-- Mobile hamburger -->
+    <div class="flex-none lg:hidden">
+        <label for="my-drawer-2" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </label>
+    </div>
+    <!-- Logo -->
+    <div class="flex-1">
+        <a href="{{ get_url(path="/", lang=lang) }}" class="brand-wrap" aria-label="{{ logo_text }}">
+            {% if has_theme_specific_logos %}
+                {# Theme-specific logos with dynamic switching #}
+                {# Resolve the actual paths - use theme-specific if set, otherwise fallback to default #}
+                {% set dark_logo_src = logo_dark_image_path %}
+                {% if dark_logo_src == "" %}{% set dark_logo_src = logo_image_path %}{% endif %}
+                {% set light_logo_src = logo_light_image_path %}
+                {% if light_logo_src == "" %}{% set light_logo_src = logo_image_path %}{% endif %}
+                {# Dark theme logo #}
+                <img
+                    src="{{ get_url(path=dark_logo_src) | safe }}"
+                    alt=""
+                    class="brand-logo logo-dark"
+                    data-logo-type="dark"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
+                {# Light theme logo #}
+                <img
+                    src="{{ get_url(path=light_logo_src) | safe }}"
+                    alt=""
+                    class="brand-logo logo-light hidden"
+                    data-logo-type="light"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
+                <span class="brand-title">Baluard</span><span class="brand-docs">Docs</span>
+            {% elif logo_image_path != "" %}
+                {# Single logo for all themes #}
+                <img
+                    src="{{ get_url(path=logo_image_path) | safe }}"
+                    alt=""
+                    class="brand-logo"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
+                <span class="brand-title">Baluard</span><span class="brand-docs">Docs</span>
+            {% else %}
+                <span class="brand-title">{{ logo_text }}</span>
+            {% endif %}
+        </a>
+    </div>
+    <!-- Desktop Menu -->
+    <div class="flex-none hidden lg:flex">
+        {{< menu config={config} lang={lang} page={page} section={section} />}}
+    </div>
+</div>
+{% endcomponent %}
