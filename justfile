@@ -1,7 +1,6 @@
-# Zola 0.22 is pinned: the Goyo theme predates the Tera v2 migration in
-# Zola 0.23 and does not build on it yet. Lift this pin when goyo ships
-# a Tera 2 release. https://github.com/hahwul/goyo
-zola := env_var_or_default("ZOLA_BIN", env("HOME") / "Apps" / "zola-0.22" / "zola")
+# Runs on system zola (0.23.6+): the goyo submodule tracks the Tera 2
+# migration (EstebanForge/goyo, branch tera-2, PR hahwul/goyo#222).
+zola := env_var_or_default("ZOLA_BIN", "zola")
 
 default:
     @just --list

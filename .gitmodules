@@ -1,3 +1,4 @@
 [submodule "themes/goyo"]
 	path = themes/goyo
-	url = https://github.com/hahwul/goyo
+	url = git@github.com:EstebanForge/goyo.git
+	branch = tera-2
