@@ -16,3 +16,15 @@ dev:
 
 clean:
     rm -rf public
+
+# Build and publish public/ to the gh-pages branch (branch-based Pages, no Actions)
+deploy:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    {{ zola }} build
+    touch public/.nojekyll
+    cd public
+    git init -q -b gh-pages
+    git add -A
+    git commit -qm "Publish site build"
+    git push -qf "$(git -C .. config remote.origin.url)" gh-pages
