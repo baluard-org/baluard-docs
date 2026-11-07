@@ -15,7 +15,7 @@ Encrypted Bitwarden exports (`.json (Encrypted)` and the mobile password-protect
 
 The export contains everything in your vault in readable form, so treat the file with care: never send it by email or chat, and delete it when you are done.
 
-From the Bitwarden web app:
+From the [Bitwarden web app](https://vault.bitwarden.com):
 
 1. Select Tools, then Export.
 2. Under Export from, select My vault.
