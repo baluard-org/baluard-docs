@@ -38,15 +38,15 @@ From the same Export screen, run a second export with the `.zip (with attachment
 
 ## Import into Baluard
 
-Import runs through the CLI against an unlocked vault. Start the Baluard desktop app and unlock your vault, then run:
+Import lives in the app, not in a terminal. Unlock your vault first, then:
 
-```sh
-baluard import bw-json bitwarden.json
-```
+**Desktop (Windows, macOS, Linux):** open Settings and go to the Data tab. Under Import Vault Data, choose Bitwarden JSON from the source dropdown, select Import, and pick the exported `.json` file. A summary tells you how many entries landed, and they appear in your vault right away.
 
-The vault stays unlocked and running while the import lands; entries appear in the desktop app as they are created. Imports are capped at 50 MB, which covers most vaults many times over.
+**Mobile (Android):** open Settings and go to Data. Tap Import entries, choose Bitwarden JSON, and pick the exported file.
 
-If you manage a vault without the desktop app, the same command works against a running `baluard-daemon` after `baluard unlock`.
+The import maps logins with URIs and match detection, TOTP seeds, notes, cards, identities, secure notes, SSH keys, custom fields, password history, favorites, and folders. Passkeys come across as view-only entries, because Bitwarden cannot export a passkey's private key; re-register those with the services that use them.
+
+Prefer the terminal? `baluard import bw-json bitwarden.json` against an unlocked vault does the same thing.
 
 ## Re-attach your files
 
