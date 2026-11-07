@@ -13,5 +13,6 @@ Start here:
 
 1. [Installation](@/introduction/installation.md): packages for Debian, Ubuntu, and Fedora, or direct downloads.
 2. [Syncing your vault](@/introduction/syncing-your-vault.md): how git sync works and what your provider can see.
+3. [Import from Bitwarden](@/introduction/importing-from-bitwarden.md): move an existing Bitwarden vault, attachments included.
 
 The [project homepage](https://baluard.app) covers the architecture and the security model in depth, including the [security white paper](https://baluard.app/security/). Not familiar with git? The [What the Git?](https://baluard.app/what-the-git/) explainer covers everything a vault owner needs in five minutes.
