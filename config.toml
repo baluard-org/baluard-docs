@@ -17,6 +17,13 @@ nav = [
     { name = "baluard.app", url = "https://baluard.app", type = "url", icon = "house" },
     { name = "GitHub", url = "https://github.com/baluard-org/baluard", type = "url", icon = "github" },
 ]
+# ES labels for the header nav; the theme's menu component reads extra.nav_es
+# when the page language is es.
+nav_es = [
+    { name = "Inicio", url = "/es/", type = "url", icon = "book" },
+    { name = "baluard.app", url = "https://baluard.app", type = "url", icon = "house" },
+    { name = "GitHub", url = "https://github.com/baluard-org/baluard", type = "url", icon = "github" },
+]
 
 [extra.theme]
 colorset = "dark"
@@ -34,3 +41,32 @@ footer_html = "Part of <a href='https://baluard.app'>baluard.app</a>. Built with
 
 [extra.sidebar]
 expand_depth = 2
+
+[extra.lang]
+# Language display names for the theme's selector.
+aliases = { en = "English", es = "Español" }
+
+[languages.es]
+build_search_index = true
+
+[languages.es.translations]
+errata_section = "Erratas y actualizaciones"
+sidebar_feeds = "Fuentes"
+global_feed = "Fuente global"
+category_feeds = "Fuentes por categoría"
+all_posts = "Todas las publicaciones"
+copy = "Copiar"
+copied = "¡Copiado!"
+failed_to_copy = "Error al copiar"
+next = "Siguiente"
+back_to = "Volver a"
+previous = "Anterior"
+edit_page = "Editar esta página"
+found_error_alert = "¿Encontraste un error o algo necesita una aclaración?"
+open_issue = "Abre un issue en GitHub."
+attribution = "Las correcciones fundadas se incorporan con atribución."
+found_typo_alert = "¿Encontraste un error tipográfico?"
+fork_and_pr = "Haz un fork, modifica y abre un PR."
+copy_url_msg = "Copiar URL"
+share_on_x = "Compartir en X"
+toc_title = "EN ESTA PÁGINA"
