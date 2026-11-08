@@ -7,7 +7,7 @@ template = "page.html"
 [extra]
 +++
 
-Baluard importa la exportación en texto plano `.json` de Bitwarden: accesos con URIs y detección de coincidencias, semillas TOTP, notas, tarjetas, identidades, notas seguras, claves SSH, campos personalizados, historial de contraseñas, favoritos y carpetas.
+Baluard importa la exportación en texto plano `.json` de Bitwarden: inicios de sesión con URIs y detección de coincidencias, semillas TOTP, notas, tarjetas, identidades, notas seguras, claves SSH, campos personalizados, historial de contraseñas, favoritos y carpetas.
 
 ### Nota sobre la exportación cifrada
 
@@ -19,7 +19,7 @@ Desde la [app web de Bitwarden](https://vault.bitwarden.com):
 
 1. Ve a **Tools** → **Export vault**.
 2. Elige el formato de archivo **`.json`** (no el cifrado).
-3. Escribe tu contraseña maestra y guarda `bitwarden.json` en un lugar temporal.
+3. Ingresa tu contraseña maestra y guarda `bitwarden.json` en un lugar temporal.
 
 ## Importar a Baluard
 
@@ -29,7 +29,7 @@ La importación vive en la app, no en una terminal. Desbloquea tu bóveda primer
 
 **Móvil (Android):** abre Settings y ve a Data. Pulsa Import entries, elige Bitwarden JSON y selecciona el archivo exportado.
 
-La importación mapea accesos con URIs y detección de coincidencias, semillas TOTP, notas, tarjetas, identidades, notas seguras, claves SSH, campos personalizados, historial de contraseñas, favoritos y carpetas. Las passkeys llegan como entradas de solo lectura, porque Bitwarden no puede exportar la clave privada de una passkey; regístralas de nuevo con los servicios que las usan.
+La importación mapea inicios de sesión con URIs y detección de coincidencias, semillas TOTP, notas, tarjetas, identidades, notas seguras, claves SSH, campos personalizados, historial de contraseñas, favoritos y carpetas. Las passkeys llegan como entradas de solo lectura, porque Bitwarden no puede exportar la clave privada de una passkey; regístralas de nuevo con los servicios que las usan.
 
 ¿Prefieres la terminal? `baluard import bw-json bitwarden.json` contra una bóveda desbloqueada hace lo mismo.
 

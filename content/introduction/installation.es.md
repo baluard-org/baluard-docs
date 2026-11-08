@@ -67,7 +67,7 @@ minisign -V -p updater.pub -x SHA256SUMS.minisig -m SHA256SUMS
 sha256sum -c SHA256SUMS
 ```
 
-`sha256sum -c` reporta una línea fallida por cada artefacto de escritorio que no descargaste; la línea del archivo de la CLI debe pasar. Extrae el archivo: `baluard` y `baluard-daemon` quedan lado a lado. Ponlos en tu `PATH`.
+`sha256sum -c` reporta una línea fallida por cada artefacto de escritorio que no descargaste; la línea del archivo de la CLI debe pasar. Extrae el archivo: `baluard` y `baluard-daemon` quedan juntos en la misma carpeta. Ponlos en tu `PATH`.
 
 ## Mantener la CLI al día
 

@@ -31,7 +31,7 @@ icon = "github"
 
 [[extra.features_section.features]]
 title = "Fusión sin conexión"
-desc = "Edita en dos dispositivos sin internet. La fusión a tres bandas de git resuelve las diferencias."
+desc = "Edita en dos dispositivos sin internet. La fusión de tres vías de git resuelve las diferencias."
 icon = "code-merge"
 
 [[extra.features_section.features]]

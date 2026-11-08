@@ -7,7 +7,7 @@ template = "page.html"
 [extra]
 +++
 
-Tu bóveda es una carpeta de archivos cifrados en tus dispositivos. Baluard lleva un cuaderno git de esa carpeta: cada cambio (un acceso añadido, una entrada editada, un elemento eliminado) se convierte en un commit firmado en el historial. Nada se sobrescribe en silencio, y cualquier estado anterior de la bóveda se puede recuperar.
+Tu bóveda es una carpeta de archivos cifrados en tus dispositivos. Baluard lleva un cuaderno git de esa carpeta: cada cambio (un inicio de sesión añadido, una entrada editada, un elemento eliminado) se convierte en un commit firmado en el historial. Nada se sobrescribe en silencio, y cualquier estado anterior de la bóveda se puede recuperar.
 
 ## Elige dónde vive la copia
 
@@ -27,6 +27,6 @@ Los detalles, incluida la construcción criptográfica exacta, están en el [doc
 
 ## Conflictos
 
-¿Editas una entrada sin conexión en tu portátil mientras tu teléfono edita otra distinta? Cuando ambos dispositivos sincronizan, git realiza una fusión a tres bandas y conserva ambos cambios. Si dos dispositivos cambian el mismo campo, Baluard te deja inspeccionar la discrepancia y resolverla campo por campo, así que nada se pierde y nada gana en silencio.
+¿Editas una entrada sin conexión en tu laptop mientras tu teléfono edita otra distinta? Cuando ambos dispositivos sincronizan, git realiza una fusión a tres bandas y conserva ambos cambios. Si dos dispositivos cambian el mismo campo, Baluard te deja inspeccionar la discrepancia y resolverla campo por campo, así que nada se pierde y nada gana en silencio.
 
 ¿Nuevo en git? La explicación [What the Git?](https://baluard.app/what-the-git/) en baluard.app cubre repositorios, commits, remotos y fusiones en lenguaje claro.
