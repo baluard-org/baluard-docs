@@ -10,6 +10,8 @@ theme = "goyo"
 
 [extra]
 enable_custom_css = true
+# Site-wide social card, shared with baluard.app (1200x630 brand card).
+default_thumbnail = "assets/social-card.png"
 # Follow the visitor's OS scheme; the toggle lets them switch at will.
 # templates/index.html (site override) resolves matchMedia before paint.
 nav = [
@@ -50,7 +52,7 @@ aliases = { en = "English", es = "Español" }
 build_search_index = true
 
 [languages.es.translations]
-errata_section = "Erratas y actualizaciones"
+errata_section = "Correcciones y actualizaciones"
 sidebar_feeds = "Fuentes"
 global_feed = "Fuente global"
 category_feeds = "Fuentes por categoría"
