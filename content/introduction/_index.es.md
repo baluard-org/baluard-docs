@@ -14,5 +14,6 @@ Empieza aquí:
 1. [Instalación](@/introduction/installation.es.md): paquetes para Debian, Ubuntu y Fedora, o descargas directas.
 2. [Sincronizar tu bóveda](@/introduction/syncing-your-vault.es.md): cómo funciona la sincronización git y qué puede ver tu proveedor.
 3. [Importar desde Bitwarden](@/introduction/importing-from-bitwarden.es.md): traslada una bóveda de Bitwarden existente, adjuntos incluidos.
+4. [Adjuntos](@/introduction/attachments.es.md): el límite de 2 MB por archivo y cómo funciona liberar espacio.
 
 La [página del proyecto](https://baluard.app) cubre la arquitectura y el modelo de seguridad en profundidad, incluido el [documento de seguridad](https://baluard.app/security/). ¿No conoces git? La explicación [What the Git?](https://baluard.app/what-the-git/) cubre todo lo que necesita quien tiene una bóveda en cinco minutos.
