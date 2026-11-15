@@ -77,3 +77,44 @@ a[href^='http']:not([href*='baluard.app'])::after {
   -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/><path d='M15 3h6v6'/><path d='M10 14 21 3'/></svg>") no-repeat center / contain;
   mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/><path d='M15 3h6v6'/><path d='M10 14 21 3'/></svg>") no-repeat center / contain;
 }
+
+/* Landing CTA buttons: the goyo theme paints every anchor with the night
+   theme's sky-blue primary, and its own [data-theme] qualified rules beat
+   the Tailwind text utilities on the buttons. Baluard's brand accent is
+   lime on dark, matching baluard.app, so the CTA pills get that treatment
+   at equal specificity (the theme carries goyo-dark and goyo-light plus a
+   bare default; each is overridden so the mode toggle cannot resurrect the
+   slate gradient). */
+.hero-cta-primary,
+.btn-final-cta-section,
+[data-theme='goyo-dark'] .hero-cta-primary,
+[data-theme='goyo-light'] .hero-cta-primary,
+[data-theme='goyo-dark'] .btn-final-cta-section,
+[data-theme='goyo-light'] .btn-final-cta-section,
+[data-theme] .hero-cta-primary,
+[data-theme] .btn-final-cta-section {
+  color: #091315;
+  background: linear-gradient(135deg, #c5f279, #9dce47);
+  box-shadow: 0 4px 16px rgba(195, 242, 121, 0.18);
+}
+
+.hero-cta-primary:hover,
+.btn-final-cta-section:hover,
+[data-theme='goyo-dark'] .hero-cta-primary:hover,
+[data-theme='goyo-light'] .hero-cta-primary:hover,
+[data-theme='goyo-dark'] .btn-final-cta-section:hover,
+[data-theme='goyo-light'] .btn-final-cta-section:hover,
+[data-theme] .hero-cta-primary:hover,
+[data-theme] .btn-final-cta-section:hover,
+[data-theme='goyo-dark'][data-brightness] .hero-cta-primary:hover,
+[data-theme='goyo-light'][data-brightness] .hero-cta-primary:hover {
+  color: #091315;
+  background: linear-gradient(135deg, #d3f88e, #a9dc55);
+}
+
+.hero-cta-secondary,
+[data-theme='goyo-dark'] .hero-cta-secondary,
+[data-theme='goyo-light'] .hero-cta-secondary,
+[data-theme] .hero-cta-secondary {
+  color: #d1d5db;
+}
