@@ -1,7 +1,7 @@
 +++
 title = "Importar desde Bitwarden"
 description = "Traslada tu bóveda de Bitwarden a Baluard, adjuntos incluidos."
-weight = 3
+weight = 4
 template = "page.html"
 
 [extra]

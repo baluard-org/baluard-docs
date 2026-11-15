@@ -17,7 +17,7 @@ Sync is optional and points at storage you control:
 - your own home server,
 - or a plain USB drive.
 
-Baluard never receives a copy, and because it is built on git itself, it works with any provider or none at all.
+Baluard never receives a copy, and because it is built on git itself, it works with any provider or none at all. [Choosing a git provider](@/introduction/git-providers.md) compares the hosts, with size limits, pros, and cons.
 
 ## What your provider can see
 

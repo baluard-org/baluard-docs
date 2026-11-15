@@ -17,7 +17,7 @@ La sincronización es opcional y apunta a almacenamiento que controlas:
 - tu propio servidor,
 - o una unidad USB.
 
-Baluard nunca recibe una copia, y como está construido sobre el propio git, funciona con cualquier proveedor o con ninguno.
+Baluard nunca recibe una copia, y como está construido sobre el propio git, funciona con cualquier proveedor o con ninguno. [Elegir un proveedor de Git](@/introduction/git-providers.es.md) compara los servidores, con límites de tamaño, pros y contras.
 
 ## Qué puede ver tu proveedor
 
