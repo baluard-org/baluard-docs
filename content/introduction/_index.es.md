@@ -16,5 +16,7 @@ Empieza aquí:
 3. [Elegir un proveedor de Git](@/introduction/git-providers.es.md): GitHub, GitLab, Codeberg o tu propio servidor; límites de tamaño, pros y contras.
 4. [Importar desde Bitwarden](@/introduction/importing-from-bitwarden.es.md): traslada una bóveda de Bitwarden existente, adjuntos incluidos.
 5. [Adjuntos](@/introduction/attachments.es.md): el límite de 2 MB por archivo y cómo funciona liberar espacio.
+6. [Tu frase de recuperación de 24 palabras](@/introduction/recovery-phrase.es.md): por qué es tu red de seguridad en caso de catástrofe y cómo guardarla para siempre.
+7. [Autenticación de dos factores (2FA) y tu proveedor de Git](@/introduction/provider-2fa.es.md): por qué la 2FA va en GitHub, GitLab o Codeberg y no dentro de tu bóveda.
 
 La [página del proyecto](https://baluard.app) cubre la arquitectura y el modelo de seguridad en profundidad, incluido el [documento de seguridad](https://baluard.app/security/). ¿No conoces git? La explicación [What the Git?](https://baluard.app/what-the-git/) cubre todo lo que necesita quien tiene una bóveda en cinco minutos.

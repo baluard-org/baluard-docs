@@ -16,5 +16,7 @@ Start here:
 3. [Choosing a git provider](@/introduction/git-providers.md): GitHub, GitLab, Codeberg, or your own server; size limits, pros, and cons.
 4. [Import from Bitwarden](@/introduction/importing-from-bitwarden.md): move an existing Bitwarden vault, attachments included.
 5. [Attachments](@/introduction/attachments.md): the 2 MB per-file limit and how reclaiming space works.
+6. [Your 24-word recovery phrase](@/introduction/recovery-phrase.md): why it is your safety net in case of catastrophe and how to store it forever.
+7. [Two-factor authentication (2FA) and your git provider](@/introduction/provider-2fa.md): why 2FA lives on GitHub, GitLab, or Codeberg instead of inside your vault.
 
 The [project homepage](https://baluard.app) covers the architecture and the security model in depth, including the [security white paper](https://baluard.app/security/). Not familiar with git? The [What the Git?](https://baluard.app/what-the-git/) explainer covers everything a vault owner needs in five minutes.
