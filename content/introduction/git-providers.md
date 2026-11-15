@@ -53,7 +53,6 @@ Cons:
 
 - Past the free 10 GiB the project goes read-only until storage is purchased.
 - Pushes are capped at 5 GiB each.
-- The connection needs the broad `api` scope; narrower repository scopes cannot create the repo.
 - Access tokens expire after two hours. Baluard refreshes them automatically, but this adds moving parts GitHub does not have.
 
 Current numbers: [Storage](https://docs.gitlab.com/user/storage_usage_quotas/) and [GitLab.com settings](https://docs.gitlab.com/user/gitlab_com/) on GitLab Docs.

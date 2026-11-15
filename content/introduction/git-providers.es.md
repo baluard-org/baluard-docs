@@ -53,7 +53,6 @@ Contras:
 
 - Pasado el límite gratuito de 10 GiB el proyecto pasa a solo lectura hasta comprar almacenamiento.
 - Cada push está limitado a 5 GiB.
-- La conexión necesita el ámbito amplio `api`; los ámbitos más estrechos de repositorio no pueden crear el repositorio.
 - Los tokens de acceso caducan a las dos horas. Baluard los renueva automáticamente, pero esto añade piezas móviles que GitHub no tiene.
 
 Números actuales: [Storage](https://docs.gitlab.com/user/storage_usage_quotas/) y [GitLab.com settings](https://docs.gitlab.com/user/gitlab_com/) en GitLab Docs.
