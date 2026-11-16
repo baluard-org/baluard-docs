@@ -13,3 +13,4 @@ Everything in Baluard lives in one encrypted vault file tree that only your devi
 1. [Import from Bitwarden](@/introduction/vault/importing-from-bitwarden.md): move an existing Bitwarden vault, attachments included.
 2. [Attachments](@/introduction/vault/attachments.md): the 2 MB per-file limit and how reclaiming space works.
 3. [Your 24-word recovery phrase](@/introduction/vault/recovery-phrase.md): why it is your safety net in case of catastrophe and how to store it forever.
+4. [Passkeys in your browser](@/introduction/vault/passkeys.md): sign in to sites with the passkeys stored in your vault.
