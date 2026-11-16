@@ -20,12 +20,17 @@ A third toggle, "Approve signing automatically", skips the approval prompt. It s
 
 ## Point your tools at the agent
 
-The agent answers on a socket named `baluard-agent.sock` next to Baluard's own socket. Tools that read `SSH_AUTH_SOCK`, git included, sign through Baluard once it points there:
+The agent answers on a socket named `baluard-agent.sock` next to Baluard's own socket. Tools that read `SSH_AUTH_SOCK`, git included, sign through Baluard once it points there.
+
+On Linux:
 
 ```bash
-# Linux
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/baluard/baluard-agent.sock"
-# macOS
+```
+
+On macOS:
+
+```bash
 export SSH_AUTH_SOCK="$HOME/Library/Application Support/baluard/baluard-agent.sock"
 ```
 

@@ -20,12 +20,17 @@ Un tercer interruptor, "Aprobar firmas automáticamente", se salta el aviso de a
 
 ## Apunta tus herramientas al agente
 
-El agente responde en un socket llamado `baluard-agent.sock` junto al propio socket de Baluard. Las herramientas que leen `SSH_AUTH_SOCK`, git incluido, firman a través de Baluard cuando la variable apunta ahí:
+El agente responde en un socket llamado `baluard-agent.sock` junto al propio socket de Baluard. Las herramientas que leen `SSH_AUTH_SOCK`, git incluido, firman a través de Baluard cuando la variable apunta ahí.
+
+En Linux:
 
 ```bash
-# Linux
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/baluard/baluard-agent.sock"
-# macOS
+```
+
+En macOS:
+
+```bash
 export SSH_AUTH_SOCK="$HOME/Library/Application Support/baluard/baluard-agent.sock"
 ```
 
