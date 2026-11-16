@@ -43,6 +43,8 @@ On Windows, Defender SmartScreen shows a "Windows protected your PC" warning bec
 
 On macOS, Gatekeeper blocks the first launch because the build is not notarized. See [The macOS Gatekeeper warning](macos-gatekeeper/).
 
+On Linux, the AppImage needs no installer, but it does need FUSE to start, and it does not add itself to your app menu. See [The Linux AppImage](linux-appimage/).
+
 ## Command-line only (mise)
 
 The CLI can be installed with [mise](https://mise.jdx.dev/) without sudo or a package repository. This installs the `baluard` and `baluard-daemon` commands from the signed GitHub release archives.
