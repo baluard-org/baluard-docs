@@ -38,6 +38,8 @@ sudo dnf config-manager --add-repo=https://baluard.app/repo/baluard.repo
 
 Signed release artifacts (AppImage, Windows installer, and source) are on the [GitHub releases page](https://github.com/baluard-org/baluard/releases/latest).
 
+On Windows, Defender SmartScreen shows a "Windows protected your PC" warning because the installer is unsigned. See [The Windows SmartScreen warning](../windows-smartscreen/).
+
 ## Command-line only (mise)
 
 The CLI can be installed with [mise](https://mise.jdx.dev/) without sudo or a package repository. This installs the `baluard` and `baluard-daemon` commands from the signed GitHub release archives.
