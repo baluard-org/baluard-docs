@@ -64,9 +64,9 @@ AppManager and Gear Lever can also watch GitHub for new releases. Use one update
 
 On Fedora Silverblue, openSUSE Aeon, and similar systems, the deb and rpm packages need image layering, and this site does not document that route. The AppImage runs from your home directory with no system changes. Install Gear Lever from Flathub and manage Baluard like any other AppImage.
 
-## Known gap: the browser extension
+## Browser extension
 
-The browser extension is in development. Its desktop bridge registers itself automatically when you install the deb or rpm packages. From the AppImage, that registration is a manual step and not automated yet. If the browser extension is the reason you run Baluard, the packages are the smoother format today.
+The browser extension is in development. Its desktop bridge registers itself automatically: the deb and rpm packages ship the registration files system-wide, and the AppImage writes them to your browser's user settings on first launch. No manual step is needed in either format.
 
 ## Check the download first
 
