@@ -1,13 +1,13 @@
 +++
 title = "El agente SSH"
-description = "Deja que la terminal y git firmen con las claves SSH de tu bóveda en Linux y macOS."
+description = "Deja que la terminal y git firmen con las claves SSH de tu bóveda en Linux, macOS y Windows."
 weight = 4
 template = "page.html"
 
 [extra]
 +++
 
-Tu bóveda puede guardar pares de claves SSH, pero una clave guardada por sí sola no firma nada. Baluard incluye un agente SSH que habla el protocolo estándar de agente desde el daemon: las herramientas de terminal y git pueden pedir firmas con las claves de tu bóveda mientras la parte privada nunca sale de ella. Esta página cubre cómo activarlo y apuntar tu sistema hacia él. El socket del agente es una función de Unix por ahora, así que esta página es Linux y macOS; Windows se cubre en los límites de más abajo.
+Tu bóveda puede guardar pares de claves SSH, pero una clave guardada por sí sola no firma nada. Baluard incluye un agente SSH que habla el protocolo estándar de agente desde el daemon: las herramientas de terminal y git pueden pedir firmas con las claves de tu bóveda mientras la parte privada nunca sale de ella. Esta página cubre cómo activarlo y apuntar tu sistema hacia él.
 
 ## Actívalo
 
@@ -46,6 +46,20 @@ Host github.com
 
 Cambia `1000` por tu id de usuario (míralo con `id -u`). En macOS la ruta es la del export de arriba, entre comillas por los espacios: `IdentityAgent "~/Library/Application Support/baluard/baluard-agent.sock"`. Las dos configuraciones conviven: el agente del sistema sigue sirviendo sus claves, y la estrofa `Host` enruta las claves de Baluard solo para ese host.
 
+## Windows
+
+En Windows no hay que apuntar nada: Baluard sirve el mismo conducto con nombre que miran los clientes OpenSSH de Windows (`\\.\pipe\openssh-ssh-agent`), así que `ssh`, `ssh-add` y git firman a través de Baluard en cuanto activas el interruptor. El conducto existe mientras el daemon corre; no deja nada al salir.
+
+Solo un programa puede tener el conducto a la vez. Windows trae su propio servicio de agente OpenSSH y viene desactivado, así que la mayoría de máquinas no necesitan nada. Si la lista de claves de Baluard está vacía y el servicio está corriendo, pon su tipo de inicio en Deshabilitado: abre Servicios, elige Agente de autenticación OpenSSH, marca Deshabilitado y reinicia la app de Baluard.
+
+Git para Windows trae su propio ssh que ignora el conducto. Apunta git al cliente OpenSSH de Microsoft una vez y la firma por agente funciona en todas partes:
+
+```bash
+git config --global core.sshCommand "C:/Windows/System32/OpenSSH/ssh.exe"
+```
+
+No hay opción `IdentityAgent` por clave en Windows: las claves de Baluard y las de cualquier otro agente en marcha comparten el único conducto, y el agente que lo posee sirve todas.
+
 ## Comprueba que funciona
 
 ```bash
@@ -63,4 +77,3 @@ ssh -T git@github.com
 - La bóveda debe estar desbloqueada. Una bóveda bloqueada se niega a listar claves o firmar.
 - Las claves con material privado cifrado se rechazan sin excepción: el agente nunca pide una frase de contraseña.
 - Los avisos de aprobación son locales al dispositivo: una petición se aprueba en la máquina que firma.
-- Windows: el socket del agente no está disponible todavía. Puedes exportar una clave desde su entrada (Mostrar clave privada) y cargarla en el servicio de agente OpenSSH de Windows con `ssh-add`.

@@ -1,13 +1,13 @@
 +++
 title = "The SSH agent"
-description = "Let terminal tools and git sign with your vault's SSH keys on Linux and macOS."
+description = "Let terminal tools and git sign with your vault's SSH keys on Linux, macOS, and Windows."
 weight = 4
 template = "page.html"
 
 [extra]
 +++
 
-Your vault can store SSH key pairs, but a stored key does not sign anything by itself. Baluard ships an SSH agent that speaks the standard agent protocol from the daemon: terminal tools and git can request signatures with your vault keys while the private keys never leave the vault. This page covers turning it on and pointing your system at it. The agent socket is a Unix feature today, so this page is Linux and macOS; Windows is covered in the limits below.
+Your vault can store SSH key pairs, but a stored key does not sign anything by itself. Baluard ships an SSH agent that speaks the standard agent protocol from the daemon: terminal tools and git can request signatures with your vault keys while the private keys never leave the vault. This page covers turning it on and pointing your system at it.
 
 ## Turn it on
 
@@ -46,6 +46,20 @@ Host github.com
 
 Replace `1000` with your user id (check with `id -u`). On macOS the path is the one from the export above, quoted because of the spaces: `IdentityAgent "~/Library/Application Support/baluard/baluard-agent.sock"`. The two setups coexist: the system agent keeps serving its own keys, and the `Host` stanza routes Baluard's keys for that host only.
 
+## Windows
+
+Windows needs no pointing: Baluard serves the same named pipe that Windows OpenSSH clients look at (`\\.\pipe\openssh-ssh-agent`), so `ssh`, `ssh-add`, and git sign through Baluard as soon as the switch is on. The pipe exists while the daemon runs; it leaves nothing behind when Baluard exits.
+
+Only one program can own the pipe at a time. Windows ships its own OpenSSH Authentication Agent service, and it is disabled by default, so most machines need nothing. If Baluard's key list is empty and the service is running, set its startup type to Disabled: open Services, pick OpenSSH Authentication Agent, set Startup type to Disabled, and restart the Baluard app.
+
+Git for Windows ships its own ssh that ignores the pipe. Point git at the Microsoft OpenSSH client once and agent signing works everywhere:
+
+```bash
+git config --global core.sshCommand "C:/Windows/System32/OpenSSH/ssh.exe"
+```
+
+There is no per-key `IdentityAgent` choice on Windows: Baluard's keys and the keys of any other running agent share the one pipe, and the agent that owns it serves them all.
+
 ## Check that it works
 
 ```bash
@@ -63,4 +77,3 @@ ssh -T git@github.com
 - The vault must be unlocked. A locked vault refuses to list keys or sign.
 - Keys with encrypted private material are refused outright: the agent never prompts for a passphrase.
 - Approval prompts are device-local: a request is approved on the machine that signs.
-- Windows: the agent socket is not available yet. You can export a key from its entry (Show private key) and load it into Windows' own OpenSSH agent service with `ssh-add`.
