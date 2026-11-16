@@ -20,7 +20,7 @@ Un **Espacio familiar** le da a tu hogar una sola bóveda compartida sin obligar
 - **Vista unificada:** No hace falta cambiar de bóveda constantemente. Tu bóveda personal y tu Espacio familiar aparecen juntos en la búsqueda y el autocompletado.
 - **Sin contraseña maestra compartida:** Cada integrante usa su propia identidad de Baluard y el desbloqueo de su dispositivo, sin andar compartiendo una contraseña maestra.
 - **Invitaciones por código:** Invita a tus familiares con un código corto; al introducir el código, su incorporación se aprueba automáticamente.
-- **Mismo proveedor de Git:** Todos los integrantes del Espacio familiar necesitan una cuenta gratuita en el mismo [proveedor de Git](@/introduction/git-providers.es.md) (por ejemplo, todos en GitHub o todos en GitLab).
+- **Mismo proveedor de Git:** Todos los integrantes del Espacio familiar necesitan una cuenta gratuita en el mismo [proveedor de Git](@/introduction/sync/git-providers.es.md) (por ejemplo, todos en GitHub o todos en GitLab).
 
 ## Dispositivos perdidos y emergencias
 

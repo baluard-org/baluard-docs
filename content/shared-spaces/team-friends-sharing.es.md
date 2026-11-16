@@ -25,7 +25,7 @@ Para tres o más personas, usa un **Espacio de equipo** con carpetas y roles:
 
 ## Cómo funciona la sincronización
 
-Cada miembro debe tener una cuenta en el mismo [proveedor de Git](@/introduction/git-providers.es.md) y conectar el Espacio al repositorio privado compartido. Cada cambio se firma con el dispositivo del miembro antes de enviarse, y los demás dispositivos verifican esa firma al descargar.
+Cada miembro debe tener una cuenta en el mismo [proveedor de Git](@/introduction/sync/git-providers.es.md) y conectar el Espacio al repositorio privado compartido. Cada cambio se firma con el dispositivo del miembro antes de enviarse, y los demás dispositivos verifican esa firma al descargar.
 
 Si dos personas editan entradas distintas sin conexión al mismo tiempo, git combina ambos cambios sin problema. Si editan el mismo campo, Baluard te permite resolverlo campo por campo.
 

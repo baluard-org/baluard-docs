@@ -3,6 +3,7 @@ title = "Import from Bitwarden"
 description = "Move your Bitwarden vault to Baluard: export a plaintext .json, back up attachments, import, and re-attach your files."
 weight = 4
 template = "page.html"
+aliases = ["introduction/importing-from-bitwarden"]
 
 [extra]
 +++

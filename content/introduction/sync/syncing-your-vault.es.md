@@ -3,6 +3,7 @@ title = "Sincronizar tu bóveda"
 description = "Cómo funciona la sincronización git, dónde vive la copia y qué puede ver tu proveedor."
 weight = 2
 template = "page.html"
+aliases = ["es/introduction/syncing-your-vault"]
 
 [extra]
 +++
@@ -17,7 +18,7 @@ La sincronización es opcional y apunta a almacenamiento que controlas:
 - tu propio servidor,
 - o una unidad USB.
 
-Baluard nunca recibe una copia, y como está construido sobre el propio git, funciona con cualquier proveedor o con ninguno. [Elegir un proveedor de Git](@/introduction/git-providers.es.md) compara los servidores, con límites de tamaño, pros y contras.
+Baluard nunca recibe una copia, y como está construido sobre el propio git, funciona con cualquier proveedor o con ninguno. [Elegir un proveedor de Git](@/introduction/sync/git-providers.es.md) compara los servidores, con límites de tamaño, pros y contras.
 
 ## Qué puede ver tu proveedor
 

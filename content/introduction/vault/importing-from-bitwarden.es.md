@@ -3,6 +3,7 @@ title = "Importar desde Bitwarden"
 description = "Traslada tu bóveda de Bitwarden a Baluard, adjuntos incluidos."
 weight = 4
 template = "page.html"
+aliases = ["es/introduction/importing-from-bitwarden"]
 
 [extra]
 +++

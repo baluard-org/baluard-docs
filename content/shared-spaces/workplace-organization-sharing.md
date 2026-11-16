@@ -23,7 +23,7 @@ An **Organization Space** lets a company or team manage shared credentials in a 
 
 - **Quorum approvals:** Organization Spaces can require multiple admins to approve sensitive changes (such as removing an admin or changing Space governance), preventing one compromised account from taking over unilaterally.
 - **Space Recovery Kit:** Store the Space Recovery Kit (a dedicated 24-word offline phrase for the Space) safely offline according to your company's continuity policy. Recovery requires both this kit phrase and read access to the Space's Git repository. If an admin leaves or ownership changes, Baluard reissues a new kit phrase that must be recorded again.
-- **Provider 2FA and scoped tokens:** Require [two-factor authentication (2FA)](@/introduction/provider-2fa.md) on every member's git provider account. For organization deployments, prefer fine-grained tokens or a GitHub App over classic personal access tokens with broad `repo` scope.
+- **Provider 2FA and scoped tokens:** Require [two-factor authentication (2FA)](@/introduction/sync/provider-2fa.md) on every member's git provider account. For organization deployments, prefer fine-grained tokens or a GitHub App over classic personal access tokens with broad `repo` scope.
 
 ## Honest expectations for offboarding
 

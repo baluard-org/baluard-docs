@@ -3,11 +3,12 @@ title = "Instalación"
 description = "Instala Baluard desde los repositorios de paquetes firmados o descargas directas."
 weight = 1
 template = "page.html"
+aliases = ["es/introduction/installation"]
 
 [extra]
 +++
 
-Baluard está en beta. La versión actual es la 0.1.0 para escritorio Linux, con las extensiones de navegador y las compilaciones móviles en desarrollo.
+Baluard está en beta. La versión actual es la 0.7.1 para escritorio Linux, Windows y macOS, con las extensiones de navegador y las compilaciones móviles en desarrollo.
 
 ## Debian y Ubuntu (APT)
 
@@ -36,7 +37,11 @@ sudo dnf config-manager --add-repo=https://baluard.app/repo/baluard.repo
 
 ## Descarga directa
 
-Los artefactos de versión firmados (AppImage, instalador de Windows y código fuente) están en la [página de releases de GitHub](https://github.com/baluard-org/baluard/releases/latest).
+Los artefactos firmados están en la [página de releases de GitHub](https://github.com/baluard-org/baluard/releases/latest): el AppImage para Linux, `Baluard-amd64-setup.exe` para Windows y `Baluard-macos-aarch64-non-notarized.zip` para macOS (Apple Silicon; descomprime y arrastra a Aplicaciones).
+
+En Windows, Defender SmartScreen muestra el aviso "Windows protegió tu PC" porque el instalador no está firmado. Consulta [El aviso de SmartScreen en Windows](windows-smartscreen/).
+
+En macOS, Gatekeeper bloquea el primer arranque porque la compilación no está notarizada. Consulta [El aviso de Gatekeeper en macOS](macos-gatekeeper/).
 
 ## Solo línea de comandos (mise)
 

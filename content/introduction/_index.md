@@ -9,14 +9,10 @@ sort_by = "weight"
 
 Baluard is a Git-native password manager. Your vault is a folder of AES-256-GCM encrypted files that lives on your devices, and its history is kept as a git repository on storage you choose: a private GitHub or GitLab repo, your own server, or a USB drive. There is no Baluard account, no central server, and no telemetry.
 
-Start here:
+Start here, by section:
 
-1. [Installation](@/introduction/installation.md): packages for Debian, Ubuntu, and Fedora, or direct downloads.
-2. [Syncing your vault](@/introduction/syncing-your-vault.md): how git sync works and what your provider can see.
-3. [Choosing a git provider](@/introduction/git-providers.md): GitHub, GitLab, Codeberg, or your own server; size limits, pros, and cons.
-4. [Import from Bitwarden](@/introduction/importing-from-bitwarden.md): move an existing Bitwarden vault, attachments included.
-5. [Attachments](@/introduction/attachments.md): the 2 MB per-file limit and how reclaiming space works.
-6. [Your 24-word recovery phrase](@/introduction/recovery-phrase.md): why it is your safety net in case of catastrophe and how to store it forever.
-7. [Two-factor authentication (2FA) and your git provider](@/introduction/provider-2fa.md): why 2FA lives on GitHub, GitLab, or Codeberg instead of inside your vault.
+1. [Install](@/introduction/install/_index.md): package repositories for Debian, Ubuntu, and Fedora, the Windows installer, the macOS app, and the CLI — plus what to do about the Windows SmartScreen and macOS Gatekeeper download warnings.
+2. [Sync](@/introduction/sync/_index.md): how git sync works, choosing a provider, and protecting the provider account with 2FA.
+3. [Your vault](@/introduction/vault/_index.md): import from Bitwarden, attachments, and your 24-word recovery phrase.
 
 The [project homepage](https://baluard.app) covers the architecture and the security model in depth, including the [security white paper](https://baluard.app/security/). Not familiar with git? The [What the Git?](https://baluard.app/what-the-git/) explainer covers everything a vault owner needs in five minutes.

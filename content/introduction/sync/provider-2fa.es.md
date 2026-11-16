@@ -3,6 +3,7 @@ title = "Autenticación de dos factores (2FA) y tu proveedor de Git"
 description = "Por qué la 2FA va en tu proveedor de Git (GitHub, GitLab o Codeberg) y no dentro de tu bóveda de Baluard."
 weight = 7
 template = "page.html"
+aliases = ["es/introduction/provider-2fa"]
 
 [extra]
 +++
@@ -18,7 +19,7 @@ En los gestores de contraseñas tradicionales en la nube, un servidor de la empr
 Baluard funciona distinto:
 
 - No hay ningún servidor de Baluard. Tu bóveda vive como archivos cifrados en tus propios dispositivos.
-- Abrir la bóveda ya requiere dos cosas: **tu contraseña maestra** (algo que sabes) y **tu dispositivo autorizado** —o tu [frase de recuperación de 24 palabras](@/introduction/recovery-phrase.es.md) en caso de emergencia— (algo que tienes).
+- Abrir la bóveda ya requiere dos cosas: **tu contraseña maestra** (algo que sabes) y **tu dispositivo autorizado** —o tu [frase de recuperación de 24 palabras](@/introduction/vault/recovery-phrase.es.md) en caso de emergencia— (algo que tienes).
 - Poner un código 2FA de 6 dígitos dentro de una bóveda local no añadiría seguridad real. Quien ya tenga tanto tu dispositivo como tu contraseña maestra puede descifrar todo lo que hay en ese dispositivo de todas formas.
 
 Como no existe un servidor de Baluard, no hay un inicio de sesión remoto que proteger con un código dentro de la aplicación.
@@ -36,6 +37,6 @@ Cuando activas la sincronización, tu proveedor de Git guarda una copia del repo
 1. Inicia sesión en el proveedor de Git que hayas elegido (**GitHub**, **GitLab** o **Codeberg**).
 2. Ve a la configuración de **Seguridad** de tu cuenta y activa la **autenticación de dos factores (2FA)**.
 3. Usa una **aplicación de autenticación** (o una **llave de seguridad física** / passkey) en lugar de SMS siempre que sea posible.
-4. Guarda los **códigos de recuperación** de tu proveedor de Git en un lugar seguro fuera de internet —igual que tu [frase de recuperación de 24 palabras](@/introduction/recovery-phrase.es.md)— para no perder el acceso a tu respaldo si pierdes el teléfono.
+4. Guarda los **códigos de recuperación** de tu proveedor de Git en un lugar seguro fuera de internet —igual que tu [frase de recuperación de 24 palabras](@/introduction/vault/recovery-phrase.es.md)— para no perder el acceso a tu respaldo si pierdes el teléfono.
 
-Para comparar los proveedores compatibles en detalle, consulta [Elegir un proveedor de Git](@/introduction/git-providers.es.md).
+Para comparar los proveedores compatibles en detalle, consulta [Elegir un proveedor de Git](@/introduction/sync/git-providers.es.md).

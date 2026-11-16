@@ -3,6 +3,7 @@ title = "Your 24-word recovery phrase"
 description = "Why your 24-word recovery phrase matters, how it protects your vault, and how to store it safely forever."
 weight = 6
 template = "page.html"
+aliases = ["introduction/recovery-phrase"]
 
 [extra]
 +++

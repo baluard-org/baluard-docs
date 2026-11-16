@@ -3,6 +3,7 @@ title = "Adjuntos"
 description = "Cómo se guardan los archivos adjuntos, el límite de 2 MB por archivo y cómo funciona liberar espacio."
 weight = 5
 template = "page.html"
+aliases = ["es/introduction/attachments"]
 
 [extra]
 +++

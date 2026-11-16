@@ -3,6 +3,7 @@ title = "Syncing your vault"
 description = "How git sync works, where the copy lives, and what your provider can see."
 weight = 2
 template = "page.html"
+aliases = ["introduction/syncing-your-vault"]
 
 [extra]
 +++
@@ -17,7 +18,7 @@ Sync is optional and points at storage you control:
 - your own home server,
 - or a plain USB drive.
 
-Baluard never receives a copy, and because it is built on git itself, it works with any provider or none at all. [Choosing a git provider](@/introduction/git-providers.md) compares the hosts, with size limits, pros, and cons.
+Baluard never receives a copy, and because it is built on git itself, it works with any provider or none at all. [Choosing a git provider](@/introduction/sync/git-providers.md) compares the hosts, with size limits, pros, and cons.
 
 ## What your provider can see
 

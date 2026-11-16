@@ -3,6 +3,7 @@ title = "Tu frase de recuperación de 24 palabras"
 description = "Por qué importa tu frase de recuperación de 24 palabras, cómo protege tu bóveda y cómo guardarla de forma segura para siempre."
 weight = 6
 template = "page.html"
+aliases = ["es/introduction/recovery-phrase"]
 
 [extra]
 +++

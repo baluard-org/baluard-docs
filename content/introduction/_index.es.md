@@ -11,12 +11,10 @@ Baluard es un gestor de contraseñas git-nativo. Tu bóveda es una carpeta de ar
 
 Empieza aquí:
 
-1. [Instalación](@/introduction/installation.es.md): paquetes para Debian, Ubuntu y Fedora, o descargas directas.
-2. [Sincronizar tu bóveda](@/introduction/syncing-your-vault.es.md): cómo funciona la sincronización git y qué puede ver tu proveedor.
-3. [Elegir un proveedor de Git](@/introduction/git-providers.es.md): GitHub, GitLab, Codeberg o tu propio servidor; límites de tamaño, pros y contras.
-4. [Importar desde Bitwarden](@/introduction/importing-from-bitwarden.es.md): traslada una bóveda de Bitwarden existente, adjuntos incluidos.
-5. [Adjuntos](@/introduction/attachments.es.md): el límite de 2 MB por archivo y cómo funciona liberar espacio.
-6. [Tu frase de recuperación de 24 palabras](@/introduction/recovery-phrase.es.md): por qué es tu red de seguridad en caso de catástrofe y cómo guardarla para siempre.
-7. [Autenticación de dos factores (2FA) y tu proveedor de Git](@/introduction/provider-2fa.es.md): por qué la 2FA va en GitHub, GitLab o Codeberg y no dentro de tu bóveda.
+Empieza por sección:
+
+1. [Instalar](@/introduction/install/_index.es.md): repositorios de paquetes para Debian, Ubuntu y Fedora, el instalador de Windows, la app de macOS y la CLI — además de qué hacer con los avisos de descarga de SmartScreen en Windows y Gatekeeper en macOS.
+2. [Sincronizar](@/introduction/sync/_index.es.md): cómo funciona git sync, elegir un proveedor y proteger la cuenta del proveedor con 2FA.
+3. [Tu bóveda](@/introduction/vault/_index.es.md): importar desde Bitwarden, adjuntos y tu frase de recuperación de 24 palabras.
 
 La [página del proyecto](https://baluard.app) cubre la arquitectura y el modelo de seguridad en profundidad, incluido el [documento de seguridad](https://baluard.app/security/). ¿No conoces git? La explicación [What the Git?](https://baluard.app/what-the-git/) cubre todo lo que necesita quien tiene una bóveda en cinco minutos.

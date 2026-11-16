@@ -3,6 +3,7 @@ title = "Attachments"
 description = "How file attachments are stored, the 2 MB per-file limit, and how reclaiming space works."
 weight = 5
 template = "page.html"
+aliases = ["introduction/attachments"]
 
 [extra]
 +++

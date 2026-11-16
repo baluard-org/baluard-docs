@@ -3,6 +3,7 @@ title = "The Windows SmartScreen warning"
 description = "Why Windows shows 'Windows protected your PC' when you install Baluard, and how to continue."
 weight = 8
 template = "page.html"
+aliases = ["introduction/windows-smartscreen"]
 
 [extra]
 +++

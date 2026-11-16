@@ -3,13 +3,14 @@ title = "Elegir un proveedor de Git"
 description = "Dónde puede vivir una bóveda de Baluard: GitHub, GitLab, Codeberg, tu propio servidor, o ninguno. Límites de tamaño, pros y contras."
 weight = 3
 template = "page.html"
+aliases = ["es/introduction/git-providers"]
 
 [extra]
 +++
 
 Una bóveda de Baluard es un repositorio git, y la sincronización envía ese repositorio al servidor que elijas. Cada servidor tiene sus propias reglas sobre cuánto puedes almacenar. Esta página compara los tres proveedores a los que Baluard se conecta de serie, más las opciones que no necesitan ninguna cuenta.
 
-Tu proveedor solo ve texto cifrado, así que ninguno de los límites siguientes expone lo que guardas. Las diferencias están en las cuotas, la seguridad de la cuenta y la propiedad. Lo que puede ver tu proveedor está cubierto en [Sincronizar tu bóveda](@/introduction/syncing-your-vault.es.md#que-puede-ver-tu-proveedor).
+Tu proveedor solo ve texto cifrado, así que ninguno de los límites siguientes expone lo que guardas. Las diferencias están en las cuotas, la seguridad de la cuenta y la propiedad. Lo que puede ver tu proveedor está cubierto en [Sincronizar tu bóveda](@/introduction/sync/syncing-your-vault.es.md#que-puede-ver-tu-proveedor).
 
 ## La versión corta
 
@@ -21,7 +22,7 @@ Tu proveedor solo ve texto cifrado, así que ninguno de los límites siguientes 
 | Tu propio servidor | Tu disco | Ninguno | Lo es |
 | Unidad USB, o sin sincronización | Tu disco | Ninguno | No aplica |
 
-Una bóveda típica ocupa unos pocos megabytes, y Baluard limita los adjuntos a 2 MB por archivo ([Adjuntos](@/introduction/attachments.es.md)). Los límites importan igual porque aplican al repositorio completo, historial incluido, y el historial de una bóveda solo crece.
+Una bóveda típica ocupa unos pocos megabytes, y Baluard limita los adjuntos a 2 MB por archivo ([Adjuntos](@/introduction/vault/attachments.es.md)). Los límites importan igual porque aplican al repositorio completo, historial incluido, y el historial de una bóveda solo crece.
 
 ## GitHub
 

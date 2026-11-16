@@ -3,11 +3,12 @@ title = "Installation"
 description = "Install Baluard from the signed package repositories or direct downloads."
 weight = 1
 template = "page.html"
+aliases = ["introduction/installation"]
 
 [extra]
 +++
 
-Baluard is in beta. The current release is 0.1.0 for Linux desktop, with browser extensions and mobile builds in development.
+Baluard is in beta. The current release is 0.7.1 for Linux, Windows, and macOS desktop, with browser extensions and mobile builds in development.
 
 ## Debian and Ubuntu (APT)
 
@@ -36,9 +37,11 @@ sudo dnf config-manager --add-repo=https://baluard.app/repo/baluard.repo
 
 ## Direct download
 
-Signed release artifacts (AppImage, Windows installer, and source) are on the [GitHub releases page](https://github.com/baluard-org/baluard/releases/latest).
+Signed release artifacts are on the [GitHub releases page](https://github.com/baluard-org/baluard/releases/latest): the AppImage for Linux, `Baluard-amd64-setup.exe` for Windows, and `Baluard-macos-aarch64-non-notarized.zip` for macOS (Apple Silicon; unzip and drag to Applications).
 
-On Windows, Defender SmartScreen shows a "Windows protected your PC" warning because the installer is unsigned. See [The Windows SmartScreen warning](../windows-smartscreen/).
+On Windows, Defender SmartScreen shows a "Windows protected your PC" warning because the installer is unsigned. See [The Windows SmartScreen warning](windows-smartscreen/).
+
+On macOS, Gatekeeper blocks the first launch because the build is not notarized. See [The macOS Gatekeeper warning](macos-gatekeeper/).
 
 ## Command-line only (mise)
 

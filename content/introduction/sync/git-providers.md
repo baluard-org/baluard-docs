@@ -3,13 +3,14 @@ title = "Choosing a git provider"
 description = "Where a Baluard vault can live: GitHub, GitLab, Codeberg, your own server, or none. Size limits, pros, and cons."
 weight = 3
 template = "page.html"
+aliases = ["introduction/git-providers"]
 
 [extra]
 +++
 
 A Baluard vault is a git repository, and sync sends that repository to a host of your choice. Every host has its own rules about how much you can store. This page compares the three providers Baluard connects to out of the box, plus the options that need no account at all.
 
-Your provider only ever sees ciphertext, so none of the limits below expose anything you store. The trade-offs are about quotas, account security, and ownership. What your provider can see is covered in [Syncing your vault](@/introduction/syncing-your-vault.md#what-your-provider-can-see).
+Your provider only ever sees ciphertext, so none of the limits below expose anything you store. The trade-offs are about quotas, account security, and ownership. What your provider can see is covered in [Syncing your vault](@/introduction/sync/syncing-your-vault.md#what-your-provider-can-see).
 
 ## The short version
 
@@ -21,7 +22,7 @@ Your provider only ever sees ciphertext, so none of the limits below expose anyt
 | Your own server | Your disk | None | It is one |
 | USB drive, or no sync | Your disk | None | Not applicable |
 
-A typical vault is a few megabytes, and Baluard caps attachments at 2 MB per file ([Attachments](@/introduction/attachments.md)). The limits still matter because they bind the whole repository, history included, and vault history only grows.
+A typical vault is a few megabytes, and Baluard caps attachments at 2 MB per file ([Attachments](@/introduction/vault/attachments.md)). The limits still matter because they bind the whole repository, history included, and vault history only grows.
 
 ## GitHub
 
