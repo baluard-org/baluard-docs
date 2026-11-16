@@ -7,7 +7,9 @@ template = "page.html"
 [extra]
 +++
 
-Un **Espacio de organización** permite a una empresa o equipo administrar credenciales compartidas en un repositorio git privado bajo tu control, sin un servidor SaaS de terceros ni dependencia de una nube por asiento. Todos los miembros deben tener cuenta en el mismo proveedor de Git.
+Un **Espacio de organización** permite a una empresa o equipo administrar credenciales compartidas en un repositorio git privado bajo tu control, sin un servidor SaaS de terceros ni dependencia de una nube por asiento.
+
+**Atención: todos los integrantes de este Espacio necesitan una cuenta en el mismo proveedor de Git para esta bóveda.**
 
 ## Control de acceso sin servidor central
 

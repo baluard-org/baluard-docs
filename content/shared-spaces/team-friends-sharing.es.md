@@ -9,6 +9,8 @@ template = "page.html"
 
 Ya sea para dividir cuentas de casa con un compañero de piso, lanzar un proyecto paralelo con un cofundador o compartir herramientas con un grupo pequeño de amistades, Baluard te permite compartir sin mandar contraseñas por chat.
 
+**Atención: todos los integrantes de este Espacio necesitan una cuenta en el mismo proveedor de Git para esta bóveda.**
+
 ## Dos formas de compartir
 
 ### 1. Espacio en pareja (dos personas)

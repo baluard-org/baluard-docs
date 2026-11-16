@@ -9,6 +9,8 @@ template = "page.html"
 
 A **Family Space** gives your household one shared vault without forcing everyone to see everything. Streaming accounts, Wi-Fi passwords, and utility bills live in one place, while sensitive guardian records stay hidden from children.
 
+**Heads up: everyone in this Space needs an account on the same git provider for this vault.**
+
 ## How a Family Space is organized
 
 - **Guardians (Admins):** Adults who manage the Space, invite or remove members, approve member joins, and can access all folders, including guardian-only ones.

@@ -7,7 +7,9 @@ template = "page.html"
 [extra]
 +++
 
-An **Organization Space** lets a company or team manage shared credentials in a private git repository you control, with no third-party SaaS vault server and no per-seat cloud lock-in. All members must have accounts on the same git provider host.
+An **Organization Space** lets a company or team manage shared credentials in a private git repository you control, with no third-party SaaS vault server and no per-seat cloud lock-in.
+
+**Heads up: everyone in this Space needs an account on the same git provider for this vault.**
 
 ## Access control without a central server
 

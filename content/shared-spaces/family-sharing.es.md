@@ -9,6 +9,8 @@ template = "page.html"
 
 Un **Espacio familiar** le da a tu hogar una sola bóveda compartida sin obligar a que todos vean todo. Las cuentas de streaming, contraseñas de Wi-Fi y servicios del hogar viven en un mismo lugar, mientras que los registros sensibles de los adultos quedan ocultos para los hijos.
 
+**Atención: todos los integrantes de este Espacio necesitan una cuenta en el mismo proveedor de Git para esta bóveda.**
+
 ## Cómo se organiza un Espacio familiar
 
 - **Tutores (Administradores):** Adultos que administran el Espacio, invitan o retiran miembros, aprueban la incorporación de nuevos miembros y pueden ver todas las carpetas, incluidas las exclusivas para tutores.

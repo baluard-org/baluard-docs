@@ -9,6 +9,8 @@ template = "page.html"
 
 Whether you are splitting rent and bills with a roommate, building a side project with a co-founder, or sharing tools with a small group of friends, Baluard gives you a clean way to share without passing passwords over chat.
 
+**Heads up: everyone in this Space needs an account on the same git provider for this vault.**
+
 ## Two ways to share
 
 ### 1. Pair Space (two people)
