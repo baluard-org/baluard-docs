@@ -13,3 +13,4 @@ Your vault syncs as a git repository on storage you choose: GitHub, GitLab, Code
 1. [Syncing your vault](@/introduction/sync/syncing-your-vault.md): how git sync works and what your provider can see.
 2. [Choosing a git provider](@/introduction/sync/git-providers.md): GitHub, GitLab, Codeberg, or your own server; size limits, pros, and cons.
 3. [Two-factor authentication (2FA) and your git provider](@/introduction/sync/provider-2fa.md): why 2FA lives on the provider instead of inside your vault.
+4. [The SSH agent](@/introduction/sync/ssh-agent.md): let terminal tools and git sign with your vault's SSH keys; setup for Linux and macOS.
