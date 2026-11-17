@@ -18,7 +18,7 @@ The CLI talks to a daemon on this machine. The daemon serves the vault sessions 
 baluard ssh serve
 ```
 
-On Linux this launches the daemon as a systemd user service for the session. To make it permanent, install the service instead:
+On Linux this launches the daemon as a systemd user service for the session. On macOS and Windows it starts a detached process that logs to the baluard state directory. To make the daemon permanent, install the service instead:
 
 ```bash
 baluard ssh install
@@ -61,7 +61,7 @@ A fresh clone has no key for this machine, so it cannot unlock yet. Enroll it wi
 baluard devices enroll-with-phrase --vault baluard-vault
 ```
 
-Enter the 24 words when asked, then confirm. Enrollment writes a new device key and seals it with your master password. The vault on your other devices is not touched, and nothing replaces their keys.
+Enter the 24 words when asked, then confirm, then enter the master password. Enrollment writes a new device key and seals it with your master password. The vault on your other devices is not touched, and nothing replaces their keys.
 
 ## Unlock and sync
 
@@ -77,11 +77,11 @@ Keep using the same command shape after an unlock: if you unlocked with `--vault
 ## Check the vault
 
 ```bash
-baluard list
-baluard sync status
+baluard list --vault baluard-vault
+baluard sync status --vault baluard-vault
 ```
 
-`list` shows your entries. `sync status` compares this clone with the provider and reports pending changes.
+`list` shows your entries. `sync status` compares this clone with the provider and reports pending changes. After an unlock, the same commands usually work without the flag too: the CLI keeps the session for plain commands when the system keyring is available. Passing the flag always works.
 
 ## Set up the SSH agent
 
@@ -93,13 +93,13 @@ Show the endpoint on this machine:
 baluard ssh status
 ```
 
-Point OpenSSH at it for one shell:
+Point OpenSSH at it for one shell (Linux):
 
 ```bash
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/baluard/baluard-agent.sock"
 ```
 
-Or persist for one host in `~/.ssh/config`:
+Or persist for one host in `~/.ssh/config` (Linux path shown):
 
 ```
 Host github.com
@@ -107,7 +107,7 @@ Host github.com
     IdentitiesOnly yes
 ```
 
-Replace `1000` with your user id (`id -u`). Then check the agent lists your keys:
+Replace `1000` with your user id (`id -u`). On macOS, run `baluard ssh status` and copy the lines it prints: the path is `~/Library/Application Support/baluard/baluard-agent.sock` and needs quotes around it. Then check the agent lists your keys:
 
 ```bash
 ssh-add -l
