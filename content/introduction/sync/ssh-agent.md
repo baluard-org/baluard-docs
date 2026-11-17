@@ -18,6 +18,18 @@ Two switches control the agent, and both start off:
 
 A third toggle, "Approve signing automatically", skips the approval prompt. It starts off: with it off, every signature request pops up in the desktop app and names the entry that wants to sign. You approve or deny from there, and a denied or expired request fails on the requesting side.
 
+## Manage the daemon from the CLI
+
+The endpoint exists while the daemon runs. The CLI starts it and wires the machine for you:
+
+```bash
+baluard ssh status
+baluard ssh serve
+baluard ssh install
+```
+
+`status` prints the endpoint path and the exact `SSH_AUTH_SOCK` and `IdentityAgent` lines for this machine. `serve` starts the daemon on demand. `install` writes an opt-in systemd user unit so the daemon starts at boot. The full first-run walk-through, including pointing a new machine at an existing vault, is on [Connect the CLI to an existing vault](@/introduction/install/connect-existing-vault.md).
+
 ## Point your tools at the agent
 
 The agent answers on a socket named `baluard-agent.sock` next to Baluard's own socket. Tools that read `SSH_AUTH_SOCK`, git included, sign through Baluard once it points there.
