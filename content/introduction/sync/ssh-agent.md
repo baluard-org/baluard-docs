@@ -16,6 +16,16 @@ Two switches control the agent, and both start off:
 - **Settings, "SSH agent":** the master switch for this device. It is device-local on purpose: turning it on here does not turn it on on your other machines.
 - **"Serve via SSH agent" on each SSH key entry:** only marked keys are ever served. This flag lives in the entry itself and syncs with your vault.
 
+From the terminal, the master switch has its own command:
+
+```bash
+baluard agents policy --enable
+```
+
+This asks for the master password again: turning the agent on for a device is a gated change. `baluard agents policy` alone prints the current state as JSON. Add `--auto-approve` to sign without asking on every use, or `--no-auto-approve` to go back to asking. With approval on, every signature request names the entry that wants to sign and waits for your decision in the desktop app; if nobody answers in time, the requesting side sees the signature fail.
+
+Mark keys for serving in the desktop app (new keys can also take `--serve-via-agent` when you add them from the CLI). A flag changed on another device reaches this machine with the next `baluard sync pull`; the agent picks it up on the next request, no restart needed.
+
 A third toggle, "Approve signing automatically", skips the approval prompt. It starts off: with it off, every signature request pops up in the desktop app and names the entry that wants to sign. You approve or deny from there, and a denied or expired request fails on the requesting side.
 
 ## Manage the daemon from the CLI
@@ -58,6 +68,12 @@ Host github.com
 
 Replace `1000` with your user id (check with `id -u`). On macOS the path is the one from the export above, quoted because of the spaces: `IdentityAgent "~/Library/Application Support/baluard/baluard-agent.sock"`. The two setups coexist: the system agent keeps serving its own keys, and the `Host` stanza routes Baluard's keys for that host only.
 
+Coming from another agent manager that used a fixed socket path? A symlink from the old path to the Baluard socket keeps the existing config working without touching every stanza:
+
+```bash
+ln -s "$XDG_RUNTIME_DIR/baluard/baluard-agent.sock" ~/.ssh/agent.sock
+```
+
 ## Windows
 
 Windows needs no pointing: Baluard serves the same named pipe that Windows OpenSSH clients look at (`\\.\pipe\openssh-ssh-agent`), so `ssh`, `ssh-add`, and git sign through Baluard as soon as the switch is on. The pipe exists while the daemon runs; it leaves nothing behind when Baluard exits.
@@ -78,7 +94,13 @@ There is no per-key `IdentityAgent` choice on Windows: Baluard's keys and the ke
 ssh-add -l
 ```
 
-With the master switch on and at least one key marked, this lists the fingerprints of your vault keys. An empty list or a failure usually means the vault is locked or a switch is off. Then try the real thing against your provider:
+With the master switch on and at least one key marked, this lists the fingerprints of your vault keys. What the command answers tells you where to look:
+
+- **`The agent has no identities.`** The switch is off or no key is marked. Check with `baluard agents policy`, mark the keys, and pull if the marks were changed on another device.
+- **`Could not open a connection to your authentication agent.`** The daemon is down or `SSH_AUTH_SOCK` points somewhere else. Run `baluard ssh status` and copy the export line it prints.
+- **A signature failure on sign, with the list working.** The vault locked in the meantime, or an approval request expired unanswered.
+
+A host that authenticates with some keys but not one specific key usually pins that key in `~/.ssh/config` with `IdentitiesOnly yes`. If the pinned key is missing from `ssh-add -l`, its Serve flag is off: mark it, run `baluard sync pull`, and the next attempt offers it. Then try the real thing against your provider:
 
 ```bash
 ssh -T git@github.com

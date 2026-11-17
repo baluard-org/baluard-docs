@@ -85,7 +85,15 @@ baluard sync status --vault baluard-vault
 
 ## Set up the SSH agent
 
-The daemon serves your vault SSH keys on an agent endpoint. Keys serve only when the vault is unlocked, the SSH agent switch is on, and the key entry has "Serve via SSH agent" marked. The switches are covered on [The SSH agent](@/introduction/sync/ssh-agent.md) page.
+The daemon serves your vault SSH keys on an agent endpoint. Keys serve only when three things hold: the vault is unlocked, the SSH agent switch is on for this machine, and the key entry has "Serve via SSH agent" marked. Mark keys in the desktop app, or add new keys from the CLI with `--serve-via-agent`. Marked keys changed on another device arrive here with `baluard sync pull`.
+
+Turn the switch on for this machine (it asks for the master password again):
+
+```bash
+baluard agents policy --enable
+```
+
+`baluard agents policy` alone prints the current state. By default every signature asks for approval in the desktop app; add `--auto-approve` if you want git to sign without asking.
 
 Show the endpoint on this machine:
 
@@ -113,7 +121,7 @@ Replace `1000` with your user id (`id -u`). On macOS, run `baluard ssh status` a
 ssh-add -l
 ```
 
-An empty list with an unlocked vault usually means the SSH agent switch is off or no key is marked for serving.
+An empty list with an unlocked vault means the switch is off or no key is marked. `Could not open a connection` means the daemon is down or the socket path is wrong: run `baluard ssh status` and copy the lines it prints. The [SSH agent](@/introduction/sync/ssh-agent.md) page covers the failure cases in detail.
 
 ## Keep the daemon running
 

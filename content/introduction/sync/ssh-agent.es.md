@@ -18,6 +18,28 @@ Dos interruptores controlan el agente, y ambos empiezan apagados:
 
 Un tercer interruptor, "Aprobar firmas automáticamente", se salta el aviso de aprobación. Empieza apagado: con él apagado, cada petición de firma aparece en la app de escritorio y nombra la entrada que quiere firmar. Desde ahí apruebas o rechazas, y una petición rechazada o expirada falla en el lado que pidió la firma.
 
+Desde la terminal, el interruptor principal tiene su propio comando:
+
+```bash
+baluard agents policy --enable
+```
+
+Este pide la contraseña maestra otra vez: activar el agente en un dispositivo es un cambio protegido. `baluard agents policy` solo imprime el estado actual en JSON. Añade `--auto-approve` para firmar sin preguntar en cada uso, o `--no-auto-approve` para volver a preguntar. Con la aprobación activa, cada petición de firma nombra la entrada que quiere firmar y espera tu decisión en la app de escritorio; si nadie responde a tiempo, el lado que pidió la firma ve fallar la operación.
+
+Las marcas de compartir se ponen en la app de escritorio (las claves nuevas también aceptan `--serve-via-agent` al agregarlas desde la CLI). Una marca cambiada en otro dispositivo llega a esta máquina con el próximo `baluard sync pull`; el agente la toma en la siguiente petición, sin reiniciar nada.
+
+## Gestiona el daemon desde la CLI
+
+El endpoint existe mientras el daemon corre. La CLI lo arranca y te deja el cableado listo:
+
+```bash
+baluard ssh status
+baluard ssh serve
+baluard ssh install
+```
+
+`status` imprime la ruta del endpoint y las líneas exactas de `SSH_AUTH_SOCK` e `IdentityAgent` para esta máquina. `serve` arranca el daemon bajo demanda. `install` escribe una unidad de usuario de systemd opcional para que el daemon arranque al inicio. El recorrido completo de primera vez, incluido cómo apuntar una máquina nueva a una bóveda existente, está en [Conecta la CLI a una bóveda existente](@/introduction/install/connect-existing-vault.es.md).
+
 ## Apunta tus herramientas al agente
 
 El agente responde en un socket llamado `baluard-agent.sock` junto al propio socket de Baluard. Las herramientas que leen `SSH_AUTH_SOCK`, git incluido, firman a través de Baluard cuando la variable apunta ahí.
@@ -46,6 +68,12 @@ Host github.com
 
 Cambia `1000` por tu id de usuario (míralo con `id -u`). En macOS la ruta es la del export de arriba, entre comillas por los espacios: `IdentityAgent "~/Library/Application Support/baluard/baluard-agent.sock"`. Las dos configuraciones conviven: el agente del sistema sigue sirviendo sus claves, y la estrofa `Host` enruta las claves de Baluard solo para ese host.
 
+¿Vienes de otro gestor de agente que usaba una ruta de socket fija? Un symlink de la ruta vieja al socket de Baluard mantiene la configuración existente funcionando sin tocar cada estrofa:
+
+```bash
+ln -s "$XDG_RUNTIME_DIR/baluard/baluard-agent.sock" ~/.ssh/agent.sock
+```
+
 ## Windows
 
 En Windows no hay que apuntar nada: Baluard sirve el mismo conducto con nombre que miran los clientes OpenSSH de Windows (`\\.\pipe\openssh-ssh-agent`), así que `ssh`, `ssh-add` y git firman a través de Baluard en cuanto activas el interruptor. El conducto existe mientras el daemon corre; no deja nada al salir.
@@ -66,7 +94,13 @@ No hay opción `IdentityAgent` por clave en Windows: las claves de Baluard y las
 ssh-add -l
 ```
 
-Con el interruptor principal activo y al menos una clave marcada, esto muestra las huellas de tus claves de la bóveda. Una lista vacía o un error suele significar que la bóveda está bloqueada o que falta algún interruptor. Después prueba con tu proveedor:
+Con el interruptor principal activo y al menos una clave marcada, esto muestra las huellas de tus claves de la bóveda. Lo que responde el comando te dice dónde mirar:
+
+- **`The agent has no identities.`** El interruptor está apagado o falta marcar claves. Revisa con `baluard agents policy`, marca las claves, y haz pull si las marcas cambiaron en otro dispositivo.
+- **`Could not open a connection to your authentication agent.`** El daemon está caído o `SSH_AUTH_SOCK` apunta a otro lado. Corre `baluard ssh status` y copia la línea de export que imprime.
+- **Un fallo al firmar, con la lista funcionando.** La bóveda se bloqueó mientras tanto, o una petición de aprobación expiró sin respuesta.
+
+Un host que autentica con algunas claves pero no con una en concreto suele tener esa clave fijada en `~/.ssh/config` con `IdentitiesOnly yes`. Si la clave fijada no aparece en `ssh-add -l`, su marca de compartir está apagada: márcala, corre `baluard sync pull`, y el próximo intento la ofrece. Después prueba con tu proveedor:
 
 ```bash
 ssh -T git@github.com
