@@ -66,7 +66,7 @@ Host github.com
     IdentitiesOnly yes
 ```
 
-Cambia `1000` por tu id de usuario (míralo con `id -u`). En macOS la ruta es la del export de arriba, entre comillas por los espacios: `IdentityAgent "~/Library/Application Support/baluard/baluard-agent.sock"`. Las dos configuraciones conviven: el agente del sistema sigue sirviendo sus claves, y la estrofa `Host` enruta las claves de Baluard solo para ese host.
+Cambia `1000` por tu id de usuario (míralo con `id -u`). La estrofa necesita la ruta literal porque ssh_config no expande variables de entorno; la forma `$XDG_RUNTIME_DIR` del export de arriba no funciona aquí. En macOS la ruta es la del export de arriba, entre comillas por los espacios: `IdentityAgent "~/Library/Application Support/baluard/baluard-agent.sock"`. Las dos configuraciones conviven: el agente del sistema sigue sirviendo sus claves, y la estrofa `Host` enruta las claves de Baluard solo para ese host.
 
 ¿Vienes de otro gestor de agente que usaba una ruta de socket fija? Un symlink de la ruta vieja al socket de Baluard mantiene la configuración existente funcionando sin tocar cada estrofa:
 
