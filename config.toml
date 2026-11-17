@@ -9,6 +9,8 @@ build_search_index = true
 theme = "goyo"
 
 [extra]
+edit_url = "https://github.com/baluard-org/baluard-docs/edit/main"
+footer_html = "Part of <a href='https://baluard.app'>baluard.app</a>. <a href='https://baluard.app/changelog/'>Changelog</a>. Built with <a href='https://www.getzola.org'>Zola</a> and the <a href='https://github.com/hahwul/goyo'>Goyo</a> theme."
 enable_custom_css = true
 # Site-wide social card, shared with baluard.app (1200x630 brand card).
 default_thumbnail = "assets/social-card.png"
@@ -37,9 +39,6 @@ light_brightness = "normal"
 text = "Baluard Docs"
 image_path = "assets/baluard-logo.svg"
 
-edit_url = "https://github.com/baluard-org/baluard-docs/edit/main"
-
-footer_html = "Part of <a href='https://baluard.app'>baluard.app</a>. Built with <a href='https://www.getzola.org'>Zola</a> and the <a href='https://github.com/hahwul/goyo'>Goyo</a> theme."
 
 [extra.sidebar]
 expand_depth = 2
