@@ -57,4 +57,4 @@ shasum -a 256 ~/Downloads/Baluard-macos-aarch64-non-notarized.zip
 
 Compare the output with the `Baluard-macos-aarch64-non-notarized.zip` line in `SHA256SUMS` from the same release page. If they match, the file you have is the file we published. The manual minisign steps for verifying the list itself are in [Installation](installation.md), and they work the same way on macOS.
 
-Then the usual rules: download only from the official [GitHub releases](https://github.com/baluard-org/baluard/releases/latest) or [baluard.app](https://baluard.app), never from a mirror or a link someone sent you. Baluard is open source under GPL-3.0, so the code you run is the code you can read.
+Then the usual rules: download only from the official [GitHub releases](https://github.com/baluard-org/baluard/releases/latest) or [baluard.app](https://baluard.app), never from a mirror or a link someone sent you. Baluard is open source under GPL-3.0-or-later, so the code you run is the code you can read.
