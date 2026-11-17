@@ -1,6 +1,6 @@
 # baluard-docs AGENTS.md
 
-Docs site for Baluard, public at https://docs.baluard.app. Zola, deployed by GitHub Pages on every push to main.
+Docs site for Baluard, public at https://docs.baluard.app. Zola, served by GitHub Pages from the gh-pages branch. Pushing main does NOT deploy: the live site updates only through `just deploy`.
 
 ## OVERVIEW
 
@@ -16,10 +16,12 @@ Docs site for Baluard, public at https://docs.baluard.app. Zola, deployed by Git
 | Check internal links and orphans | `just check` |
 | Build the site | `just build` |
 | Local preview | `just dev` |
+| Publish to the live site | `just deploy` |
 
 ## STANDING RULES
 
-- **Local CI: always build before you push.** Pages deploys whatever lands on main, so the pushed tree must already be compiled and verified here. Run `just check` and `just build` and confirm both are green before every commit and push. Never push and wait for CI to find out.
+- **Local CI: always build before you push.** The pushed tree must already be compiled and verified here. Run `just check` and `just build` and confirm both are green before every commit and push. Never push and wait for CI to find out.
+- **Publishing is a separate step: `just deploy`.** It builds and force-pushes `public/` to the gh-pages branch (branch-based Pages, no Actions). gh-pages is a build-artifact branch, so its force-push is expected. Content commits to main leave the live site untouched until you deploy; a stale docs.baluard.app almost always means undeployed main commits.
 - **Moved pages keep their URLs.** When relocating an article, add a Zola `aliases = ["old/path"]` entry so the old address serves a redirect; the support site links into these pages.
 - **Internal links use `@/` paths.** After moving anything, sweep `rg "@/introduction/"` for stale references across all content, including the `.es.md` twins.
 - Keep the user voice of the articles: plain language, no marketing, honest about known gaps. The user runs commands; the docs print them.
