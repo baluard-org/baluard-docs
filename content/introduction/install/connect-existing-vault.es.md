@@ -58,7 +58,7 @@ El clon aterriza en `~/.local/share/baluard/vaults/` con un nombre local, el slu
 Un clon fresco no tiene clave para esta máquina, así que todavía no puede desbloquear. Inscríbela con la frase de recuperación:
 
 ```bash
-baluard devices enroll-with-phrase --vault baluard-vault
+baluard device enroll-with-phrase --vault baluard-vault
 ```
 
 Escribe las 24 palabras cuando las pida, confirma, y escribe la contraseña maestra. La inscripción escribe una nueva clave de dispositivo y la sella con tu contraseña maestra. La bóveda en tus otros dispositivos no se toca, y nada reemplaza sus claves.
@@ -90,10 +90,10 @@ El daemon sirve las claves SSH de tu bóveda en un endpoint de agente. Las clave
 Activa el interruptor para esta máquina (pide la contraseña maestra otra vez):
 
 ```bash
-baluard agents policy --enable
+baluard ssh policy --enable
 ```
 
-`baluard agents policy` solo imprime el estado actual. Por defecto cada firma pide aprobación en la app de escritorio; agrega `--auto-approve` si quieres que git firme sin preguntar.
+`baluard ssh policy` solo imprime el estado actual. Por defecto cada firma pide aprobación en la app de escritorio; agrega `--auto-approve` si quieres que git firme sin preguntar.
 
 Muestra el endpoint en esta máquina:
 

@@ -58,7 +58,7 @@ The clone lands under `~/.local/share/baluard/vaults/` with a local name, the sl
 A fresh clone has no key for this machine, so it cannot unlock yet. Enroll it with the recovery phrase:
 
 ```bash
-baluard devices enroll-with-phrase --vault baluard-vault
+baluard device enroll-with-phrase --vault baluard-vault
 ```
 
 Enter the 24 words when asked, then confirm, then enter the master password. Enrollment writes a new device key and seals it with your master password. The vault on your other devices is not touched, and nothing replaces their keys.
@@ -90,10 +90,10 @@ The daemon serves your vault SSH keys on an agent endpoint. Keys serve only when
 Turn the switch on for this machine (it asks for the master password again):
 
 ```bash
-baluard agents policy --enable
+baluard ssh policy --enable
 ```
 
-`baluard agents policy` alone prints the current state. By default every signature asks for approval in the desktop app; add `--auto-approve` if you want git to sign without asking.
+`baluard ssh policy` alone prints the current state. By default every signature asks for approval in the desktop app; add `--auto-approve` if you want git to sign without asking.
 
 Show the endpoint on this machine:
 

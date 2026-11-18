@@ -19,10 +19,10 @@ Two switches control the agent, and both start off:
 From the terminal, the master switch has its own command:
 
 ```bash
-baluard agents policy --enable
+baluard ssh policy --enable
 ```
 
-This asks for the master password again: turning the agent on for a device is a gated change. `baluard agents policy` alone prints the current state as JSON. Add `--auto-approve` to sign without asking on every use, or `--no-auto-approve` to go back to asking. With approval on, every signature request names the entry that wants to sign and waits for your decision in the desktop app; if nobody answers in time, the requesting side sees the signature fail.
+This asks for the master password again: turning the agent on for a device is a gated change. `baluard ssh policy` alone prints the current state as JSON. Add `--auto-approve` to sign without asking on every use, or `--no-auto-approve` to go back to asking. With approval on, every signature request names the entry that wants to sign and waits for your decision in the desktop app; if nobody answers in time, the requesting side sees the signature fail.
 
 Mark keys for serving in the desktop app (new keys can also take `--serve-via-agent` when you add them from the CLI). A flag changed on another device reaches this machine with the next `baluard sync pull`; the agent picks it up on the next request, no restart needed.
 
@@ -96,7 +96,7 @@ ssh-add -l
 
 With the master switch on and at least one key marked, this lists the fingerprints of your vault keys. What the command answers tells you where to look:
 
-- **`The agent has no identities.`** The switch is off or no key is marked. Check with `baluard agents policy`, mark the keys, and pull if the marks were changed on another device.
+- **`The agent has no identities.`** The switch is off or no key is marked. Check with `baluard ssh policy`, mark the keys, and pull if the marks were changed on another device.
 - **`Could not open a connection to your authentication agent.`** The daemon is down or `SSH_AUTH_SOCK` points somewhere else. Run `baluard ssh status` and copy the export line it prints.
 - **A signature failure on sign, with the list working.** The vault locked in the meantime, or an approval request expired unanswered.
 

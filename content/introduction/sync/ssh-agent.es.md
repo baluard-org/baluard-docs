@@ -21,10 +21,10 @@ Un tercer interruptor, "Aprobar firmas automáticamente", se salta el aviso de a
 Desde la terminal, el interruptor principal tiene su propio comando:
 
 ```bash
-baluard agents policy --enable
+baluard ssh policy --enable
 ```
 
-Este pide la contraseña maestra otra vez: activar el agente en un dispositivo es un cambio protegido. `baluard agents policy` solo imprime el estado actual en JSON. Añade `--auto-approve` para firmar sin preguntar en cada uso, o `--no-auto-approve` para volver a preguntar. Con la aprobación activa, cada petición de firma nombra la entrada que quiere firmar y espera tu decisión en la app de escritorio; si nadie responde a tiempo, el lado que pidió la firma ve fallar la operación.
+Este pide la contraseña maestra otra vez: activar el agente en un dispositivo es un cambio protegido. `baluard ssh policy` solo imprime el estado actual en JSON. Añade `--auto-approve` para firmar sin preguntar en cada uso, o `--no-auto-approve` para volver a preguntar. Con la aprobación activa, cada petición de firma nombra la entrada que quiere firmar y espera tu decisión en la app de escritorio; si nadie responde a tiempo, el lado que pidió la firma ve fallar la operación.
 
 Las marcas de compartir se ponen en la app de escritorio (las claves nuevas también aceptan `--serve-via-agent` al agregarlas desde la CLI). Una marca cambiada en otro dispositivo llega a esta máquina con el próximo `baluard sync pull`; el agente la toma en la siguiente petición, sin reiniciar nada.
 
@@ -96,7 +96,7 @@ ssh-add -l
 
 Con el interruptor principal activo y al menos una clave marcada, esto muestra las huellas de tus claves de la bóveda. Lo que responde el comando te dice dónde mirar:
 
-- **`The agent has no identities.`** El interruptor está apagado o falta marcar claves. Revisa con `baluard agents policy`, marca las claves, y haz pull si las marcas cambiaron en otro dispositivo.
+- **`The agent has no identities.`** El interruptor está apagado o falta marcar claves. Revisa con `baluard ssh policy`, marca las claves, y haz pull si las marcas cambiaron en otro dispositivo.
 - **`Could not open a connection to your authentication agent.`** El daemon está caído o `SSH_AUTH_SOCK` apunta a otro lado. Corre `baluard ssh status` y copia la línea de export que imprime.
 - **Un fallo al firmar, con la lista funcionando.** La bóveda se bloqueó mientras tanto, o una petición de aprobación expiró sin respuesta.
 
