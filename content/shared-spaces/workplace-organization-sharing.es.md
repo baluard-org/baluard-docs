@@ -25,7 +25,7 @@ Un **Espacio de organización** permite a una empresa o equipo administrar crede
 
 - **Aprobación por quórum:** Los Espacios de organización pueden exigir que varios administradores aprueben cambios sensibles (como retirar a un administrador o cambiar la gobernanza del Espacio), evitando que una sola cuenta comprometida tome el control.
 - **Kit de recuperación del Espacio:** Guarda el Kit de recuperación del Espacio (una frase propia de 24 palabras para ese Espacio) fuera de internet según la política de continuidad de tu empresa. Recuperar el Espacio exige tanto esa frase del kit como acceso de lectura al repositorio Git. Si un administrador sale o cambia la propiedad, Baluard emite una nueva frase del kit que debe anotarse de nuevo.
-- **2FA en el proveedor y tokens acotados:** Exige [autenticación de dos factores (2FA)](@/introduction/sync/provider-2fa.es.md) en las cuentas del proveedor de Git de todo el equipo. En organizaciones, usa tokens granulares o una GitHub App en lugar de tokens clásicos con el ámbito amplio `repo`.
+- **2FA en el proveedor y tokens acotados:** Exige [autenticación de dos factores (2FA)](@/sync/provider-2fa.es.md) en las cuentas del proveedor de Git de todo el equipo. En organizaciones, usa tokens granulares o una GitHub App en lugar de tokens clásicos con el ámbito amplio `repo`.
 
 ## Expectativas claras al dar de baja a alguien
 

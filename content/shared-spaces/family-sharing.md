@@ -22,7 +22,7 @@ A **Family Space** gives your household one shared vault without forcing everyon
 - **Merged view:** You do not have to switch vaults back and forth. Your personal vault and your Family Space appear together in search and autofill.
 - **No extra master password:** Each family member uses their own Baluard identity and device unlock, with no shared master password to pass around.
 - **Code-based invites:** Invite family members with a short invite code; entering the code approves their join automatically.
-- **Same git provider:** Everyone in the Family Space needs a free account on the same [git provider](@/introduction/sync/git-providers.md) (for example, everyone on GitHub, or everyone on GitLab).
+- **Same git provider:** Everyone in the Family Space needs a free account on the same [git provider](@/sync/git-providers.md) (for example, everyone on GitHub, or everyone on GitLab).
 
 ## Lost devices and emergencies
 

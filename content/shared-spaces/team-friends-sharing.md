@@ -27,7 +27,7 @@ For three or more people, use a **team-shaped Space** with folders and roles:
 
 ## How syncing works
 
-Each member must have an account on the same [git provider](@/introduction/sync/git-providers.md) host and connect the Space to the shared private repository. Every change is signed by the member's device before it is pushed, and other devices verify that signature when they pull.
+Each member must have an account on the same [git provider](@/sync/git-providers.md) host and connect the Space to the shared private repository. Every change is signed by the member's device before it is pushed, and other devices verify that signature when they pull.
 
 If two friends edit different entries offline at the same time, git merges both cleanly. If both edit the same field, Baluard lets you resolve it field by field.
 

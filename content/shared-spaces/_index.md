@@ -1,7 +1,7 @@
 +++
 title = "Shared Spaces"
 description = "Share passwords and secrets with family, friends, or a workplace team, without a central server."
-weight = 2
+weight = 6
 sort_by = "weight"
 
 [extra]

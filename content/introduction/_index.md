@@ -11,11 +11,11 @@ Baluard is a Git-native password manager. Your vault is a folder of AES-256-GCM 
 
 Start here:
 
-1. [Installation](@/introduction/install/installation.md): packages for Debian, Ubuntu, and Fedora, or direct downloads.
-2. [Choosing a git provider](@/introduction/sync/git-providers.md): GitHub, GitLab, Codeberg, or your own server; size limits, pros, and cons.
-3. [Syncing your vault](@/introduction/sync/syncing-your-vault.md): how git sync works and what your provider can see.
-4. [Attachments](@/introduction/vault/attachments.md): the 2 MB per-file limit and how reclaiming space works.
-5. [Your 24-word recovery phrase](@/introduction/vault/recovery-phrase.md): why it is your safety net in case of catastrophe and how to store it forever.
-6. [Two-factor authentication (2FA) and your git provider](@/introduction/sync/provider-2fa.md): why 2FA lives on GitHub, GitLab, or Codeberg instead of inside your vault.
+1. [Installation](@/install/installation.md): packages for Debian, Ubuntu, and Fedora, or direct downloads.
+2. [Choosing a git provider](@/sync/git-providers.md): GitHub, GitLab, Codeberg, or your own server; size limits, pros, and cons.
+3. [Syncing your vault](@/sync/syncing-your-vault.md): how git sync works and what your provider can see.
+4. [Attachments](@/vault/attachments.md): the 2 MB per-file limit and how reclaiming space works.
+5. [Your 24-word recovery phrase](@/vault/recovery-phrase.md): why it is your safety net in case of catastrophe and how to store it forever.
+6. [Two-factor authentication (2FA) and your git provider](@/sync/provider-2fa.md): why 2FA lives on GitHub, GitLab, or Codeberg instead of inside your vault.
 
 The [project homepage](https://baluard.app) covers the architecture and the security model in depth, including the [security white paper](https://baluard.app/security/). Not familiar with git? The [What the Git?](https://baluard.app/what-the-git/) explainer covers everything a vault owner needs in five minutes.

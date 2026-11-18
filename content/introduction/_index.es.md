@@ -13,11 +13,11 @@ Empieza aquí:
 
 Empieza aquí:
 
-1. [Instalación](@/introduction/install/installation.es.md): paquetes para Debian, Ubuntu y Fedora, o descargas directas.
-2. [Elegir un proveedor de Git](@/introduction/sync/git-providers.es.md): GitHub, GitLab, Codeberg o tu propio servidor; límites de tamaño, pros y contras.
-3. [Sincronizar tu bóveda](@/introduction/sync/syncing-your-vault.es.md): cómo funciona la sincronización git y qué puede ver tu proveedor.
-4. [Adjuntos](@/introduction/vault/attachments.es.md): el límite de 2 MB por archivo y cómo funciona liberar espacio.
-5. [Tu frase de recuperación de 24 palabras](@/introduction/vault/recovery-phrase.es.md): por qué es tu red de seguridad en caso de catástrofe y cómo guardarla para siempre.
-6. [Autenticación de dos factores (2FA) y tu proveedor de Git](@/introduction/sync/provider-2fa.es.md): por qué la 2FA va en GitHub, GitLab o Codeberg y no dentro de tu bóveda.
+1. [Instalación](@/install/installation.es.md): paquetes para Debian, Ubuntu y Fedora, o descargas directas.
+2. [Elegir un proveedor de Git](@/sync/git-providers.es.md): GitHub, GitLab, Codeberg o tu propio servidor; límites de tamaño, pros y contras.
+3. [Sincronizar tu bóveda](@/sync/syncing-your-vault.es.md): cómo funciona la sincronización git y qué puede ver tu proveedor.
+4. [Adjuntos](@/vault/attachments.es.md): el límite de 2 MB por archivo y cómo funciona liberar espacio.
+5. [Tu frase de recuperación de 24 palabras](@/vault/recovery-phrase.es.md): por qué es tu red de seguridad en caso de catástrofe y cómo guardarla para siempre.
+6. [Autenticación de dos factores (2FA) y tu proveedor de Git](@/sync/provider-2fa.es.md): por qué la 2FA va en GitHub, GitLab o Codeberg y no dentro de tu bóveda.
 
 La [página del proyecto](https://baluard.app) cubre la arquitectura y el modelo de seguridad en profundidad, incluido el [documento de seguridad](https://baluard.app/security/). ¿No conoces git? La explicación [What the Git?](https://baluard.app/what-the-git/) cubre todo lo que necesita quien tiene una bóveda en cinco minutos.

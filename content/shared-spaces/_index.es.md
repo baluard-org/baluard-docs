@@ -1,7 +1,7 @@
 +++
 title = "Espacios compartidos"
 description = "Comparte contraseñas y secretos con tu familia, amistades o equipo de trabajo, sin servidor central."
-weight = 2
+weight = 6
 sort_by = "weight"
 
 [extra]
