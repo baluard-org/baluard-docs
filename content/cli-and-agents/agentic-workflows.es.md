@@ -39,7 +39,7 @@ Si un título o prefijo coincide con varias entradas, el CLI sale con código `2
 baluard run --env GH_TOKEN=baluard://GitHub/password --need "publicar release" -- gh release create v1.0.0
 ```
 
-La entrada estándar (`stdin`) entubada se reenvía al comando (hasta 1 MiB), `stdout` y `stderr` se transmiten en vivo con los secretos limpiados (en forma cruda, base64, porcentaje y JSON escapado), y `SIGINT`, `SIGTERM` y `SIGHUP` se reenvían al grupo de procesos hijo. Usa `--timeout` (por ejemplo `--timeout 5m`, por defecto `60s`, máximo `1h`) para compilaciones o despliegues largos.
+La entrada estándar (`stdin`) redirigida se reenvía al comando (hasta 1 MiB), `stdout` y `stderr` se transmiten en vivo con los secretos limpiados (en forma cruda, base64, porcentaje y JSON escapado), y `SIGINT`, `SIGTERM` y `SIGHUP` se reenvían al grupo de procesos hijo. Usa `--timeout` (por ejemplo `--timeout 5m`, por defecto `60s`, máximo `1h`) para compilaciones o despliegues largos.
 
 ### 2. Usar un archivo `.env.tpl` o variables heredadas
 

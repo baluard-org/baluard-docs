@@ -17,5 +17,5 @@ cta_buttons = [
 [extra.final_cta_section]
 title = "¿Nuevo en Git?"
 description = "No necesitas saber Git para usar Baluard. La explicación en baluard.app cubre todo lo que necesita quien tiene una bóveda, en cinco minutos."
-button = { text = "¿Qué es el Git?", url = "https://baluard.app/what-the-git/" }
+button = { text = "¿Qué es Git?", url = "https://baluard.app/what-the-git/" }
 +++

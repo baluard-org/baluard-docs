@@ -14,7 +14,7 @@ Cuando creas una bóveda nueva en Baluard, la aplicación genera una **frase de 
 
 Baluard no tiene servidores centrales, ni cuentas de usuario, ni un botón de "Olvidé mi contraseña". Nadie en Baluard puede restablecer tu acceso ni recuperar tus datos por ti.
 
-Si te roban el portátil, se rompe tu teléfono o pierdes acceso a todos tus dispositivos al mismo tiempo, tu frase de recuperación de 24 palabras es la **única** forma de volver a entrar en tu bóveda. Sin ella, tus datos cifrados quedan bloqueados para siempre.
+Si te roban la laptop, se rompe tu teléfono o pierdes acceso a todos tus dispositivos al mismo tiempo, tu frase de recuperación de 24 palabras es la **única** forma de volver a entrar en tu bóveda. Sin ella, tus datos cifrados quedan bloqueados para siempre.
 
 ## Tu segundo factor (2FA)
 
@@ -23,7 +23,7 @@ En Baluard, tu bóveda está protegida por dos elementos:
 1. **Tu contraseña maestra** (algo que sabes).
 2. **La clave de tu dispositivo** (algo que guarda tu dispositivo).
 
-Conocer tu contraseña maestra no basta por sí solo para abrir tu bóveda en un dispositivo nuevo. Para añadir un dispositivo nuevo o recuperarte tras una catástrofe, necesitas un dispositivo ya autorizado **o** tu frase de recuperación de 24 palabras. En la práctica, esas 24 palabras funcionan como tu **autenticación de dos factores (2FA)** para recuperación ante desastres.
+Conocer tu contraseña maestra no basta por sí solo para abrir tu bóveda en un dispositivo nuevo. Para agregar un dispositivo nuevo o recuperarte tras una catástrofe, necesitas un dispositivo ya autorizado **o** tu frase de recuperación de 24 palabras. En la práctica, esas 24 palabras funcionan como tu **autenticación de dos factores (2FA)** para recuperación ante desastres.
 
 ## Cómo guardarla de forma segura, para siempre
 
