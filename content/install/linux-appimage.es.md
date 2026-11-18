@@ -45,7 +45,7 @@ Sin sudo también puedes ejecutar el AppImage. Cualquier AppImage puede desempaq
 
 El arranque es más lento y usa más disco. Sirve como respaldo.
 
-## Añade Baluard al menú de aplicaciones
+## Agrega Baluard al menú de aplicaciones
 
 Un AppImage es solo un archivo. No crea una entrada en el menú ni un icono por sí solo, y queda donde lo guardaste. Un gestor de AppImage lo resuelve: guarda los AppImage en una carpeta, conecta la entrada del menú y el icono, y elimina todo al desinstalar.
 
@@ -64,7 +64,7 @@ AppManager y Gear Lever también pueden vigilar GitHub en busca de versiones nue
 
 ## Distribuciones inmutables
 
-En Fedora Silverblue, openSUSE Aeon y sistemas similares, los paquetes deb y rpm requieren añadir capas a la imagen del sistema, y este sitio no documenta esa ruta. El AppImage se ejecuta desde tu carpeta personal sin cambios en el sistema. Instala Gear Lever desde Flathub y gestiona Baluard como cualquier otro AppImage.
+En Fedora Silverblue, openSUSE Aeon y sistemas similares, los paquetes deb y rpm requieren agregar capas a la imagen del sistema, y este sitio no documenta esa ruta. El AppImage se ejecuta desde tu carpeta personal sin cambios en el sistema. Instala Gear Lever desde Flathub y gestiona Baluard como cualquier otro AppImage.
 
 ## Brecha conocida: la extensión de navegador
 

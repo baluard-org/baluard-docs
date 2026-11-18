@@ -1,6 +1,6 @@
 +++
 title = "Instalar"
-description = "Pon Baluard en tu ordenador y supera los avisos de descarga de Windows y macOS y los detalles del AppImage de Linux."
+description = "Pon Baluard en tu computadora y supera los avisos de descarga de Windows y macOS y los detalles del AppImage de Linux."
 weight = 2
 sort_by = "weight"
 template = "section.html"

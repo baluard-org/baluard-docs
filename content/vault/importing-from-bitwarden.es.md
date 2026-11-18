@@ -26,9 +26,9 @@ Desde la [app web de Bitwarden](https://vault.bitwarden.com):
 
 La importación vive en la app, no en una terminal. Desbloquea tu bóveda primero y luego:
 
-**Escritorio (Windows, macOS, Linux):** abre Settings y ve a la pestaña Data. Bajo Import Vault Data, elige Bitwarden JSON en el menú de origen, pulsa Import y selecciona el archivo `.json` exportado. Un resumen te dice cuántas entradas entraron, y aparecen en tu bóveda de inmediato.
+**Escritorio (Windows, macOS, Linux):** abre Ajustes y ve a la pestaña Importación / exportación de datos. En Importar datos de la bóveda, elige Bitwarden JSON en el menú de origen, haz clic en Importar y selecciona el archivo `.json` exportado. Un resumen te dice cuántas entradas se importaron, y aparecen en tu bóveda de inmediato.
 
-**Móvil (Android):** abre Settings y ve a Data. Pulsa Import entries, elige Bitwarden JSON y selecciona el archivo exportado.
+**Móvil (Android):** abre Ajustes y ve a Datos. Toca Importar entradas, elige Bitwarden JSON y selecciona el archivo exportado.
 
 La importación mapea inicios de sesión con URIs y detección de coincidencias, semillas TOTP, notas, tarjetas, identidades, notas seguras, claves SSH, campos personalizados, historial de contraseñas, favoritos y carpetas. Las passkeys llegan como entradas de solo lectura, porque Bitwarden no puede exportar la clave privada de una passkey; regístralas de nuevo con los servicios que las usan.
 

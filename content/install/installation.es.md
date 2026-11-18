@@ -29,7 +29,7 @@ sudo dnf config-manager addrepo --from-repofile=https://baluard.app/repo/baluard
 sudo dnf install baluard
 ```
 
-En RHEL y derivados (dnf 4), añade el repositorio con:
+En RHEL y derivados (dnf 4), agrega el repositorio con:
 
 ```bash
 sudo dnf config-manager --add-repo=https://baluard.app/repo/baluard.repo
@@ -43,7 +43,7 @@ En Windows, Defender SmartScreen muestra el aviso "Windows protegió tu PC" porq
 
 En macOS, Gatekeeper bloquea el primer arranque porque la compilación no está notarizada. Consulta [El aviso de Gatekeeper en macOS](macos-gatekeeper/).
 
-En Linux, el AppImage no necesita instalador, pero sí FUSE para arrancar, y no se añade solo al menú de aplicaciones. Consulta [El AppImage de Linux](linux-appimage/).
+En Linux, el AppImage no necesita instalador, pero sí FUSE para arrancar, y no se agrega solo al menú de aplicaciones. Consulta [El AppImage de Linux](linux-appimage/).
 
 ## Solo línea de comandos (mise)
 

@@ -12,8 +12,8 @@ Un **Espacio compartido** es una bóveda cifrada que compartes con otras persona
 Cada Espacio compartido te ofrece:
 
 - **Carpetas compartidas (colecciones):** En Espacios de equipo, familia y organización, agrupa entradas según quién deba verlas (por ejemplo, facturas del hogar, claves de un proyecto o accesos de un departamento). Los editores y lectores solo reciben las llaves de las carpetas asignadas; los administradores pueden descifrar todas las carpetas.
-- **Roles:** Controla quién administra el espacio (**Propietario** y **Administrador**), quién puede añadir o editar entradas (**Editor**) y quién solo puede leer (**Lector**).
-- **Invitación y aprobación:** Invita a otras personas con su tarjeta de contacto o un código de invitación. Según la configuración del Espacio, un administrador aprueba la incorporación de nuevos miembros o el código los aprueba automáticamente. Los miembros actuales pueden añadir sus propios dispositivos adicionales sin aprobación.
+- **Roles:** Controla quién administra el espacio (**Propietario** y **Administrador**), quién puede agregar o editar entradas (**Editor**) y quién solo puede leer (**Lector**).
+- **Invitación y aprobación:** Invita a otras personas con su tarjeta de contacto o un código de invitación. Según la configuración del Espacio, un administrador aprueba la incorporación de nuevos miembros o el código los aprueba automáticamente. Los miembros actuales pueden agregar sus propios dispositivos adicionales sin aprobación.
 - **Kit de recuperación del Espacio:** Un respaldo de emergencia propio de 24 palabras para el Espacio, de modo que un hogar o una organización no pierdan el acceso si el propietario pierde su dispositivo.
 
 Elige la guía que mejor encaje con tu caso:

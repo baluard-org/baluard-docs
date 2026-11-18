@@ -26,7 +26,7 @@ Desde la terminal, el interruptor principal tiene su propio comando:
 baluard ssh policy --enable
 ```
 
-Este pide la contraseña maestra otra vez: activar el agente en un dispositivo es un cambio protegido. `baluard ssh policy` solo imprime el estado actual en JSON. Añade `--auto-approve` para firmar sin preguntar en cada uso, o `--no-auto-approve` para volver a preguntar. Con la aprobación activa, cada petición de firma nombra la entrada que quiere firmar y espera tu decisión en la app de escritorio; si nadie responde a tiempo, el lado que pidió la firma ve fallar la operación.
+Este pide la contraseña maestra otra vez: activar el agente en un dispositivo es un cambio protegido. `baluard ssh policy` solo imprime el estado actual en JSON. Agrega `--auto-approve` para firmar sin preguntar en cada uso, o `--no-auto-approve` para volver a preguntar. Con la aprobación activa, cada petición de firma nombra la entrada que quiere firmar y espera tu decisión en la app de escritorio; si nadie responde a tiempo, el lado que pidió la firma ve fallar la operación.
 
 Las marcas de compartir se ponen en la app de escritorio (las claves nuevas también aceptan `--serve-via-agent` al agregarlas desde la CLI). Una marca cambiada en otro dispositivo llega a esta máquina con el próximo `baluard sync pull`; el agente la toma en la siguiente petición, sin reiniciar nada.
 
@@ -60,7 +60,7 @@ export SSH_AUTH_SOCK="$HOME/Library/Application Support/baluard/baluard-agent.so
 
 Pon la línea que corresponda en el archivo de inicio de tu shell (`~/.bashrc`, `~/.zshrc`) para que cada terminal nueva la tome.
 
-¿Prefieres mantener el agente del sistema para todo menos un host? Añade una línea `IdentityAgent` en `~/.ssh/config`:
+¿Prefieres mantener el agente del sistema para todo menos un host? Agrega una línea `IdentityAgent` en `~/.ssh/config`:
 
 ```
 Host github.com
