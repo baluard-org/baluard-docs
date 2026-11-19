@@ -1,7 +1,7 @@
 +++
 title = "El agente SSH"
 description = "Deja que la terminal y git firmen con las claves SSH de tu bóveda en Linux, macOS y Windows."
-weight = 4
+weight = 5
 template = "page.html"
 
 aliases = ["es/introduction/sync/ssh-agent"]

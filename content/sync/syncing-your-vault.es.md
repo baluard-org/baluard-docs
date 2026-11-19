@@ -12,11 +12,10 @@ Tu bóveda es una carpeta de archivos cifrados en tus dispositivos. Baluard llev
 
 ## Elige dónde vive la copia
 
-La sincronización es opcional y apunta a almacenamiento que controlas:
+La sincronización es opcional. Tienes dos clases de caminos, y ambos mueven los mismos commits firmados:
 
-- un repositorio privado en GitHub o GitLab,
-- tu propio servidor,
-- o una unidad USB.
+- **Almacenamiento que controlas:** un repositorio privado en GitHub o GitLab, tu propio servidor, una unidad USB, o una carpeta que otra herramienta respalda por ti, como Dropbox, Google Drive, iCloud Drive o Syncthing.
+- **Tus dispositivos, directamente:** la sincronización entre pares mueve commits directamente entre tus dispositivos vinculados, sin almacenamiento externo. Consulta [Sincronización entre pares (P2P)](@/sync/peer-to-peer-sync.es.md).
 
 Baluard nunca recibe una copia, y como está construido sobre el propio git, funciona con cualquier proveedor o con ninguno. [Elegir un proveedor de Git](@/sync/git-providers.es.md) compara los servidores, con límites de tamaño, pros y contras.
 

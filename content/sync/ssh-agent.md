@@ -1,7 +1,7 @@
 +++
 title = "The SSH agent"
 description = "Let terminal tools and git sign with your vault's SSH keys on Linux, macOS, and Windows."
-weight = 4
+weight = 5
 template = "page.html"
 
 aliases = ["introduction/sync/ssh-agent"]

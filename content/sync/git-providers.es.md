@@ -1,7 +1,7 @@
 +++
 title = "Elegir un proveedor de Git"
 description = "Dónde puede vivir una bóveda de Baluard: GitHub, GitLab, Codeberg, tu propio servidor, o ninguno. Límites de tamaño, pros y contras."
-weight = 3
+weight = 4
 template = "page.html"
 aliases = ["es/introduction/git-providers", "es/introduction/sync/git-providers"]
 
