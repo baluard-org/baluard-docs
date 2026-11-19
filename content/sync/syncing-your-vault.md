@@ -14,7 +14,7 @@ Your vault is a folder of encrypted files on your devices. Baluard keeps a git n
 
 Sync is optional. You have two kinds of paths, and both move the same signed commits:
 
-- **Storage you control:** a private repository on GitHub or GitLab, your own home server, a plain USB drive, or a folder that another tool backs up for you, such as Dropbox, Google Drive, iCloud Drive, or Syncthing.
+- **Storage you control:** a private repository on GitHub or GitLab, your own home server, a plain USB drive, or a folder that another tool backs up for you, such as Dropbox, Google Drive, iCloud Drive, or Syncthing. [Folder sync](@/sync/folder-sync.md) covers the folder option.
 - **Your devices, directly:** peer-to-peer sync moves commits straight between your enrolled devices, with no storage host at all. See [Peer-to-peer sync](@/sync/peer-to-peer-sync.md).
 
 Baluard never receives a copy, and because it is built on git itself, it works with any provider or none at all. [Choosing a git provider](@/sync/git-providers.md) compares the hosts, with size limits, pros, and cons.

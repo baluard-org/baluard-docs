@@ -51,5 +51,5 @@ The same encrypted git data as everywhere else. Your peer receives only cipherte
 ## Know the limits
 
 - **Sync needs both sides present.** Unlike a git provider, which stores your commits until you come back, a peer-to-peer sync only happens when both devices are online and Baluard is running on both.
-- **P2P-only means no off-device backup.** If every enrolled device is lost at the same time, the vault is gone. The warning says this in the app, and it matters: pair peer-to-peer with a [git provider](@/sync/git-providers.md), [folder sync](@/sync/syncing-your-vault.md), or an encrypted backup so a copy exists somewhere off your devices.
+- **P2P-only means no off-device backup.** If every enrolled device is lost at the same time, the vault is gone. The warning says this in the app, and it matters: pair peer-to-peer with a [git provider](@/sync/git-providers.md), [folder sync](@/sync/folder-sync.md), or an encrypted backup so a copy exists somewhere off your devices.
 - Conflicts resolve the same way as with git sync: [changes merge, and same-field edits ask you](@/sync/syncing-your-vault.md#conflicts).

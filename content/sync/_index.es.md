@@ -12,6 +12,7 @@ Tu bóveda se sincroniza como un repositorio git. La copia puede vivir en almace
 
 1. [Sincronizar tu bóveda](@/sync/syncing-your-vault.es.md): cómo funciona git sync y qué puede ver tu proveedor.
 2. [Sincronización entre pares (P2P)](@/sync/peer-to-peer-sync.es.md): sincroniza directamente entre tus dispositivos vinculados, sin proveedor; configuración, seguridad y límites.
-3. [Elegir un proveedor de Git](@/sync/git-providers.es.md): GitHub, GitLab, Codeberg o tu propio servidor; límites de tamaño, pros y contras.
-4. [Autenticación de dos factores (2FA) y tu proveedor de Git](@/sync/provider-2fa.es.md): por qué la 2FA vive en el proveedor y no dentro de tu bóveda.
-5. [El agente SSH](@/sync/ssh-agent.es.md): deja que la terminal y git firmen con las claves SSH de tu bóveda; configuración para Linux y macOS.
+3. [Sincronización por carpeta](@/sync/folder-sync.es.md): sincroniza a través de una carpeta que ya respaldas con Dropbox, Drive, iCloud Drive o Syncthing; sin cuenta.
+4. [Elegir un proveedor de Git](@/sync/git-providers.es.md): GitHub, GitLab, Codeberg o tu propio servidor; límites de tamaño, pros y contras.
+5. [Autenticación de dos factores (2FA) y tu proveedor de Git](@/sync/provider-2fa.es.md): por qué la 2FA vive en el proveedor y no dentro de tu bóveda.
+6. [El agente SSH](@/sync/ssh-agent.es.md): deja que la terminal y git firmen con las claves SSH de tu bóveda; configuración para Linux y macOS.

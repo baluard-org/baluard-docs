@@ -1,7 +1,7 @@
 +++
 title = "Choosing a git provider"
 description = "Where a Baluard vault can live: GitHub, GitLab, Codeberg, your own server, or none. Size limits, pros, and cons."
-weight = 4
+weight = 5
 template = "page.html"
 aliases = ["introduction/git-providers", "introduction/sync/git-providers"]
 
