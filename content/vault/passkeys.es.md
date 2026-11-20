@@ -1,7 +1,7 @@
 +++
 title = "Claves de acceso en tu navegador"
 description = "Inicia sesión en sitios con las claves de acceso guardadas en tu bóveda, a través de la extensión de navegador."
-weight = 7
+weight = 8
 template = "page.html"
 
 aliases = ["es/introduction/vault/passkeys"]

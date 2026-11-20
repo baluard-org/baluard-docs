@@ -13,5 +13,6 @@ Todo en Baluard vive en un único árbol de archivos cifrados que solo tus dispo
 1. [Importar desde Bitwarden](@/vault/importing-from-bitwarden.es.md): traslada una bóveda de Bitwarden existente, adjuntos incluidos.
 2. [Adjuntos](@/vault/attachments.es.md): el límite de 2 MB por archivo y cómo funciona reclamar espacio.
 3. [Tu frase de recuperación de 24 palabras](@/vault/recovery-phrase.es.md): por qué es tu red de seguridad ante una catástrofe y cómo guardarla para siempre.
-4. [Llaves de acceso en tu navegador](@/vault/passkeys.es.md): inicia sesión en sitios con las llaves de acceso guardadas en tu bóveda.
-5. [Encontrar logs para reportes de errores](@/vault/logs-for-bug-reports.es.md): dónde está `daemon.log` en Windows, Linux y macOS.
+4. [Recuperar una bóveda sin tu contraseña](@/vault/recover-without-password.es.md): ¿sin acceso? Vuelve a entrar con la frase de 24 palabras.
+5. [Llaves de acceso en tu navegador](@/vault/passkeys.es.md): inicia sesión en sitios con las llaves de acceso guardadas en tu bóveda.
+6. [Encontrar logs para reportes de errores](@/vault/logs-for-bug-reports.es.md): dónde está `daemon.log` en Windows, Linux y macOS.

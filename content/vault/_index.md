@@ -13,5 +13,6 @@ Everything in Baluard lives in one encrypted vault file tree that only your devi
 1. [Import from Bitwarden](@/vault/importing-from-bitwarden.md): move an existing Bitwarden vault, attachments included.
 2. [Attachments](@/vault/attachments.md): the 2 MB per-file limit and how reclaiming space works.
 3. [Your 24-word recovery phrase](@/vault/recovery-phrase.md): why it is your safety net in case of catastrophe and how to store it forever.
-4. [Passkeys in your browser](@/vault/passkeys.md): sign in to sites with the passkeys stored in your vault.
-5. [Find logs for bug reports](@/vault/logs-for-bug-reports.md): where `daemon.log` lives on Windows, Linux, and macOS.
+4. [Recover a vault without your password](@/vault/recover-without-password.md): locked out? Get back in with the 24-word phrase.
+5. [Passkeys in your browser](@/vault/passkeys.md): sign in to sites with the passkeys stored in your vault.
+6. [Find logs for bug reports](@/vault/logs-for-bug-reports.md): where `daemon.log` lives on Windows, Linux, and macOS.

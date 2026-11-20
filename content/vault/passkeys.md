@@ -1,7 +1,7 @@
 +++
 title = "Passkeys in your browser"
 description = "Sign in to sites with the passkeys stored in your vault, through the browser extension."
-weight = 7
+weight = 8
 template = "page.html"
 
 aliases = ["introduction/vault/passkeys"]
