@@ -12,7 +12,7 @@ Cuando creas una bóveda nueva en Baluard, la aplicación genera una **frase de 
 
 ## Por qué es tan importante
 
-Baluard no tiene servidores centrales, ni cuentas de usuario, ni un botón de "Olvidé mi contraseña". Nadie en Baluard puede restablecer tu acceso ni recuperar tus datos por ti.
+Baluard no tiene servidores centrales ni cuentas de usuario. Nadie en Baluard puede restablecer tu acceso ni recuperar tus datos por ti. Pero tú sí puedes: en una instalación nueva, tu frase de 24 palabras vuelve a abrir la bóveda y te deja elegir una **nueva contraseña maestra**, sin necesidad de la antigua. En la app de escritorio usa "¿Olvidaste tu contraseña maestra?" en la pantalla de desbloqueo; en el móvil usa la entrada de recuperación de la pantalla de bienvenida. La carpeta de la bóveda (con su kit de recuperación) debe estar primero en ese dispositivo: clónala desde tu proveedor git o añade la carpeta, y después recupera.
 
 Si te roban la laptop, se rompe tu teléfono o pierdes acceso a todos tus dispositivos al mismo tiempo, tu frase de recuperación de 24 palabras es la **única** forma de volver a entrar en tu bóveda. Sin ella, tus datos cifrados quedan bloqueados para siempre.
 
@@ -41,5 +41,6 @@ No necesitas la frase de 24 palabras en el día a día: tus dispositivos se desb
 
 - Todos tus dispositivos autorizados se pierdan, se rompan o se borren al mismo tiempo.
 - Estés configurando un dispositivo nuevo y no tengas a mano otro dispositivo ya autorizado para aprobarlo.
+- Hayas olvidado tu contraseña maestra. Recupera en una instalación nueva (o en un dispositivo sin esta bóveda) solo con la frase, y elige una contraseña nueva.
 
 Guárdala bien, mantenla fuera de internet y nunca la tires.

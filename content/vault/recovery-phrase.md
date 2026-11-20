@@ -12,7 +12,7 @@ When you create a new vault in Baluard, the app generates a **24-word recovery p
 
 ## Why it matters
 
-Baluard has no central server, no user accounts, and no "Forgot password" button. Nobody at Baluard can reset your access or recover your data for you.
+Baluard has no central server and no user accounts. Nobody at Baluard can reset your access or recover your data for you. But you can recover it yourself: on a fresh install, your 24-word phrase re-opens the vault and lets you set a **new master password** — no old password needed. In the desktop app use "Forgot your master password?" on the unlock screen; on mobile use the recovery entry on the welcome screen. The vault folder (with its recovery kit) must be on that device first — clone it from your git provider or add the folder, then recover.
 
 If your laptop is stolen, your phone breaks, or you lose access to all of your devices at once, your 24-word recovery phrase is the **only** way to get back into your vault. Without it, your encrypted data is permanently locked.
 
@@ -41,5 +41,6 @@ You do not need the 24-word phrase for everyday use—your devices unlock with y
 
 - All of your enrolled devices are lost, broken, or wiped at the same time.
 - You are setting up a new device and do not have an existing device nearby to approve it.
+- You forgot your master password. Recover on a fresh install (or a device without this vault) with the phrase alone, and choose a new password.
 
 Keep it safe, keep it offline, and never throw it away.
