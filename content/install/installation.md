@@ -15,8 +15,8 @@ Baluard is in beta. The current release is 0.7.1 for Linux, Windows, and macOS d
 The apt repository uses the deb822 format (default on Ubuntu 24.04+ and Debian 13+). The armored key is used directly, no dearmor step:
 
 ```bash
-sudo curl -fsSL -o /usr/share/keyrings/baluard-archive-keyring.asc https://baluard.app/repo/baluard-release.asc
-curl -fsSL https://baluard.app/repo/baluard.sources | sudo tee /etc/apt/sources.list.d/baluard.sources
+sudo curl -fsSL -o /usr/share/keyrings/baluard-archive-keyring.asc https://packages.baluard.app/baluard-release.asc
+curl -fsSL https://packages.baluard.app/baluard.sources | sudo tee /etc/apt/sources.list.d/baluard.sources
 sudo apt update && sudo apt install baluard
 ```
 
@@ -25,14 +25,14 @@ sudo apt update && sudo apt install baluard
 Fedora 41+ with dnf 5:
 
 ```bash
-sudo dnf config-manager addrepo --from-repofile=https://baluard.app/repo/baluard.repo
+sudo dnf config-manager addrepo --from-repofile=https://packages.baluard.app/baluard.repo
 sudo dnf install baluard
 ```
 
 On RHEL and clones (dnf 4), add the repository with:
 
 ```bash
-sudo dnf config-manager --add-repo=https://baluard.app/repo/baluard.repo
+sudo dnf config-manager --add-repo=https://packages.baluard.app/baluard.repo
 ```
 
 ## Direct download
