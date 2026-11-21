@@ -13,7 +13,7 @@ template = "page.html"
 
 1. **Tu frase de 24 palabras.** Las palabras que anotaste cuando creaste la bóveda (o las actuales, si rotaste la frase después). Una frase protege cada bóveda, tanto personales como espacios compartidos.
 2. **La carpeta de la bóveda en este dispositivo.** La recuperación abre la carpeta que está en disco. Clona la bóveda desde tu proveedor git o cópiala desde una copia de seguridad para que la carpeta exista aquí.
-3. **Un inicio limpio para esta bóveda.** La recuperación funciona en un dispositivo que aún no haya configurado esta bóveda. Una carpeta que ya guarda la clave de dispositivo de esta bóveda rechaza la recuperación: clónala de nuevo en su lugar.
+3. **Las palabras bastan.** La recuperación funciona en el dispositivo que tienes en la mano: tu acceso allí se reemplaza por la nueva contraseña. También funciona sobre un clon nuevo de la bóveda en otra máquina.
 
 ## En la app de escritorio
 
@@ -52,6 +52,6 @@ Unlock with your master password, then pull to catch up.
 ## Cuándo la recuperación se niega
 
 - Una frase incorrecta no cambia nada: la bóveda queda exactamente como estaba hasta que las palabras sean correctas.
-- Una carpeta ya configurada en este dispositivo rechaza la recuperación. Clona la bóveda de nuevo y recupera ese clon.
+- Recuperar en un dispositivo que ya tiene la bóveda reemplaza el acceso de ese dispositivo; los archivos de la clave antigua se conservan como copias de seguridad junto a la bóveda (nunca se borran).
 - Las bóvedas personales muy antiguas, creadas antes de que las bóvedas llevaran un directorio de miembros, aún no tienen ruta de recuperación; la recuperación se niega en ellas.
 - Si además perdiste la frase, la bóveda queda bloqueada para siempre. No hay puerta trasera. Consulta [Tu frase de recuperación de 24 palabras](@/vault/recovery-phrase.es.md) para guardarla de forma que esto nunca ocurra.

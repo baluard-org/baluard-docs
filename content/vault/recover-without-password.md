@@ -13,7 +13,7 @@ Forgot your master password? Your 24-word recovery phrase opens the vault again 
 
 1. **Your 24-word phrase.** The words you wrote down when the vault was created (or the current ones, if you rotated the phrase later). One phrase guards each vault — personal vaults and Spaces alike.
 2. **The vault folder on this device.** Recovery opens the folder that is on disk. Clone the vault from your git provider, or copy it from a backup, so the folder exists here.
-3. **A fresh start for this vault.** Recovery works on a device that has not set up this vault yet. A folder that already holds this vault's device key refuses recovery — clone it again instead.
+3. **The words are enough.** Recovery works right on the device in your hand: your unlock there is replaced with the new password. It also works on a fresh clone of the vault on a new machine.
 
 ## In the desktop app
 
@@ -52,6 +52,6 @@ Unlock with your master password, then pull to catch up.
 ## When recovery refuses
 
 - A wrong phrase changes nothing — the vault stays exactly as it was until the words check out.
-- A folder already set up on this device refuses recovery. Clone the vault fresh and recover that clone.
+- Recovering on a device that already has the vault replaces that device's unlock; your old device key files are kept as backups next to the vault (never deleted).
 - Very old personal vaults, created before vaults kept a member directory, have no recovery path yet; recovery refuses on them.
 - If the phrase itself is lost, the vault stays locked forever. There is no back door. See [Your 24-word recovery phrase](@/vault/recovery-phrase.md) for how to store it so this never happens.
