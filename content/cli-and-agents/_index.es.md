@@ -11,3 +11,4 @@ template = "section.html"
 El CLI `baluard` te da control completo de la bóveda desde la terminal y permite que agentes de código con IA ejecuten comandos o rendericen plantillas de configuración sin recibir jamás valores secretos en texto plano.
 
 1. [Flujos agénticos con el CLI](@/cli-and-agents/agentic-workflows.es.md): referencias `baluard://`, `baluard run`, `baluard inject`, `baluard read` y aprobaciones.
+2. [Automatización de navegador con secretos](@/cli-and-agents/browser-automation.es.md): deja que un agente de IA complete formularios web mientras los valores quedan fuera del contexto del agente.

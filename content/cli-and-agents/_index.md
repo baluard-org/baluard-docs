@@ -11,3 +11,4 @@ template = "section.html"
 The `baluard` CLI gives you full vault access from the terminal and lets AI coding agents run commands or render configuration templates without ever receiving plaintext secret values.
 
 1. [Agentic workflows with the CLI](@/cli-and-agents/agentic-workflows.md): `baluard://` references, `baluard run`, `baluard inject`, `baluard read`, and approvals.
+2. [Browser automation with secrets](@/cli-and-agents/browser-automation.md): let an AI agent fill web forms while the values stay out of the agent's context.
