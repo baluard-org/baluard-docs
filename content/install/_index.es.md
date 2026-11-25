@@ -14,3 +14,4 @@ Baluard se distribuye como paquetes del sistema para Linux, un instalador para W
 2. [El AppImage de Linux](@/install/linux-appimage.es.md): FUSE, menú de aplicaciones con AppManager o Gear Lever, actualizaciones y distribuciones inmutables.
 3. [El aviso de SmartScreen en Windows](@/install/windows-smartscreen.es.md): por qué Windows muestra "Windows protegió tu PC" y cómo continuar.
 4. [El aviso de Gatekeeper en macOS](@/install/macos-gatekeeper.es.md): por qué macOS dice que no puede verificar la aplicación y cómo abrirla de todos modos.
+5. [App de Android y autocompletado móvil](@/install/android.es.md): instala en Android, conecta tu bóveda y configura el autocompletado del sistema, llaves de acceso y acceso directo rápido.

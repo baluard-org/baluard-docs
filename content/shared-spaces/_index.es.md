@@ -21,3 +21,4 @@ Elige la guía que mejor encaje con tu caso:
 1. [Compartir en familia](@/shared-spaces/family-sharing.es.md): una bóveda compartida del hogar para parejas, tutores e hijos.
 2. [Compartir con equipos y amistades](@/shared-spaces/team-friends-sharing.es.md): compartir con una pareja, compañero de piso, proyecto paralelo o grupo pequeño.
 3. [Compartir en el trabajo y organizaciones](@/shared-spaces/workplace-organization-sharing.es.md): control de acceso empresarial, carpetas por departamento, aprobaciones entre varios administradores y bajas de personal.
+4. [Compartir directo (Contactos y Buzones)](@/shared-spaces/direct-sharing.es.md): comparte entradas individuales o carpetas en espejo vivo sin crear un Espacio.

@@ -14,3 +14,4 @@ Baluard ships as system packages for Linux, an installer for Windows, and an app
 2. [The Linux AppImage](@/install/linux-appimage.md): FUSE, app menus with AppManager or Gear Lever, updates, and immutable distributions.
 3. [The Windows SmartScreen warning](@/install/windows-smartscreen.md): why Windows shows "Windows protected your PC" and how to continue.
 4. [The macOS Gatekeeper warning](@/install/macos-gatekeeper.md): why macOS says it cannot verify the app and how to open it anyway.
+5. [Android app and mobile autofill](@/install/android.md): install on Android, connect your vault, and set up system autofill, passkeys, and the quick-settings tile.

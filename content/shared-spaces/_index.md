@@ -21,3 +21,4 @@ Choose the guide that matches how you share:
 1. [Family sharing](@/shared-spaces/family-sharing.md): one shared household vault for partners, guardians, and children.
 2. [Team and friends sharing](@/shared-spaces/team-friends-sharing.md): sharing with a partner, roommate, side project, or small group.
 3. [Workplace and organization sharing](@/shared-spaces/workplace-organization-sharing.md): company-wide access control, shared folders by department, multi-admin approvals, and offboarding.
+4. [Direct sharing (Contacts and Outboxes)](@/shared-spaces/direct-sharing.md): share individual entries or live-mirrored folders without creating a Space.
