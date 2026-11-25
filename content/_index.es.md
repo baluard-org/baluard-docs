@@ -1,21 +1,18 @@
 +++
-template = "landing.html"
-title = "Documentación de Baluard"
-
-[extra]
-section_order = ["hero", "final_cta"]
-
-[extra.hero]
-title = "Documentación de Baluard"
-description = "Baluard es un gestor de contraseñas git-nativo: bóvedas cifradas guardadas como repositorios git en tu propio proveedor de git. Sin servidor central, sin cuenta, sin telemetría. Esta documentación cubre la instalación, los fundamentos de la bóveda, la sincronización y la línea de comandos."
-gradient_opacity = 30
-cta_buttons = [
-    { text = "Empezar", url = "/es/introduction/", style = "primary" },
-    { text = "baluard.app", url = "https://baluard.app", style = "secondary" },
-]
-
-[extra.final_cta_section]
-title = "¿Nuevo en Git?"
-description = "No necesitas saber Git para usar Baluard. La explicación en baluard.app cubre todo lo que necesita quien tiene una bóveda, en cinco minutos."
-button = { text = "¿Qué es Git?", url = "https://baluard.app/what-the-git/" }
+title = "Introducción"
+description = "Qué es Baluard y cómo encajan las piezas."
+aliases = ["es/introduction", "es/introduction/"]
 +++
+
+Baluard es un gestor de contraseñas git-nativo. Tu bóveda es una carpeta de archivos cifrados con AES-256-GCM que vive en tus dispositivos, y su historial se guarda como un repositorio git en el almacenamiento que elijas: un repositorio privado de GitHub o GitLab, tu propio servidor, o una unidad USB. No hay cuenta de Baluard, ni servidor central, ni telemetría.
+
+Empieza aquí:
+
+1. [Instalación](@/install/installation.es.md): paquetes para Debian, Ubuntu y Fedora, o descargas directas.
+2. [Elegir un proveedor de Git](@/sync/git-providers.es.md): GitHub, GitLab, Codeberg o tu propio servidor; límites de tamaño, pros y contras.
+3. [Sincronizar tu bóveda](@/sync/syncing-your-vault.es.md): cómo funciona la sincronización git y qué puede ver tu proveedor.
+4. [Adjuntos](@/vault/attachments.es.md): el límite de 2 MB por archivo y cómo funciona liberar espacio.
+5. [Tu frase de recuperación de 24 palabras](@/vault/recovery-phrase.es.md): por qué es tu red de seguridad en caso de catástrofe y cómo guardarla para siempre.
+6. [Autenticación de dos factores (2FA) y tu proveedor de Git](@/sync/provider-2fa.es.md): por qué la 2FA va en GitHub, GitLab o Codeberg y no dentro de tu bóveda.
+
+La [página del proyecto](https://baluard.app) cubre la arquitectura y el modelo de seguridad en profundidad, incluido el [documento de seguridad](https://baluard.app/security/). ¿No conoces git? La explicación [What the Git?](https://baluard.app/what-the-git/) cubre todo lo que necesita quien tiene una bóveda en cinco minutos.
