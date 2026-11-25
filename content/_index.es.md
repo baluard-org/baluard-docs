@@ -1,5 +1,6 @@
 +++
 title = "Introducción"
+template = "section.html"
 description = "Qué es Baluard y cómo encajan las piezas."
 aliases = ["es/introduction", "es/introduction/"]
 +++
