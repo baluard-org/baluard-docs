@@ -42,6 +42,10 @@ image_path = "assets/baluard-logo.svg"
 
 [extra.sidebar]
 expand_depth = 2
+# The theme hides the desktop sidebar and page padding on the root path by
+# default (full-bleed hero landing); the home is a normal section, so keep
+# the standard layout.
+disable_root_hide = true
 
 [extra.lang]
 # Language display names for the theme's selector.
