@@ -48,6 +48,7 @@ expand_depth = 2
 aliases = { en = "English", es = "Español" }
 
 [languages.es]
+title = "Documentación de Baluard"
 build_search_index = true
 
 [languages.es.translations]
