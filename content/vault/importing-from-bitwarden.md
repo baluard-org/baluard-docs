@@ -41,7 +41,7 @@ From the same Export screen, run a second export with the `.zip (with attachment
 
 Import lives in the app, not in a terminal. Unlock your vault first, then:
 
-**Desktop (Windows, macOS, Linux):** open Settings and go to the Data tab. Under Import Vault Data, choose Bitwarden JSON from the source dropdown, select Import, and pick the exported `.json` file. A summary tells you how many entries landed, and they appear in your vault right away.
+**Desktop (Windows, macOS, Linux):** open Settings and go to the Data Import / Export tab. Under Import Vault Data, choose Bitwarden JSON from the source dropdown, select Import, and pick the exported `.json` file. A summary tells you how many entries landed, and they appear in your vault right away.
 
 **Mobile (Android):** open Settings and go to Data. Tap Import entries, choose Bitwarden JSON, and pick the exported file.
 

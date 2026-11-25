@@ -1,7 +1,7 @@
 +++
 title = "Herramientas diarias de la bóveda"
 description = "Cambia entre múltiples bóvedas, usa el generador de contraseñas, ejecuta el chequeo de seguridad y conoce los tipos de entrada."
-weight = 13
+weight = 16
 template = "page.html"
 
 [extra]

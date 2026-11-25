@@ -1,7 +1,7 @@
 +++
 title = "Agentes MCP en la app de escritorio"
 description = "Vincula agentes de código en Ajustes -> Agentes -> Agentes MCP, aprueba o autoaprueba lecturas y revoca tokens."
-weight = 12
+weight = 15
 template = "page.html"
 
 [extra]

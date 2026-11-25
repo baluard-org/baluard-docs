@@ -26,7 +26,7 @@ Cada archivo guardado queda anclado a sus bytes cifrados por una huella, así un
 
 Esta es la única idea que vale la pena detenerse a pensar, porque aquí los hábitos de git difieren de los de un gestor de archivos.
 
-Baluard lleva un cuaderno git de cada cambio (la [guía de sincronización](/es/introduction/syncing-your-vault/) lo cubre). El cuaderno es lo que hace posible la recuperación: si borras una entrada por accidente, todavía existe un estado anterior. La misma protección aplica a los adjuntos. Si quitas un archivo de una entrada, la copia cifrada sigue en el almacenamiento compartido, porque estados anteriores de la bóveda pueden seguir referenciándola.
+Baluard lleva un cuaderno git de cada cambio (la [guía de sincronización](@/sync/syncing-your-vault.es.md) lo cubre). El cuaderno es lo que hace posible la recuperación: si borras una entrada por accidente, todavía existe un estado anterior. La misma protección aplica a los adjuntos. Si quitas un archivo de una entrada, la copia cifrada sigue en el almacenamiento compartido, porque estados anteriores de la bóveda pueden seguir referenciándola.
 
 Es deliberado. El costo es que los archivos borrados siguen ocupando espacio hasta que ordenes.
 

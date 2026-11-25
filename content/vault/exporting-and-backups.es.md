@@ -1,7 +1,7 @@
 +++
 title = "Exportación y copias de seguridad"
 description = "Crea copias cifradas (.bldbak) o exporta los datos de tu bóveda para migrar, imprimir o guardar sin conexión."
-weight = 13
+weight = 14
 template = "page.html"
 
 [extra]

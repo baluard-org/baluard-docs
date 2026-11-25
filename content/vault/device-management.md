@@ -1,7 +1,7 @@
 +++
 title = "Device management"
 description = "See which devices have synced with your vault, enroll new devices, and revoke lost or stolen ones."
-weight = 12
+weight = 13
 template = "page.html"
 
 [extra]
@@ -33,7 +33,7 @@ If a laptop or phone is lost, stolen, or retired:
 2. Click **Revoke** next to the device you want to remove and confirm. Baluard rotates the vault keys so the revoked device cannot decrypt future updates.
 3. **Rotate git credentials:** If the vault syncs through GitHub, GitLab, or Codeberg, open your repository settings on that provider and remove the revoked device's deploy key or personal access token (PAT), then check **I have rotated the git credentials** in Baluard.
 
-If desktop revocation fails, you can run `baluard --direct devices revoke <id>` from the CLI.
+If desktop revocation fails, you can run `baluard --direct device revoke <id>` from the CLI.
 
 ## Good to know
 

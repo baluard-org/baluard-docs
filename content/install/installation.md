@@ -8,7 +8,7 @@ aliases = ["introduction/installation", "introduction/install/installation"]
 [extra]
 +++
 
-Baluard is in beta. The current release is 0.7.1 for Linux, Windows, and macOS desktop, with browser extensions and mobile builds in development.
+Baluard is in beta. The current release is 0.9.0: desktop apps for Linux, Windows, and macOS, Android on Google Play and F-Droid, and browser extensions for Chrome and Firefox.
 
 ## Debian and Ubuntu (APT)
 
@@ -35,15 +35,31 @@ On RHEL and clones (dnf 4), add the repository with:
 sudo dnf config-manager --add-repo=https://packages.baluard.app/baluard.repo
 ```
 
+## Arch Linux (pacman)
+
+```bash
+curl -s https://packages.baluard.app/baluard-release.asc | sudo pacman-key --add -
+sudo pacman-key --lsign-key 223310EABF1AB6FEE6BDDF3E2A531D54E6D74804
+sudo tee /etc/pacman.d/baluard.conf <<'EOF'
+[baluard]
+SigLevel = Required DatabaseOptional
+Server = https://packages.baluard.app/arch/x86_64
+EOF
+grep -q baluard.conf /etc/pacman.conf || echo "Include = /etc/pacman.d/baluard.conf" | sudo tee -a /etc/pacman.conf
+sudo pacman -Syu baluard
+```
+
+Pacman verifies the database and package signatures against the imported release key before installing.
+
 ## Direct download
 
-Signed release artifacts are on the [GitHub releases page](https://github.com/baluard-org/baluard/releases/latest): the AppImage for Linux, `Baluard-amd64-setup.exe` for Windows, and `Baluard-macos-aarch64-non-notarized.zip` for macOS (Apple Silicon; unzip and drag to Applications).
+Signed release artifacts are on the [GitHub releases page](https://github.com/baluard-org/baluard/releases/latest): the AppImage for Linux, `Baluard-amd64-setup.exe` for Windows (plus `Baluard-amd64-portable.zip` if you prefer a no-installer copy), and `Baluard-macos-aarch64-non-notarized.zip` for macOS (Apple Silicon; unzip and drag to Applications).
 
-On Windows, Defender SmartScreen shows a "Windows protected your PC" warning because the installer is unsigned. See [The Windows SmartScreen warning](windows-smartscreen/).
+On Windows, Defender SmartScreen shows a "Windows protected your PC" warning because the installer is unsigned. See [The Windows SmartScreen warning](@/install/windows-smartscreen.md).
 
-On macOS, Gatekeeper blocks the first launch because the build is not notarized. See [The macOS Gatekeeper warning](macos-gatekeeper/).
+On macOS, Gatekeeper blocks the first launch because the build is not notarized. See [The macOS Gatekeeper warning](@/install/macos-gatekeeper.md).
 
-On Linux, the AppImage needs no installer, but it does need FUSE to start, and it does not add itself to your app menu. See [The Linux AppImage](linux-appimage/).
+On Linux, the AppImage needs no installer, but it does need FUSE to start, and it does not add itself to your app menu. See [The Linux AppImage](@/install/linux-appimage.md).
 
 ## Command-line only (mise)
 

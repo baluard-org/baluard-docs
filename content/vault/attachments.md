@@ -26,7 +26,7 @@ Each stored file is pinned to its encrypted bytes by a fingerprint, so a device 
 
 This is the one idea worth pausing on, because it is where git habits differ from a file manager.
 
-Baluard keeps a git notebook of every change (the [sync guide](/introduction/syncing-your-vault/) covers this). The notebook is what makes recovery possible: delete an entry by accident, and an earlier state still exists. The same protection applies to attachments. Remove a file from an entry, and the encrypted copy stays in the shared storage, because older states of the vault may still reference it.
+Baluard keeps a git notebook of every change (the [sync guide](@/sync/syncing-your-vault.md) covers this). The notebook is what makes recovery possible: delete an entry by accident, and an earlier state still exists. The same protection applies to attachments. Remove a file from an entry, and the encrypted copy stays in the shared storage, because older states of the vault may still reference it.
 
 That is deliberate. The cost is that deleted files keep taking up space until you tidy up.
 

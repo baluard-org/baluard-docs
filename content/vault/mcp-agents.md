@@ -1,7 +1,7 @@
 +++
 title = "MCP agents in the desktop app"
 description = "Pair coding agents in Settings -> Agents -> MCP agents, approve or auto-approve reads, and revoke tokens."
-weight = 12
+weight = 15
 template = "page.html"
 
 [extra]

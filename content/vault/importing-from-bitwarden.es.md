@@ -1,6 +1,6 @@
 +++
 title = "Importar desde Bitwarden"
-description = "Traslada tu bóveda de Bitwarden a Baluard, adjuntos incluidos."
+description = "Traslada tu bóveda de Bitwarden a Baluard: exporta un .json en texto plano, respalda los adjuntos, importa y vuelve a adjuntar tus archivos."
 weight = 4
 template = "page.html"
 aliases = ["es/introduction/importing-from-bitwarden", "es/introduction/vault/importing-from-bitwarden"]
@@ -8,19 +8,34 @@ aliases = ["es/introduction/importing-from-bitwarden", "es/introduction/vault/im
 [extra]
 +++
 
-Baluard importa la exportación en texto plano `.json` de Bitwarden: inicios de sesión con URIs y detección de coincidencias, semillas TOTP, notas, tarjetas, identidades, notas seguras, claves SSH, campos personalizados, historial de contraseñas, favoritos y carpetas.
+Baluard importa la exportación `.json` en texto plano de Bitwarden: inicios de sesión con URIs y detección de coincidencias, semillas TOTP, notas, tarjetas, identidades, notas seguras, claves SSH, campos personalizados, historial de contraseñas, favoritos y carpetas. Las passkeys llegan como entradas de solo lectura, porque Bitwarden no puede exportar la clave privada de una passkey; regístralas de nuevo con los servicios que las usan.
 
-### Nota sobre la exportación cifrada
-
-La exportación `.json` cifrada de Bitwarden usa un formato propietario que solo descifran sus propias apps, así que Baluard no puede leerla. Usa la exportación en texto plano y borra el archivo cuando termine la importación.
+Las exportaciones cifradas de Bitwarden (`.json (Encrypted)` y la variante con contraseña del móvil) no sirven. La importación lee solo texto plano. La exportación `.csv` de Bitwarden también se importa (`bw-csv`), pero pierde datos, así que prefiere el `.json`.
 
 ## Exportar desde Bitwarden
 
+La exportación contiene toda tu bóveda en forma legible, así que trata el archivo con cuidado: nunca lo envíes por correo ni por chat, y bórralo cuando termines.
+
 Desde la [app web de Bitwarden](https://vault.bitwarden.com):
 
-1. Ve a **Tools** → **Export vault**.
-2. Elige el formato de archivo **`.json`** (no el cifrado).
-3. Ingresa tu contraseña maestra y guarda `bitwarden.json` en un lugar temporal.
+1. Entra en Tools y luego Export.
+2. En Export from, elige My vault.
+3. En File format, elige `.json` (el de texto plano, no `.json (Encrypted)`).
+4. Pulsa Export y confirma con tu contraseña maestra.
+
+Desde la línea de comandos, ejecuta primero `bw sync` y luego:
+
+```sh
+bw export --format json --output bitwarden.json
+```
+
+La CLI usa `.csv` por defecto, así que la opción `--format json` importa.
+
+## Respalda tus adjuntos primero
+
+Los adjuntos de Bitwarden no van dentro de la exportación `.json`. Expórtalos aparte, o se quedan atrás.
+
+Desde la misma pantalla de Export, haz una segunda exportación con el formato `.zip (with attachments)`. Descomprime el zip en un lugar seguro y consérvalo hasta que cada adjunto esté vuelto a adjuntar en Baluard. El zip también lleva una copia del `.json` de la bóveda, así que la carpeta sirve por sí sola como respaldo completo previo a la migración.
 
 ## Importar a Baluard
 
@@ -34,16 +49,12 @@ La importación mapea inicios de sesión con URIs y detección de coincidencias,
 
 ¿Prefieres la terminal? `baluard import bw-json bitwarden.json` contra una bóveda desbloqueada hace lo mismo.
 
-## Adjuntos
+## Vuelve a adjuntar tus archivos
 
-La exportación `.json` de Bitwarden referencia los adjuntos por nombre de archivo, pero no los incluye. Para traerlos:
-
-1. Descarga cada adjunto desde Bitwarden.
-2. Renómbralo exactamente al nombre de archivo que la entrada esperaba (el nombre en la entrada original).
-3. Abre la entrada importada en Baluard y adjunta el archivo.
+Abre la carpeta descomprimida del respaldo de adjuntos y añade los archivos a mano, una entrada cada vez. Emparéjalos por nombre; Bitwarden guarda los adjuntos por elemento, y el `.json` conserva los nombres de los elementos.
 
 ## Eliminar la exportación
 
-`bitwarden.json` contiene todas tus contraseñas en texto plano. Cuando la importación esté completa y verificada, bórralo (y vacía la papelera).
+El `.json` en texto plano y la carpeta de adjuntos descomprimida contienen todos tus secretos en forma legible. Borra ambos cuando termine la migración, y vacía la papelera de tu gestor de archivos para que el archivo desaparezca de verdad. Conserva el zip solo si quieres un respaldo de largo plazo en formato Bitwarden; es tan sensible como la propia bóveda.
 
 Comprueba algunas entradas importadas en Baluard antes de eliminarla: URIs, semillas TOTP y campos personalizados son los que conviene revisar.

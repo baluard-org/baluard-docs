@@ -1,7 +1,7 @@
 +++
 title = "Quick unlock and hardware protection"
 description = "Unlock faster with biometrics or a 6-digit PIN, or bind your vault to a device security chip or hardware security key."
-weight = 11
+weight = 12
 template = "page.html"
 
 [extra]

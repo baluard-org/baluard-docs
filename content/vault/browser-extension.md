@@ -1,7 +1,7 @@
 +++
 title = "Browser extension"
 description = "Connect Chrome or Firefox to your local Baluard app to autofill logins, copy verification codes, and use passkeys."
-weight = 10
+weight = 11
 template = "page.html"
 
 [extra]

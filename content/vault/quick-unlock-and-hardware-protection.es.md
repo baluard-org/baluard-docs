@@ -1,7 +1,7 @@
 +++
 title = "Desbloqueo rápido y protección por hardware"
 description = "Desbloquea más rápido con biometría o un PIN de 6 dígitos, o vincula tu bóveda al chip de seguridad del dispositivo o a una llave física."
-weight = 11
+weight = 12
 template = "page.html"
 
 [extra]

@@ -1,7 +1,7 @@
 +++
 title = "Legacy Contact"
 description = "Give someone you trust a read-only recovery kit that opens only after you stop unlocking your vault."
-weight = 9
+weight = 10
 template = "page.html"
 
 [extra]

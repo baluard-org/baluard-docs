@@ -15,3 +15,4 @@ Baluard se distribuye como paquetes del sistema para Linux, un instalador para W
 3. [El aviso de SmartScreen en Windows](@/install/windows-smartscreen.es.md): por qué Windows muestra "Windows protegió tu PC" y cómo continuar.
 4. [El aviso de Gatekeeper en macOS](@/install/macos-gatekeeper.es.md): por qué macOS dice que no puede verificar la aplicación y cómo abrirla de todos modos.
 5. [App de Android y autocompletado móvil](@/install/android.es.md): instala en Android, conecta tu bóveda y configura el autocompletado del sistema, llaves de acceso y acceso directo rápido.
+6. [Conectar a una bóveda existente](@/install/connect-existing-vault.es.md): únete a una bóveda que ya sincroniza mediante un proveedor Git u otro dispositivo.

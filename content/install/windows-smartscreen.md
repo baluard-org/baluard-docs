@@ -44,7 +44,7 @@ Get-FileHash .\Baluard-amd64-setup.exe
 
 Compare the hash it prints with the `Baluard-amd64-setup.exe` line in `SHA256SUMS` from the same release page. If the two values match, the file you have is the file we published.
 
-The signature on `SHA256SUMS` proves the list itself was not tampered with. The manual verification steps for that are in [Installation](../installation/), in the manual tarball section, and they work the same way on Windows.
+The signature on `SHA256SUMS` proves the list itself was not tampered with. The manual verification steps for that are in [Installation](@/install/installation.md), in the manual tarball section, and they work the same way on Windows.
 
 ## After the install
 

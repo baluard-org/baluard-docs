@@ -9,7 +9,7 @@ aliases = ["introduction/install/linux-appimage"]
 [extra]
 +++
 
-Baluard ships two Linux formats: deb and rpm packages, and a single-file AppImage. The packages install from a repository and integrate everything for you; see [Installation](installation.md). The AppImage needs no repository, no sudo, and no install step: download, mark executable, run. This page covers the AppImage.
+Baluard ships two Linux formats: deb and rpm packages, and a single-file AppImage. The packages install from a repository and integrate everything for you; see [Installation](@/install/installation.md). The AppImage needs no repository, no sudo, and no install step: download, mark executable, run. This page covers the AppImage.
 
 ## Download and run
 
@@ -78,4 +78,4 @@ The AppImage skips the installer warnings of Windows and macOS, so the download 
 sha256sum ~/Downloads/Baluard-amd64.AppImage
 ```
 
-Compare the output with the `Baluard-amd64.AppImage` line in `SHA256SUMS` from the same release page. If they match, the file you have is the file we published. The minisign steps that verify the list itself are in [Installation](installation.md).
+Compare the output with the `Baluard-amd64.AppImage` line in `SHA256SUMS` from the same release page. If they match, the file you have is the file we published. The minisign steps that verify the list itself are in [Installation](@/install/installation.md).

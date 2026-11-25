@@ -1,7 +1,7 @@
 +++
 title = "Encontrar logs para reportes de errores"
 description = "Dónde guarda Baluard el archivo daemon.log en Windows, Linux y macOS, y cómo recogerlo para un reporte."
-weight = 5
+weight = 9
 template = "page.html"
 
 [extra]

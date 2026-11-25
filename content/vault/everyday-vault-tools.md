@@ -1,7 +1,7 @@
 +++
 title = "Everyday vault tools"
 description = "Switch between multiple vaults, use the password generator, run a security check, and understand Baluard's entry types."
-weight = 13
+weight = 16
 template = "page.html"
 
 [extra]

@@ -1,7 +1,7 @@
 +++
 title = "MCP server (baluard mcp)"
 description = "Connect coding tools like Claude Code or Cursor to Baluard over MCP with read-only, human-approved access."
-weight = 6
+weight = 7
 template = "page.html"
 
 [extra]

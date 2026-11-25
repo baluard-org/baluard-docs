@@ -1,7 +1,7 @@
 +++
 title = "Gestión de dispositivos"
 description = "Consulta qué dispositivos se han sincronizado con tu bóveda, agrega dispositivos nuevos y revoca equipos perdidos o robados."
-weight = 12
+weight = 13
 template = "page.html"
 
 [extra]
@@ -33,7 +33,7 @@ Si pierdes, te roban o retiras una computadora o un teléfono:
 2. Haz clic en **Revocar** junto al dispositivo que quieres quitar y confirma. Baluard rota las claves de la bóveda para que el dispositivo revocado no pueda descifrar cambios futuros.
 3. **Rota las credenciales de git:** Si la bóveda sincroniza con GitHub, GitLab o Codeberg, abre la configuración del repositorio en tu proveedor y elimina la clave de despliegue o token (PAT) del dispositivo revocado; luego marca **He rotado las credenciales de git** en Baluard.
 
-Si la revocación desde el escritorio falla, puedes ejecutar `baluard --direct devices revoke <id>` desde la CLI.
+Si la revocación desde el escritorio falla, puedes ejecutar `baluard --direct device revoke <id>` desde la CLI.
 
 ## Ten en cuenta
 

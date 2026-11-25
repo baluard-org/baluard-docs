@@ -49,7 +49,7 @@ baluard vaults detach work
 
 ### Add entries
 
-Use `baluard add <type>` for `login`, `card`, `secure-note` (alias `note`), `identity`, and `ssh-key` (alias `ssh`):
+Use `baluard add <type>` for `login`, `card`, `secure-note` (alias `note`), `identity`, `ssh-key` (alias `ssh`), `bank-account`, `drivers-license`, `passport`, and `json` (raw JSON):
 
 ```bash
 baluard add login --name "GitHub" --username "ada" --uri "https://github.com"

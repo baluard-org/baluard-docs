@@ -11,8 +11,6 @@ Baluard es un gestor de contraseñas git-nativo. Tu bóveda es una carpeta de ar
 
 Empieza aquí:
 
-Empieza aquí:
-
 1. [Instalación](@/install/installation.es.md): paquetes para Debian, Ubuntu y Fedora, o descargas directas.
 2. [Elegir un proveedor de Git](@/sync/git-providers.es.md): GitHub, GitLab, Codeberg o tu propio servidor; límites de tamaño, pros y contras.
 3. [Sincronizar tu bóveda](@/sync/syncing-your-vault.es.md): cómo funciona la sincronización git y qué puede ver tu proveedor.

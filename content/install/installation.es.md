@@ -8,7 +8,7 @@ aliases = ["es/introduction/installation", "es/introduction/install/installation
 [extra]
 +++
 
-Baluard está en beta. La versión actual es la 0.7.1 para escritorio Linux, Windows y macOS, con las extensiones de navegador y las compilaciones móviles en desarrollo.
+Baluard está en beta. La versión actual es la 0.9.0: aplicaciones de escritorio para Linux, Windows y macOS, Android en Google Play y F-Droid, y extensiones de navegador para Chrome y Firefox.
 
 ## Debian y Ubuntu (APT)
 
@@ -35,15 +35,31 @@ En RHEL y derivados (dnf 4), agrega el repositorio con:
 sudo dnf config-manager --add-repo=https://packages.baluard.app/baluard.repo
 ```
 
+## Arch Linux (pacman)
+
+```bash
+curl -s https://packages.baluard.app/baluard-release.asc | sudo pacman-key --add -
+sudo pacman-key --lsign-key 223310EABF1AB6FEE6BDDF3E2A531D54E6D74804
+sudo tee /etc/pacman.d/baluard.conf <<'EOF'
+[baluard]
+SigLevel = Required DatabaseOptional
+Server = https://packages.baluard.app/arch/x86_64
+EOF
+grep -q baluard.conf /etc/pacman.conf || echo "Include = /etc/pacman.d/baluard.conf" | sudo tee -a /etc/pacman.conf
+sudo pacman -Syu baluard
+```
+
+Pacman verifica las firmas de la base de datos y del paquete contra la clave de release importada antes de instalar.
+
 ## Descarga directa
 
-Los artefactos firmados están en la [página de releases de GitHub](https://github.com/baluard-org/baluard/releases/latest): el AppImage para Linux, `Baluard-amd64-setup.exe` para Windows y `Baluard-macos-aarch64-non-notarized.zip` para macOS (Apple Silicon; descomprime y arrastra a Aplicaciones).
+Los artefactos firmados están en la [página de releases de GitHub](https://github.com/baluard-org/baluard/releases/latest): el AppImage para Linux, `Baluard-amd64-setup.exe` para Windows (más `Baluard-amd64-portable.zip` si prefieres una copia sin instalador) y `Baluard-macos-aarch64-non-notarized.zip` para macOS (Apple Silicon; descomprime y arrastra a Aplicaciones).
 
-En Windows, Defender SmartScreen muestra el aviso "Windows protegió tu PC" porque el instalador no está firmado. Consulta [El aviso de SmartScreen en Windows](windows-smartscreen/).
+En Windows, Defender SmartScreen muestra el aviso "Windows protegió tu PC" porque el instalador no está firmado. Consulta [El aviso de SmartScreen en Windows](@/install/windows-smartscreen.es.md).
 
-En macOS, Gatekeeper bloquea el primer arranque porque la compilación no está notarizada. Consulta [El aviso de Gatekeeper en macOS](macos-gatekeeper/).
+En macOS, Gatekeeper bloquea el primer arranque porque la compilación no está notarizada. Consulta [El aviso de Gatekeeper en macOS](@/install/macos-gatekeeper.es.md).
 
-En Linux, el AppImage no necesita instalador, pero sí FUSE para arrancar, y no se agrega solo al menú de aplicaciones. Consulta [El AppImage de Linux](linux-appimage/).
+En Linux, el AppImage no necesita instalador, pero sí FUSE para arrancar, y no se agrega solo al menú de aplicaciones. Consulta [El AppImage de Linux](@/install/linux-appimage.es.md).
 
 ## Solo línea de comandos (mise)
 

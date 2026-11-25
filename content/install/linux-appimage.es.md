@@ -9,7 +9,7 @@ aliases = ["es/introduction/install/linux-appimage"]
 [extra]
 +++
 
-Baluard se distribuye en dos formatos de Linux: paquetes deb y rpm, y un AppImage de archivo único. Los paquetes se instalan desde un repositorio e integran todo por ti; consulta [Instalación](installation.es.md). El AppImage no necesita repositorio, ni sudo, ni paso de instalación: descarga, marca como ejecutable, ejecuta. Esta página cubre el AppImage.
+Baluard se distribuye en dos formatos de Linux: paquetes deb y rpm, y un AppImage de archivo único. Los paquetes se instalan desde un repositorio e integran todo por ti; consulta [Instalación](@/install/installation.es.md). El AppImage no necesita repositorio, ni sudo, ni paso de instalación: descarga, marca como ejecutable, ejecuta. Esta página cubre el AppImage.
 
 ## Descarga y ejecución
 
@@ -66,9 +66,9 @@ AppManager y Gear Lever también pueden vigilar GitHub en busca de versiones nue
 
 En Fedora Silverblue, openSUSE Aeon y sistemas similares, los paquetes deb y rpm requieren agregar capas a la imagen del sistema, y este sitio no documenta esa ruta. El AppImage se ejecuta desde tu carpeta personal sin cambios en el sistema. Instala Gear Lever desde Flathub y gestiona Baluard como cualquier otro AppImage.
 
-## Brecha conocida: la extensión de navegador
+## Extensión de navegador
 
-La extensión de navegador está en desarrollo. Su puente de escritorio se registra automáticamente cuando instalas los paquetes deb o rpm. Desde el AppImage, ese registro es un paso manual y aún no está automatizado. Si la extensión de navegador es la razón por la que usas Baluard, los paquetes son hoy el formato más sencillo.
+El puente de escritorio de la extensión se registra automáticamente: los paquetes deb y rpm instalan los archivos de registro en todo el sistema, y el AppImage los escribe en la configuración de usuario de tu navegador en el primer arranque. No hace falta ningún paso manual en ninguno de los dos formatos.
 
 ## Verifica la descarga primero
 
@@ -78,4 +78,4 @@ El AppImage se salta los avisos de instalación de Windows y macOS, así que la 
 sha256sum ~/Downloads/Baluard-amd64.AppImage
 ```
 
-Compara la salida con la línea `Baluard-amd64.AppImage` del `SHA256SUMS` de la misma página de release. Si coinciden, el archivo que tienes es el archivo que publicamos. Los pasos de minisign que verifican la lista están en [Instalación](installation.es.md).
+Compara la salida con la línea `Baluard-amd64.AppImage` del `SHA256SUMS` de la misma página de release. Si coinciden, el archivo que tienes es el archivo que publicamos. Los pasos de minisign que verifican la lista están en [Instalación](@/install/installation.es.md).

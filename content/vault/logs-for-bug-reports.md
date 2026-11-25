@@ -1,7 +1,7 @@
 +++
 title = "Find logs for bug reports"
 description = "Where Baluard writes daemon.log on Windows, Linux, and macOS, and how to collect it for a bug report."
-weight = 5
+weight = 9
 template = "page.html"
 
 [extra]

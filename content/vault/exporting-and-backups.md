@@ -1,7 +1,7 @@
 +++
 title = "Exporting and offline backups"
 description = "Create encrypted backups (.bldbak) or export your vault data for migration, printing, or offline storage."
-weight = 13
+weight = 14
 template = "page.html"
 
 [extra]

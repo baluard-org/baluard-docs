@@ -1,7 +1,7 @@
 +++
 title = "Extensión de navegador"
 description = "Conecta Chrome o Firefox con tu app local de Baluard para autocompletar accesos, copiar códigos de verificación y usar llaves de acceso."
-weight = 10
+weight = 11
 template = "page.html"
 
 [extra]

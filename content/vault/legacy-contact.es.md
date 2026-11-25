@@ -1,7 +1,7 @@
 +++
 title = "Contacto de confianza"
 description = "Entrega a alguien de confianza un kit de recuperación de solo lectura que solo se abre si dejas de abrir tu bóveda."
-weight = 9
+weight = 10
 template = "page.html"
 
 [extra]
