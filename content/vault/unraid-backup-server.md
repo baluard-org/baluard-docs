@@ -19,13 +19,18 @@ The image and the full configuration reference live at [github.com/baluard-org/b
 
 ## Install the container
 
-1. Download `template/baluard-unraid.xml` from the repository and copy it to your Unraid flash drive as `/boot/config/plugins/dockerMan/templates-user/my-baluard-unraid.xml`.
-2. In the Unraid **Docker** tab, **Add Container** and pick the `my-baluard-unraid` template.
-3. Map the two paths:
+Unraid installs containers from template files. Ours lives in the baluard-unraid repo; getting it in place is a one-time copy through the flash share, no terminal needed:
+
+1. Download [`templates/baluard-unraid.xml`](https://raw.githubusercontent.com/baluard-org/baluard-unraid/main/templates/baluard-unraid.xml) from the repository.
+2. Open the flash share in your file manager: `\\<server>\flash` on Windows, `smb://<server>/flash` on macOS. Navigate to `config/plugins/dockerMan/templates-user/` (create the folder if it does not exist) and save the file there as `my-baluard-unraid.xml`.
+3. In the Unraid web UI, go to the **Docker** tab, click **Add Container**, and pick `my-baluard-unraid` in the Template dropdown. Every field fills itself in.
+4. Map the two paths:
    - `/config` to `/mnt/user/appdata/baluard-unraid` (config, vault clones, logs).
    - `/backups` to the share where the snapshots should land, for example `/mnt/user/backups`.
-4. Set **Git Token** to the read-only token from the step above, and **Timezone** to yours, so the schedule runs when you expect.
-5. Apply. The container needs no ports and no web UI.
+5. Set **Git Token** to the read-only token from the step above, and **Timezone** to yours, so the schedule runs when you expect.
+6. Apply. The container needs no ports and no web UI.
+
+A listing in Community Applications is planned, with the submission files already in the repo. Once it ships, installing becomes **Apps** tab -> search "baluard" -> **Install** with no file copying, and this section shrinks to two clicks. Until then, the flash-share copy above is the only setup the container asks of you.
 
 ## Add a vault
 

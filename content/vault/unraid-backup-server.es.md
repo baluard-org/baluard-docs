@@ -19,13 +19,18 @@ La imagen y la referencia completa de configuración viven en [github.com/baluar
 
 ## Instalar el contenedor
 
-1. Descarga `template/baluard-unraid.xml` del repositorio y cópialo a tu flash drive de Unraid como `/boot/config/plugins/dockerMan/templates-user/my-baluard-unraid.xml`.
-2. En la pestaña **Docker** de Unraid, **Add Container** y elige la plantilla `my-baluard-unraid`.
-3. Mapea las dos rutas:
+Unraid instala contenedores a partir de archivos de plantilla. La nuestra vive en el repositorio baluard-unraid; dejarla en su lugar es una copia única por el flash share, sin terminal:
+
+1. Descarga [`templates/baluard-unraid.xml`](https://raw.githubusercontent.com/baluard-org/baluard-unraid/main/templates/baluard-unraid.xml) del repositorio.
+2. Abre el flash share en tu explorador de archivos: `\\<server>\flash` en Windows, `smb://<server>/flash` en macOS. Navega a `config/plugins/dockerMan/templates-user/` (crea la carpeta si no existe) y guarda ahí el archivo como `my-baluard-unraid.xml`.
+3. En la interfaz web de Unraid, ve a la pestaña **Docker**, haz clic en **Add Container** y elige `my-baluard-unraid` en el dropdown de Template. Todos los campos se rellenan solos.
+4. Mapea las dos rutas:
    - `/config` a `/mnt/user/appdata/baluard-unraid` (configuración, clones de bóvedas, logs).
    - `/backups` al share donde deben quedar los snapshots, por ejemplo `/mnt/user/backups`.
-4. Pon **Git Token** con el token de solo lectura del paso anterior, y **Timezone** con la tuya, para que el calendario corra cuando esperas.
-5. Apply. El contenedor no necesita puertos ni interfaz web.
+5. Pon **Git Token** con el token de solo lectura del paso anterior, y **Timezone** con la tuya, para que el calendario corra cuando esperas.
+6. Apply. El contenedor no necesita puertos ni interfaz web.
+
+Un listado en Community Applications está planeado, con los archivos de postulación ya en el repositorio. Cuando salga, instalar será **Apps** -> buscar "baluard" -> **Install**, sin copiar archivos. Hasta entonces, la copia por el flash share de arriba es lo único que el contenedor te pide.
 
 ## Agregar una bóveda
 
