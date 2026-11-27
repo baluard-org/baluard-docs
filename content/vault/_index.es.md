@@ -23,3 +23,4 @@ Todo en Baluard vive en un único árbol de archivos cifrados que solo tus dispo
 11. [Exportación y copias de seguridad](@/vault/exporting-and-backups.es.md): crea copias cifradas `.bldbak` o exporta los datos de tu bóveda.
 12. [Agentes MCP en la app de escritorio](@/vault/mcp-agents.es.md): vincula agentes de código en Ajustes, gestiona aprobaciones y revoca tokens.
 13. [Herramientas diarias de la bóveda](@/vault/everyday-vault-tools.es.md): cambio entre bóvedas, tipos de entrada, generador de contraseñas y chequeo de seguridad.
+14. [Copias programadas en Unraid](@/vault/unraid-backup-server.es.md): corre el contenedor baluard-unraid en tu NAS para guardar snapshots de tus bóvedas en un share según un calendario.

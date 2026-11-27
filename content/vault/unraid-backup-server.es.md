@@ -1,0 +1,84 @@
++++
+title = "Copias programadas en Unraid"
+description = "Ejecuta el contenedor baluard-unraid en tu servidor Unraid para respaldar tus bóvedas en un share según un calendario."
+weight = 15
+template = "page.html"
+
+[extra]
++++
+
+Tu bóveda se sincroniza con un repositorio git, pero la sincronización solo ocurre cuando alguno de tus dispositivos está encendido. El contenedor baluard-unraid descarga tus bóvedas desde el remoto git según un calendario y guarda snapshots en un share de Unraid, incluso cuando todos los computadores y teléfonos están apagados. Corre en el propio NAS: instalas el contenedor una vez, agregas un archivo de configuración por bóveda y te olvidas.
+
+La imagen y la referencia completa de configuración viven en [github.com/baluard-org/baluard-unraid](https://github.com/baluard-org/baluard-unraid).
+
+## Qué necesitas
+
+- Un servidor Unraid (el contenedor es amd64).
+- Tu bóveda sincronizada con GitHub, GitLab o Codeberg.
+- Un token de solo lectura que el contenedor pueda usar para clonar. En GitHub, crea un personal access token fine-grained con **Contents: read** sobre los repositorios de las bóvedas. Nada más.
+
+## Instalar el contenedor
+
+1. Descarga `template/baluard-unraid.xml` del repositorio y cópialo a tu flash drive de Unraid como `/boot/config/plugins/dockerMan/templates-user/my-baluard-unraid.xml`.
+2. En la pestaña **Docker** de Unraid, **Add Container** y elige la plantilla `my-baluard-unraid`.
+3. Mapea las dos rutas:
+   - `/config` a `/mnt/user/appdata/baluard-unraid` (configuración, clones de bóvedas, logs).
+   - `/backups` al share donde deben quedar los snapshots, por ejemplo `/mnt/user/backups`.
+4. Pon **Git Token** con el token de solo lectura del paso anterior, y **Timezone** con la tuya, para que el calendario corra cuando esperas.
+5. Apply. El contenedor no necesita puertos ni interfaz web.
+
+## Agregar una bóveda
+
+Crea un archivo `.env` por bóveda en la carpeta `vaults.d` del directorio appdata. Este es el ejemplo mínimo útil:
+
+```ini
+VAULT_URL=https://github.com/you/baluard-family.git
+```
+
+Eso es todo: el formato por defecto es un zip de la carpeta de la bóveda, programado diario a las 03:00, conservando los últimos 5 snapshots en `/backups/<nombre-del-repo>/`. La próxima ejecución programada lo toma en cuenta; sin reiniciar.
+
+Un ejemplo completo con todas las opciones está en [`config/vaults.d.example/`](https://github.com/baluard-org/baluard-unraid/tree/main/config/vaults.d.example) del repositorio.
+
+## Formatos de respaldo
+
+Cada bóveda elige su formato con `VAULT_FORMAT`:
+
+| Formato | Qué queda en el share | Necesita master password | Restaurar |
+| --- | --- | --- | --- |
+| `zip` (por defecto) | Zip de la carpeta de la bóveda, con el historial git | No | Descomprimir y abrir la carpeta con Baluard |
+| `bldbak` | Export cifrado, restaurable en cualquier bóveda Baluard | Sí | Importar el archivo y entrar la backup passphrase |
+| `json` | Export en texto plano de todas las entradas | Sí | Importar el archivo |
+
+El contenido de tu bóveda está cifrado en reposo, y por eso `zip` nunca necesita tu master password: el contenedor solo maneja bytes cifrados. Recomendamos dejar `zip` como formato, salvo que tengas una razón específica.
+
+Dos advertencias honestas:
+
+- `bldbak` y `json` necesitan el master password en el archivo de configuración, y la primera ejecución sobre un clone fresco también necesita la [frase de recuperación de 24 palabras](@/vault/recovery-phrase.es.md) una sola vez, porque la caja de respaldo se inscribe como dispositivo de la bóveda. Después de esa primera vez, solo se usa el master password.
+- `json` escribe passwords legibles en el share. Cualquiera que pueda leer el share puede leerlas. Evita este formato salvo que entiendas y aceptes eso.
+
+## Calendario y retención
+
+El calendario a nivel de contenedor es `daily` (03:00), `weekly` (domingos 03:00), `monthly` (día 1, 03:00), o cualquier expresión cron con `BALUARD_CRON`. Una bóveda puede seguir su propio ritmo con `VAULT_SCHEDULE`.
+
+La retención conserva los N snapshots más nuevos por bóveda, 5 por defecto, configurable con `BALUARD_RETENTION` o por bóveda con `VAULT_RETENTION`. La limpieza solo borra archivos creados por el contenedor, llamados `<nombre-del-repo>-<fecha>-<hora>.ext`, dentro de la carpeta propia de cada bóveda.
+
+## Restaurar un snapshot
+
+**Desde un zip:** descomprime en cualquier máquina y abre la carpeta con Baluard (`baluard open <carpeta>`, o desde la app de escritorio). El zip lleva el historial git de la bóveda, así que no se pierde nada.
+
+**Desde un `.bldbak`:** impórtalo desde **Settings -> Data Import / Export** en la app de escritorio con la backup passphrase, igual que cualquier respaldo cifrado.
+
+**Desde un export JSON:** impórtalo igual. Contiene entradas legibles, así que trata el archivo como sensible mientras exista.
+
+## Actualizaciones y fallos
+
+Con `BALUARD_AUTO_UPDATE=true` (por defecto), el contenedor revisa los releases oficiales de Baluard antes de cada ejecución y actualiza su copia del CLI en el lugar, verificando las sumas de control contra las firmas del release. El tag de la imagen funciona como piso de versión.
+
+Si una bóveda falla, las demás igual corren, el trabajo termina con error y, con `BALUARD_WEBHOOK_URL` configurada, el contenedor envía un mensaje JSON `{vault, status, time}` a tu webhook (Discord, Slack, ntfy, o lo que acepte JSON). Los logs están en `docker logs` y en `/config/logs`.
+
+## Notas de seguridad
+
+- El modo `zip` por defecto no guarda ningún master password en ninguna parte. El contenedor no puede leer una sola entrada; archiva bytes cifrados.
+- Si usas `bldbak` o `json`, mantén los permisos de los archivos `.env` ajustados (600): guardan el master password y, opcionalmente, la frase de recuperación.
+- La imagen verifica la descarga del CLI de Baluard contra el `SHA256SUMS` oficial del release al compilar, y cada actualización contra las mismas firmas.
+- Los snapshots en el share son tan privados como tu red y la configuración del share. El remoto git ya es la primera copia de tu bóveda; trata estos snapshots como la segunda, y considera una tercera (nube o almacenamiento frío) para lo que de verdad importa.
