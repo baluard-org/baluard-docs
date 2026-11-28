@@ -40,7 +40,7 @@ Crea un archivo `.env` por bóveda en la carpeta `vaults.d` del directorio appda
 VAULT_URL=https://github.com/you/baluard-family.git
 ```
 
-Eso es todo: el formato por defecto es un zip de la carpeta de la bóveda, programado diario a las 03:00, conservando los últimos 5 snapshots en `/backups/<nombre-del-repo>/`. La próxima ejecución programada lo toma en cuenta; sin reiniciar.
+Eso es todo: el formato por defecto es un mirror git de solo lectura del repo de la bóveda, programado diario a las 03:00, conservando los últimos 5 snapshots en `/backups/<nombre-del-repo>/`. La próxima ejecución programada lo toma en cuenta; sin reiniciar.
 
 Un ejemplo completo con todas las opciones está en [`config/vaults.d.example/`](https://github.com/baluard-org/baluard-unraid/tree/main/config/vaults.d.example) del repositorio.
 
@@ -48,18 +48,19 @@ Un ejemplo completo con todas las opciones está en [`config/vaults.d.example/`]
 
 Cada bóveda elige su formato con `VAULT_FORMAT`:
 
-| Formato | Qué queda en el share | Necesita master password | Restaurar |
-| --- | --- | --- | --- |
-| `zip` (por defecto) | Zip de la carpeta de la bóveda, con el historial git | No | Descomprimir y abrir la carpeta con Baluard |
-| `bldbak` | Export cifrado, restaurable en cualquier bóveda Baluard | Sí | Importar el archivo y entrar la backup passphrase |
-| `json` | Export en texto plano de todas las entradas | Sí | Importar el archivo |
+| Formato | Qué queda en el share | Master password | Se une a la bóveda | Restaurar |
+| --- | --- | --- | --- | --- |
+| `mirror` (por defecto) | Zip de un mirror git del repo de la bóveda, historial completo | No | No — basta acceso de solo lectura | Clonar el mismo remote de nuevo y unirse como dispositivo |
+| `zip` | Zip del clone de trabajo del CLI, con el historial git | No | Sí — el primer clone necesita la invitación del dueño | Descomprimir y abrir la carpeta con Baluard |
+| `bldbak` | Export cifrado, restaurable en cualquier bóveda Baluard | Sí | Sí | Importar el archivo y entrar la backup passphrase |
+| `json` | Export en texto plano de todas las entradas | Sí | Sí | Importar el archivo |
 
-El contenido de tu bóveda está cifrado en reposo, y por eso `zip` nunca necesita tu master password: el contenedor solo maneja bytes cifrados. Recomendamos dejar `zip` como formato, salvo que tengas una razón específica.
+El contenido de tu bóveda está cifrado en reposo, y por eso `mirror` y `zip` nunca necesitan tu master password: el contenedor solo maneja bytes cifrados. `mirror` es el formato por defecto porque solo necesita acceso de lectura al repo git.
 
 Dos advertencias honestas:
 
-- `bldbak` y `json` necesitan el master password en el archivo de configuración, y la primera ejecución sobre un clone fresco también necesita la [frase de recuperación de 24 palabras](@/vault/recovery-phrase.es.md) una sola vez, porque la caja de respaldo se inscribe como dispositivo de la bóveda. Después de esa primera vez, solo se usa el master password.
-- `json` escribe passwords legibles en el share. Cualquiera que pueda leer el share puede leerlas. Evita este formato salvo que entiendas y aceptes eso.
+- `zip`, `bldbak` y `json` clonan a través del CLI de Baluard, que inscribe la caja de respaldo como dispositivo de la bóveda. La política de confianza de dispositivos de Baluard exige que el dueño invite a la caja primero (`baluard members invite`, la caja la registra, tú la apruebas). Una caja no invitada no puede inscribirse, así que esos formatos fallan en la primera ejecución sin la invitación. `mirror` no tiene ese requisito.
+- `bldbak` y `json` necesitan el master password en el archivo de configuración, y la primera ejecución también necesita la [frase de recuperación de 24 palabras](@/vault/recovery-phrase.es.md) una sola vez, para esa inscripción. `json` escribe passwords legibles en el share. Evita este formato salvo que entiendas y aceptes eso.
 
 ## Calendario y retención
 
@@ -83,7 +84,7 @@ Si una bóveda falla, las demás igual corren, el trabajo termina con error y, c
 
 ## Notas de seguridad
 
-- El modo `zip` por defecto no guarda ningún master password en ninguna parte. El contenedor no puede leer una sola entrada; archiva bytes cifrados.
+- El modo `mirror` por defecto no guarda ningún master password y no tiene acceso de escritura a la bóveda. El contenedor no puede leer una sola entrada; archiva bytes cifrados.
 - Si usas `bldbak` o `json`, mantén los permisos de los archivos `.env` ajustados (600): guardan el master password y, opcionalmente, la frase de recuperación.
 - La imagen verifica la descarga del CLI de Baluard contra el `SHA256SUMS` oficial del release al compilar, y cada actualización contra las mismas firmas.
 - Los snapshots en el share son tan privados como tu red y la configuración del share. El remoto git ya es la primera copia de tu bóveda; trata estos snapshots como la segunda, y considera una tercera (nube o almacenamiento frío) para lo que de verdad importa.

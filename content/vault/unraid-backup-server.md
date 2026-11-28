@@ -40,7 +40,7 @@ Create one `.env` file per vault in the `vaults.d` folder of the appdata directo
 VAULT_URL=https://github.com/you/baluard-family.git
 ```
 
-That is it: the default format is a zip of the vault folder, scheduled daily at 03:00, keeping the last 5 snapshots in `/backups/<repo-name>/`. The next scheduled run picks the file up; no restart needed.
+That is it: the default format is a read-only git mirror of the vault repo, scheduled daily at 03:00, keeping the last 5 snapshots in `/backups/<repo-name>/`. The next scheduled run picks the file up; no restart needed.
 
 A fuller example with every option lives in [`config/vaults.d.example/`](https://github.com/baluard-org/baluard-unraid/tree/main/config/vaults.d.example) in the repository.
 
@@ -48,18 +48,19 @@ A fuller example with every option lives in [`config/vaults.d.example/`](https:/
 
 Each vault picks its format with `VAULT_FORMAT`:
 
-| Format | What lands on the share | Master password needed | Restore |
-| --- | --- | --- | --- |
-| `zip` (default) | Zip of the vault folder, git history included | No | Unzip, then open the folder with Baluard |
-| `bldbak` | Encrypted export, restorable into any Baluard vault | Yes | Import the file, enter the backup passphrase |
-| `json` | Plaintext export of all entries | Yes | Import the file |
+| Format | What lands on the share | Master password | Joins the vault | Restore |
+| --- | --- | --- | --- | --- |
+| `mirror` (default) | Zip of a bare git mirror of the vault repo, full history | No | No — read-only access is enough | Clone the same remote again and join as a device |
+| `zip` | Zip of the CLI's working vault clone, git history included | No | Yes — first clone needs the owner's invite | Unzip, then open the folder with Baluard |
+| `bldbak` | Encrypted export, restorable into any Baluard vault | Yes | Yes | Import the file, enter the backup passphrase |
+| `json` | Plaintext export of all entries | Yes | Yes | Import the file |
 
-The content of your vault is encrypted at rest, which is why `zip` never needs your master password: the container only ever handles encrypted bytes. We recommend leaving `zip` as the format unless you have a specific reason.
+The content of your vault is encrypted at rest, which is why `mirror` and `zip` never need your master password: the container only ever handles encrypted bytes. `mirror` is the default because it needs nothing but read access to the git repo.
 
 Two honest warnings:
 
-- `bldbak` and `json` need the master password in the config file, and the first run against a fresh clone also needs the [24-word recovery phrase](@/vault/recovery-phrase.md) once, because the backup box enrolls as a device of the vault. After that first run, only the master password is used.
-- `json` writes readable passwords to the share. Anyone who can read the share can read them. Avoid this format unless you understand and accept it.
+- `zip`, `bldbak` and `json` clone through the baluard CLI, which enrolls the backup box as a device of the vault. Baluard's device-trust policy requires the vault owner to invite the box first (`baluard members invite`, then the box stages it, then you approve). An uninvited box cannot enroll, so those formats fail on first run without the invite. `mirror` has no such requirement.
+- `bldbak` and `json` need the master password in the config file, and the first run also needs the [24-word recovery phrase](@/vault/recovery-phrase.md) once, for that enrollment. `json` writes readable passwords to the share. Avoid `json` unless you understand and accept it.
 
 ## Schedule and retention
 
@@ -83,7 +84,7 @@ If a vault fails, the others still run, the job exits non-zero, and with `BALUAR
 
 ## Security notes
 
-- The default `zip` mode stores no master password anywhere. The container cannot read a single entry; it archives encrypted bytes.
+- The default `mirror` mode stores no master password anywhere and holds no write access to the vault. The container cannot read a single entry; it archives encrypted bytes.
 - If you use `bldbak` or `json`, keep the permissions of the `.env` files tight (600): they hold the master password, and optionally the recovery phrase.
 - The image verifies the Baluard CLI download against the official release `SHA256SUMS` at build time, and every update against the same signatures.
 - Snapshots on the share are only as private as your network and share settings. The git remote is already the first copy of your vault; treat these snapshots as the second, and consider a third (cloud or cold storage) for anything that truly matters.
