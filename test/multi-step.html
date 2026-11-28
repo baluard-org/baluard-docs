@@ -1,0 +1,195 @@
+<!doctype html>
+<!-- Fake multi-step login (username -> password -> TOTP) for testing browser autofill
+     and password-manager detection. Unlinked from the site; reachable at /test/multi-step.html.
+     Accepts any input, validates nothing, sends nothing anywhere. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Multi-step autofill test &middot; Baluard Docs</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #091315;
+    --card: #10181b;
+    --line: #24302f;
+    --text: #e8edea;
+    --muted: #93a39c;
+    --accent: #b3e55c;
+    --accent-ink: #0a1305;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: 24px;
+  }
+  main { width: 100%; max-width: 380px; }
+  h1 { font-size: 1.35rem; margin: 0 0 4px; }
+  p.lede { margin: 0 0 20px; color: var(--muted); font-size: 0.9rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  label { display: block; margin: 14px 0 4px; font-size: 0.85rem; color: var(--muted); }
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: #0b1214;
+    color: var(--text);
+    font-size: 1rem;
+  }
+  input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+  button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { filter: brightness(1.08); }
+  button.secondary {
+    margin-top: 10px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    font-weight: 500;
+  }
+  button.secondary:hover { color: var(--text); filter: none; }
+  .hint { margin-top: 12px; font-size: 0.8rem; color: var(--muted); }
+  .user-pill {
+    display: inline-block;
+    margin: 0 0 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #0b1214;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  section[hidden] { display: none; }
+  .ok { color: var(--accent); font-weight: 600; }
+  .creds { margin-top: 20px; padding: 16px; border: 1px dashed var(--line); border-radius: 10px; font-size: 0.85rem; }
+  .creds h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px; color: var(--muted); }
+  .creds dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+  .creds dt { color: var(--muted); }
+  .creds dd { margin: 0; }
+  code { background: #0b1214; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; font-size: 0.82rem; overflow-wrap: anywhere; }
+  .creds a, .footer-link a { color: var(--accent); overflow-wrap: anywhere; }
+  .footer-link { text-align: center; margin-top: 16px; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Multi-step autofill test</h1>
+  <p class="lede">Fake multi-step sign-in (username, then password, then TOTP) for testing browser autofill. Nothing is validated, nothing is sent.</p>
+
+  <div class="card">
+    <section id="step-username">
+      <form id="username-form" method="post" action="" novalidate>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" spellcheck="false" required>
+        <button type="submit">Next</button>
+      </form>
+    </section>
+
+    <section id="step-password" hidden>
+      <div class="user-pill" id="entered-user"></div>
+      <form id="password-form" method="post" action="" novalidate>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">Sign in</button>
+        <button type="button" class="secondary" id="back-to-username">Use a different account</button>
+      </form>
+    </section>
+
+    <section id="step-totp" hidden>
+      <form id="totp-form" method="post" action="" novalidate>
+        <label for="otp">Two-factor code</label>
+        <input id="otp" name="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456" required>
+        <p class="hint">Any 6 digits are accepted.</p>
+        <button type="submit">Verify</button>
+      </form>
+    </section>
+
+    <section id="step-done" hidden>
+      <p><span class="ok">Signed in.</span> Any credentials work here; nothing was checked or stored.</p>
+      <button type="button" id="reset">Start over</button>
+    </section>
+  </div>
+
+  <div class="creds">
+    <h2>Demo credentials</h2>
+    <dl>
+      <dt>Username</dt><dd><code>demo@baluard.app</code></dd>
+      <dt>Password</dt><dd><code>demo-password</code></dd>
+      <dt>TOTP seed</dt><dd><code>JBSWY3DPEHPK3PXP</code></dd>
+    </dl>
+    <p class="hint">Add the seed to any authenticator app with this URI, then use its 6-digit codes above (any code works):<br>
+    <a href="otpauth://totp/Baluard:demo%40baluard.app?secret=JBSWY3DPEHPK3PXP&issuer=Baluard">otpauth://totp/Baluard:demo%40baluard.app?secret=JBSWY3DPEHPK3PXP&issuer=Baluard</a></p>
+  </div>
+
+  <p class="footer-link">
+    <a href="/test/">Back to classic login</a>
+  </p>
+</main>
+
+<script>
+  const steps = {
+    username: document.getElementById("step-username"),
+    password: document.getElementById("step-password"),
+    totp: document.getElementById("step-totp"),
+    done: document.getElementById("step-done"),
+  };
+
+  function show(name) {
+    for (const [key, el] of Object.entries(steps)) el.hidden = key !== name;
+    const focus = { username: "username", password: "password", totp: "otp" }[name];
+    if (focus) document.getElementById(focus).focus();
+  }
+
+  document.getElementById("username-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const val = document.getElementById("username").value.trim();
+    document.getElementById("entered-user").textContent = val || "demo@baluard.app";
+    show("password");
+  });
+
+  document.getElementById("back-to-username").addEventListener("click", () => {
+    show("username");
+  });
+
+  document.getElementById("password-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    show("totp");
+  });
+
+  document.getElementById("totp-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    show("done");
+  });
+
+  document.getElementById("reset").addEventListener("click", () => {
+    document.getElementById("username-form").reset();
+    document.getElementById("password-form").reset();
+    document.getElementById("totp-form").reset();
+    show("username");
+  });
+</script>
+</body>
+</html>

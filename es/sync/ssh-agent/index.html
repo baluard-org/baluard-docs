@@ -1,0 +1,1074 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="es" data-theme="goyo-dark" style="background-color: #000000;">
+
+<head>
+    
+        
+    
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Resource Hints for better performance -->
+    
+
+    <!-- Initialize theme and brightness before CSS loads to prevent FOUC -->
+    <script>
+        (function() {
+            // Theme mapping - maps user-friendly names to actual DaisyUI theme names
+            // var themeMapping = { "goyo-dark": "night", "goyo-light": "lofi" };
+
+            
+            
+            
+                
+                
+                
+                
+            
+            // Get default values from config
+            var defaultColorset = "dark";
+            var darkBrightness = "darker";
+            var lightBrightness = "normal";
+
+            // Read configured theme names from config.toml (with defaults)
+            
+                
+                
+            
+            var configuredDarkTheme = "goyo-dark";
+            var configuredLightTheme = "goyo-light";
+
+            // Expose to goyo.js
+            window.themeConfig = {
+                darkTheme: configuredDarkTheme,
+                lightTheme: configuredLightTheme
+            };
+
+            // Expose brightness config for global use (e.g., goyo.js)
+            window.darkBrightness = darkBrightness;
+            window.lightBrightness = lightBrightness;
+
+            var fallbackTheme = (defaultColorset === "dark") ? configuredDarkTheme : configuredLightTheme;
+            window.fallbackTheme = fallbackTheme;
+
+            // Get theme from localStorage, but only use it if it matches configured themes
+            var storedTheme = localStorage.getItem('theme');
+            var currentTheme;
+            if (storedTheme === configuredDarkTheme || storedTheme === configuredLightTheme) {
+                currentTheme = storedTheme;
+            } else {
+                currentTheme = fallbackTheme;
+            }
+
+            // Determine brightness based on current theme
+            var currentBrightness = (currentTheme === configuredDarkTheme) ? darkBrightness : lightBrightness;
+
+            // Set theme and brightness attributes immediately
+            document.documentElement.setAttribute("data-theme", currentTheme);
+            document.documentElement.setAttribute("data-brightness", currentBrightness);
+        })();
+    </script>
+
+    <style>
+        
+        
+        
+            
+            
+            
+        
+        
+            
+            @font-face {
+                font-family: "Pretendard-Regular";
+                src: url('https://docs.baluard.app/css/fonts/Pretendard-Regular.woff') format("woff");
+                font-weight: 400;
+                font-style: normal;
+                font-display: swap;
+            }
+            body {
+                font-family: "Pretendard-Regular", sans-serif;
+            }
+        
+    </style>
+
+    
+        
+            <meta name="description" content="Deja que la terminal y git firmen con las claves SSH de tu bóveda en Linux, macOS y Windows." />
+        
+    
+
+    <title>El agente SSH | Documentación de Baluard</title>
+
+    
+    
+
+      <!-- SEO: Open Graph / Twitter Card -->
+      <meta property="og:title" content="El agente SSH | Documentación de Baluard" />
+      <meta property="og:description" content="Deja que la terminal y git firmen con las claves SSH de tu bóveda en Linux, macOS y Windows." />
+      <meta property="og:url" content="https://docs.baluard.app" />
+      <meta property="og:type" content="website" />
+      
+      <meta property="og:image" content="https://docs.baluard.app/assets/social-card.png" />
+      
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="El agente SSH" />
+      <meta name="twitter:description" content="Deja que la terminal y git firmen con las claves SSH de tu bóveda en Linux, macOS y Windows." />
+      
+      
+      
+          
+          
+      
+      
+      
+      
+      <meta name="twitter:image" content="https://docs.baluard.app/assets/social-card.png" />
+      
+
+      <!-- Browser address bar color -->
+      <meta name="theme-color" content="#000000">
+
+      <!-- Favicon -->
+      
+      
+      
+      
+          
+          
+          
+          
+          
+          
+      
+      <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+      <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+      <link rel="shortcut icon" href="/icons/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+      <link rel="manifest" href="/icons/site.webmanifest" />
+
+      <!-- CSS -->
+    <link rel="stylesheet" href="https://docs.baluard.app/css/main.css">
+    
+    <link rel="stylesheet" href="https://docs.baluard.app/css/custom-main.css">
+    
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://docs.baluard.app/css/fonts/Pretendard-Regular.woff" as="font" type="font/woff" crossorigin>
+
+    <!--  Global Config to pass to different JS scripts  -->
+    <script>
+        window.GOYO_CONFIG = {
+            defaultThemeDark: "goyo-dark",
+            defaultThemeLight: "goyo-light",
+            i18n: {
+                copy: "Copiar",
+                copied: "¡Copiado!",
+                failed_to_copy: "Error al copiar",
+            },
+        };
+    </script>
+
+    <!-- Defer non-critical scripts -->
+    <script defer src="https://docs.baluard.app/js/copy_code.js"></script>
+    <script defer src="https://docs.baluard.app/js/copy_heading_link.js"></script>
+
+    <!-- Lazy load Mermaid and KaTeX - only when needed -->
+    <script>
+        // Lazy load KaTeX and Mermaid when needed
+        window.addEventListener('DOMContentLoaded', function() {
+            // Check for both KaTeX inline and block elements in one pass
+            var katexInlineElements = document.querySelectorAll('.katex-inline');
+            var katexBlockElements = document.querySelectorAll('.katex-block');
+            var hasKatex = katexInlineElements.length > 0 || katexBlockElements.length > 0;
+            var hasMermaid = document.querySelector('.mermaid');
+
+            // Load KaTeX if math elements are present
+            if (hasKatex) {
+                // Load KaTeX CSS first
+                var katexCSS = document.createElement('link');
+                katexCSS.rel = 'stylesheet';
+                katexCSS.href = 'https://docs.baluard.app/css/katex.min.css';
+                document.head.appendChild(katexCSS);
+
+                // Load KaTeX JS
+                var katexScript = document.createElement('script');
+                katexScript.src = 'https://docs.baluard.app/js/katex.min.js';
+                katexScript.onload = function() {
+                    // Render inline elements
+                    katexInlineElements.forEach(function(elem) {
+                        var texContent = elem.textContent || elem.innerText;
+                        try {
+                            katex.render(texContent, elem, {
+                                throwOnError: false,
+                                displayMode: false
+                            });
+                        } catch(e) {
+                            console.error('KaTeX render error:', e);
+                        }
+                    });
+
+                    // Render block elements
+                    katexBlockElements.forEach(function(elem) {
+                        var texContent = elem.textContent || elem.innerText;
+                        try {
+                            katex.render(texContent, elem, {
+                                throwOnError: false,
+                                displayMode: true
+                            });
+                        } catch(e) {
+                            console.error('KaTeX render error:', e);
+                        }
+                    });
+                };
+                document.head.appendChild(katexScript);
+            }
+
+            // Load Mermaid if diagram elements are present
+            if (hasMermaid) {
+                var mermaidScript = document.createElement('script');
+                mermaidScript.src = 'https://docs.baluard.app/js/mermaid.min.js';
+                mermaidScript.onload = function() {
+                    // Initialize Mermaid after loading
+                    if (typeof window.initMermaid === 'function') {
+                        window.initMermaid();
+                    }
+                };
+                document.head.appendChild(mermaidScript);
+            }
+        });
+    </script>
+      <!-- SITE OVERRIDE: external links open in a new tab. The goyo theme
+           head is otherwise verbatim; re-copy this file on theme updates and
+           re-add this block. -->
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          document
+            .querySelectorAll("a[href^='http']:not([href*='baluard.app'])")
+            .forEach((a) => {
+              a.target = "_blank";
+              a.rel = "noopener";
+            });
+        });
+      </script>
+
+
+    
+    
+    <script>
+      // Early attribute flip so a light-OS visitor does not flash the dark
+      // server default; window theme state is resolved further down.
+      (function () {
+        if (localStorage.getItem('theme')) return;
+        var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (!prefersLight) return;
+        document.documentElement.setAttribute('data-theme', 'goyo-light');
+        document.documentElement.setAttribute('data-brightness', 'normal');
+      })();
+    </script>
+    
+</head>
+<body>
+    
+
+<!-- Search Modal -->
+<input type="checkbox" id="search-modal" class="modal-toggle" aria-hidden="true" tabindex="-1"/>
+<div class="modal modal-middle">
+    <div class="modal-box relative max-w-2xl p-0 bg-base-100 shadow-2xl">
+        <label for="search-modal" class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 z-10">✕</label>
+        <div class="search-container">
+            <!-- Search Input Container -->
+            <div class="search-input-container px-6 pt-6 pb-4 border-b border-base-300/30">
+                <div class="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="search-icon absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input id="search" type="search" placeholder="Search documentation..." class="search-input w-full pl-12 pr-4 py-3 text-base bg-transparent border-0 focus:outline-none focus:ring-0 text-base-content placeholder:text-base-content/40">
+                </div>
+            </div>
+            <!-- Search Results Container -->
+            <div class="search-results-container px-2 py-2 h-96 overflow-y-auto">
+                <div class="search-results__header px-4 py-2 text-xs text-base-content/60"></div>
+                <ul class="search-results__items space-y-1"></ul>
+            </div>
+            <!-- Search Footer -->
+            <div class="search-footer px-6 py-3 border-t border-base-300/30 flex items-center justify-end gap-4 text-xs text-base-content/50">
+                <div class="flex items-center gap-1">
+                    <kbd class="kbd kbd-xs">↑</kbd>
+                    <kbd class="kbd kbd-xs">↓</kbd>
+                    <span>to navigate</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <kbd class="kbd kbd-xs">↵</kbd>
+                    <span>to select</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <kbd class="kbd kbd-xs">esc</kbd>
+                    <span>to close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <div class="drawer lg:drawer-open">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col pt-16">
+            
+            
+
+
+
+
+
+    
+    
+    
+    
+    
+
+
+
+
+<div class="navbar opacity-95 fixed top-0 left-0 right-0 z-50 h-16 border-b border-gray-500/15 backdrop-blur-3xl">
+    <!-- Mobile hamburger -->
+    <div class="flex-none lg:hidden">
+        <label for="my-drawer-2" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </label>
+    </div>
+    <!-- Logo -->
+    <div class="flex-1">
+        <a href="https://docs.baluard.app/es" class="brand-wrap" aria-label="Baluard Docs">
+            
+                
+                <img
+                    src="https://docs.baluard.app/assets/baluard-logo.svg"
+                    alt=""
+                    class="brand-logo"
+                    
+                />
+                <span class="brand-title">Baluard</span><span class="brand-docs">Docs</span>
+            
+        </a>
+    </div>
+    <!-- Desktop Menu -->
+    <div class="flex-none hidden lg:flex">
+        
+<ul class="menu w-full justify-end lg:menu-horizontal px-1">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li>
+        <a class="btn btn-ghost hover:no-underline justify-end w-full" href="https://docs.baluard.app/es">
+          
+
+
+
+<span class="icon " aria-hidden="true"
+    style="-webkit-mask-image: url('https://docs.baluard.app/icons/book.svg'); mask-image: url('https://docs.baluard.app/icons/book.svg'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; background-color: currentColor; display: inline-block; width: 1em; height: 1em;"></span>
+
+
+          Inicio
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a class="btn btn-ghost hover:no-underline justify-end w-full" href="https://baluard.app">
+          
+
+
+
+<span class="icon " aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c.5 35.5-28.3 64.3-63.8 64.3H127.8c-35.5 0-64.3-28.8-64.3-64.3l.7-160.2h-32c-17 0-32-14.1-32-32.1 0-9 3-17.1 9.9-24L266.4 8c7-7.1 15-8 21.6-8 6.6 0 14.6 2 21.6 7.9L564.8 231.5c8 7 12 15.1 11 24z"/></svg>
+  </span>
+
+
+          baluard.app
+        </a>
+    </li>
+    
+    
+    
+    <li>
+        <a class="btn btn-ghost hover:no-underline justify-end w-full" href="https://github.com/baluard-org/baluard">
+          
+
+
+
+<span class="icon " aria-hidden="true"
+    style="-webkit-mask-image: url('https://docs.baluard.app/icons/github.svg'); mask-image: url('https://docs.baluard.app/icons/github.svg'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; background-color: currentColor; display: inline-block; width: 1em; height: 1em;"></span>
+
+
+          GitHub
+        </a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <li>
+        <div class="dropdown dropdown-end p-0">
+            <div tabindex="0" role="button" class="btn btn-ghost px-3 justify-end w-full" aria-label="Languages">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 5h7"></path>
+                    <path d="M7 4c0 4.846 0 7 .5 8"></path>
+                    <path d="M10 8.5c0 2.286 -2 4.5 -3.5 4.5s-2.5 -1.135 -2.5 -2c0 -2 1 -3 3 -3s5 .57 5 2.857c0 1.524 -.667 2.571 -2 3.143"></path>
+                    <path d="M12 20l4 -9l4 9"></path>
+                    <path d="M19.1 18h-6.2"></path>
+                </svg>
+            </div>
+            <ul tabindex="0" class="dropdown-content menu bg-base-100 border border-gray-500/15 rounded-box z-1 p-2 shadow-lg min-w-max whitespace-nowrap">
+                
+                
+                
+                
+                
+                
+                <li><a href="https://docs.baluard.app/sync/ssh-agent/">English</a></li>
+                
+                
+                
+                
+            </ul>
+        </div>
+    </li>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <li>
+        <label class="swap swap-rotate btn btn-ghost justify-end w-full">
+            <input type="checkbox" class="theme-controller" value="goyo-dark" aria-labelledby="swap color"/>
+            <svg class="swap-off h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" /></svg>
+            <svg class="swap-on h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>
+        </label>
+    </li>
+    
+
+</ul>
+
+    </div>
+</div>
+
+            
+
+            
+            
+            
+            
+                
+            
+            
+            <div class="p-8 w-full flex justify-center">
+                <div class="w-full max-w-7xl lg:grid lg:grid-cols-[1fr_250px] lg:gap-8">
+                    <main class="prose w-full">
+            
+                        
+    <div class="mb-12 pb-4 border-b border-gray-500/15">
+        <h1 class="flex items-center gap-3">
+            El agente SSH
+            
+        </h1>
+        <p class="text-gray-500">Deja que la terminal y git firmen con las claves SSH de tu bóveda en Linux, macOS y Windows.</p>
+    </div>
+    <p>Tu bóveda puede guardar pares de claves SSH, pero una clave guardada por sí sola no firma nada. Baluard incluye un agente SSH que habla el protocolo estándar de agente desde el daemon: las herramientas de terminal y git pueden pedir firmas con las claves de tu bóveda mientras la parte privada nunca sale de ella. Esta página cubre cómo activarlo y apuntar tu sistema hacia él.</p>
+<h2 id="activalo">Actívalo</h2>
+<p>Dos interruptores controlan el agente, y ambos empiezan apagados:</p>
+<ul>
+<li><strong>Ajustes, "Agente SSH":</strong> el interruptor principal para este dispositivo. Es local al dispositivo a propósito: activarlo aquí no lo activa en tus otras máquinas.</li>
+<li><strong>"Compartir por el agente SSH" en cada entrada de clave SSH:</strong> solo las claves marcadas se comparten. Esta marca vive en la propia entrada y se sincroniza con tu bóveda.</li>
+</ul>
+<p>Un tercer interruptor, "Aprobar firmas automáticamente", se salta el aviso de aprobación. Empieza apagado: con él apagado, cada petición de firma aparece en la app de escritorio y nombra la entrada que quiere firmar. Desde ahí apruebas o rechazas, y una petición rechazada o expirada falla en el lado que pidió la firma.</p>
+<p>Desde la terminal, el interruptor principal tiene su propio comando:</p>
+<pre><code data-lang="bash">baluard ssh policy --enable
+</code></pre>
+<p>Este pide la contraseña maestra otra vez: activar el agente en un dispositivo es un cambio protegido. <code>baluard ssh policy</code> solo imprime el estado actual en JSON. Agrega <code>--auto-approve</code> para firmar sin preguntar en cada uso, o <code>--no-auto-approve</code> para volver a preguntar. Con la aprobación activa, cada petición de firma nombra la entrada que quiere firmar y espera tu decisión en la app de escritorio; si nadie responde a tiempo, el lado que pidió la firma ve fallar la operación.</p>
+<p>Las marcas de compartir se ponen en la app de escritorio (las claves nuevas también aceptan <code>--serve-via-agent</code> al agregarlas desde la CLI). Una marca cambiada en otro dispositivo llega a esta máquina con el próximo <code>baluard sync pull</code>; el agente la toma en la siguiente petición, sin reiniciar nada.</p>
+<h2 id="gestiona-el-daemon-desde-la-cli">Gestiona el daemon desde la CLI</h2>
+<p>El endpoint existe mientras el daemon corre. La CLI lo arranca y te deja el cableado listo:</p>
+<pre><code data-lang="bash">baluard ssh status
+baluard ssh serve
+baluard ssh install
+</code></pre>
+<p><code>status</code> imprime la ruta del endpoint y las líneas exactas de <code>SSH_AUTH_SOCK</code> e <code>IdentityAgent</code> para esta máquina. <code>serve</code> arranca el daemon bajo demanda. <code>install</code> escribe una unidad de usuario de systemd opcional para que el daemon arranque al inicio. El recorrido completo de primera vez, incluido cómo apuntar una máquina nueva a una bóveda existente, está en <a href="https://docs.baluard.app/es/install/connect-existing-vault/">Conecta la CLI a una bóveda existente</a>.</p>
+<h2 id="apunta-tus-herramientas-al-agente">Apunta tus herramientas al agente</h2>
+<p>El agente responde en un socket llamado <code>baluard-agent.sock</code> junto al propio socket de Baluard. Las herramientas que leen <code>SSH_AUTH_SOCK</code>, git incluido, firman a través de Baluard cuando la variable apunta ahí.</p>
+<p>En Linux:</p>
+<pre><code data-lang="bash">export SSH_AUTH_SOCK=&quot;$XDG_RUNTIME_DIR/baluard/baluard-agent.sock&quot;
+</code></pre>
+<p>En macOS:</p>
+<pre><code data-lang="bash">export SSH_AUTH_SOCK=&quot;$HOME/Library/Application Support/baluard/baluard-agent.sock&quot;
+</code></pre>
+<p>Pon la línea que corresponda en el archivo de inicio de tu shell (<code>~/.bashrc</code>, <code>~/.zshrc</code>) para que cada terminal nueva la tome.</p>
+<p>¿Prefieres mantener el agente del sistema para todo menos un host? Agrega una línea <code>IdentityAgent</code> en <code>~/.ssh/config</code>:</p>
+<pre><code>Host github.com
+    IdentityAgent /run/user/1000/baluard/baluard-agent.sock
+    IdentitiesOnly yes
+</code></pre>
+<p>Cambia <code>1000</code> por tu id de usuario (míralo con <code>id -u</code>). La estrofa necesita la ruta literal porque ssh_config no expande variables de entorno; la forma <code>$XDG_RUNTIME_DIR</code> del export de arriba no funciona aquí. En macOS la ruta es la del export de arriba, entre comillas por los espacios: <code>IdentityAgent "~/Library/Application Support/baluard/baluard-agent.sock"</code>. Las dos configuraciones conviven: el agente del sistema sigue sirviendo sus claves, y la estrofa <code>Host</code> enruta las claves de Baluard solo para ese host.</p>
+<p>¿Vienes de otro gestor de agente que usaba una ruta de socket fija? Un symlink de la ruta vieja al socket de Baluard mantiene la configuración existente funcionando sin tocar cada estrofa:</p>
+<pre><code data-lang="bash">ln -s &quot;$XDG_RUNTIME_DIR/baluard/baluard-agent.sock&quot; ~/.ssh/agent.sock
+</code></pre>
+<h2 id="windows">Windows</h2>
+<p>En Windows no hay que apuntar nada: Baluard sirve el mismo conducto con nombre que miran los clientes OpenSSH de Windows (<code>\\.\pipe\openssh-ssh-agent</code>), así que <code>ssh</code>, <code>ssh-add</code> y git firman a través de Baluard en cuanto activas el interruptor. El conducto existe mientras el daemon corre; no deja nada al salir.</p>
+<p>Solo un programa puede tener el conducto a la vez. Windows trae su propio servicio de agente OpenSSH y viene desactivado, así que la mayoría de máquinas no necesitan nada. Si la lista de claves de Baluard está vacía y el servicio está corriendo, pon su tipo de inicio en Deshabilitado: abre Servicios, elige Agente de autenticación OpenSSH, marca Deshabilitado y reinicia la app de Baluard.</p>
+<p>Git para Windows trae su propio ssh que ignora el conducto. Apunta git al cliente OpenSSH de Microsoft una vez y la firma por agente funciona en todas partes:</p>
+<pre><code data-lang="bash">git config --global core.sshCommand &quot;C:/Windows/System32/OpenSSH/ssh.exe&quot;
+</code></pre>
+<p>No hay opción <code>IdentityAgent</code> por clave en Windows: las claves de Baluard y las de cualquier otro agente en marcha comparten el único conducto, y el agente que lo posee sirve todas.</p>
+<h2 id="comprueba-que-funciona">Comprueba que funciona</h2>
+<pre><code data-lang="bash">ssh-add -l
+</code></pre>
+<p>Con el interruptor principal activo y al menos una clave marcada, esto muestra las huellas de tus claves de la bóveda. Lo que responde el comando te dice dónde mirar:</p>
+<ul>
+<li><strong><code>The agent has no identities.</code></strong> El interruptor está apagado o falta marcar claves. Revisa con <code>baluard ssh policy</code>, marca las claves, y haz pull si las marcas cambiaron en otro dispositivo.</li>
+<li><strong><code>Could not open a connection to your authentication agent.</code></strong> El daemon está caído o <code>SSH_AUTH_SOCK</code> apunta a otro lado. Corre <code>baluard ssh status</code> y copia la línea de export que imprime.</li>
+<li><strong>Un fallo al firmar, con la lista funcionando.</strong> La bóveda se bloqueó mientras tanto, o una petición de aprobación expiró sin respuesta.</li>
+</ul>
+<p>Un host que autentica con algunas claves pero no con una en concreto suele tener esa clave fijada en <code>~/.ssh/config</code> con <code>IdentitiesOnly yes</code>. Si la clave fijada no aparece en <code>ssh-add -l</code>, su marca de compartir está apagada: márcala, corre <code>baluard sync pull</code>, y el próximo intento la ofrece. Después prueba con tu proveedor:</p>
+<pre><code data-lang="bash">ssh -T git@github.com
+</code></pre>
+<h2 id="limites-que-conviene-conocer">Límites que conviene conocer</h2>
+<ul>
+<li>La bóveda debe estar desbloqueada. Una bóveda bloqueada se niega a listar claves o firmar.</li>
+<li>Las claves con material privado cifrado se rechazan sin excepción: el agente nunca pide una frase de contraseña.</li>
+<li>Los avisos de aprobación son locales al dispositivo: una petición se aprueba en la máquina que firma.</li>
+</ul>
+
+
+    <!--  Errata section  -->
+    
+    
+
+    
+    
+
+    
+        <div class="my-8 pt-6 border-t border-gray-500/15">
+            <div class="flex flex-wrap items-center gap-4">
+                <a href="https://github.com/baluard-org/baluard-docs/edit/main/content/sync/ssh-agent.es.md" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-base-content/60 hover:text-base-content transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                    </svg>
+                    <span>Editar esta página</span>
+                </a>
+            </div>
+        </div>
+    
+
+    
+    
+    
+        
+        
+    
+    
+        <div><div>
+    
+    </div>
+
+
+                        
+
+
+
+                        <nav class="mt-12 pt-8 border-t border-gray-500/15">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="prev-nav-item">
+                                    
+    
+        
+        <a class="nav-button nav-button-prev group" href="https://docs.baluard.app/es/sync/">
+            <div class="nav-button-content">
+                <div class="nav-button-direction">
+                    <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    <span class="nav-button-label">Volver a</span>
+                </div>
+                <div class="nav-button-title">Sincronizar</div>
+            </div>
+        </a>
+    
+
+                                </div>
+                                <div class="next-nav-item">
+                                    
+    
+        <a class="nav-button nav-button-next group" href="https://docs.baluard.app/es/sync/provider-2fa/">
+            <div class="nav-button-content">
+                <div class="nav-button-direction">
+                    <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="nav-button-label">Siguiente</span>
+                </div>
+                <div class="nav-button-title">Autenticación de dos factores (2FA) y tu proveedor de Git</div>
+            </div>
+        </a>
+    
+
+                                </div>
+                            </div>
+                        </nav>
+                    </main>
+            
+
+                    
+                        
+
+<div class="hidden lg:block" >
+    <div class="sticky top-20 px-4 py-2 border-l border-gray-500/15">
+        <h4 class="text-lg font-bold mb-1">EN ESTA PÁGINA</h4>
+            <ul class="menu menu-sm toc-menu">
+            
+                <li>
+                    
+                    <a href="https://docs.baluard.app/es/sync/ssh-agent/#activalo" class="toc-link">Actívalo</a>
+                    
+                </li>
+            
+                <li>
+                    
+                    <a href="https://docs.baluard.app/es/sync/ssh-agent/#gestiona-el-daemon-desde-la-cli" class="toc-link">Gestiona el daemon desde la CLI</a>
+                    
+                </li>
+            
+                <li>
+                    
+                    <a href="https://docs.baluard.app/es/sync/ssh-agent/#apunta-tus-herramientas-al-agente" class="toc-link">Apunta tus herramientas al agente</a>
+                    
+                </li>
+            
+                <li>
+                    
+                    <a href="https://docs.baluard.app/es/sync/ssh-agent/#windows" class="toc-link">Windows</a>
+                    
+                </li>
+            
+                <li>
+                    
+                    <a href="https://docs.baluard.app/es/sync/ssh-agent/#comprueba-que-funciona" class="toc-link">Comprueba que funciona</a>
+                    
+                </li>
+            
+                <li>
+                    
+                    <a href="https://docs.baluard.app/es/sync/ssh-agent/#limites-que-conviene-conocer" class="toc-link">Límites que conviene conocer</a>
+                    
+                </li>
+            
+            </ul>
+    </div>
+</div>
+
+
+                    
+                    
+                </div>
+            </div>
+            
+
+            <script>
+              // Determine theme: localStorage > extra.default_colorset > goyo-dark
+              // Expose theme config for global use (e.g., goyo.js)
+              
+              
+              
+                  
+                  
+                  
+                  
+              
+              window.defaultColorset = "dark";
+              window.darkBrightness = "darker";
+              window.lightBrightness = "normal";
+              window.themeMap = {
+                  "dark": (window.themeConfig && window.themeConfig.darkTheme) || "goyo-dark",
+                  "light": (window.themeConfig && window.themeConfig.lightTheme) || "goyo-light"
+              };
+              window.fallbackTheme = window.themeMap[window.defaultColorset] || (window.themeConfig && window.themeConfig.darkTheme) || "goyo-dark";
+
+              // Follow the OS color scheme until the visitor makes an explicit
+              // choice (persisted in localStorage by the theme toggle).
+              if (!localStorage.getItem('theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                window.defaultColorset = 'light';
+                window.fallbackTheme = window.themeMap.light || 'goyo-light';
+              }
+
+              // Theme mapping - maps user-friendly names to actual DaisyUI theme names
+              var themeMapping = { "goyo-dark": "night", "goyo-light": "lofi" };
+              var currentUserTheme = localStorage.getItem('theme') || window.fallbackTheme;
+              var actualTheme = themeMapping[currentUserTheme] || currentUserTheme;
+
+              // Initialize and run Mermaid only when loaded
+              window.initMermaid = function() {
+                var mermaidTheme = "dark";
+                if(currentUserTheme == window.themeMap["light"]) {
+                  mermaidTheme = "light";
+                }
+
+                if (typeof mermaid !== 'undefined') {
+                  mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
+
+                  // Function to render mermaid diagrams
+                  var renderMermaid = async function() {
+                    const mermaidElements = document.querySelectorAll('.mermaid');
+                    if (mermaidElements.length > 0) {
+                        await mermaid.run({
+                            nodes: mermaidElements
+                        });
+                    }
+                  };
+
+                  // Check if DOMContentLoaded has already fired
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', renderMermaid);
+                  } else {
+                    // DOMContentLoaded already fired, run immediately
+                    renderMermaid();
+                  }
+                }
+              };
+
+              // Auto-initialize if Mermaid is already loaded
+              if (typeof mermaid !== 'undefined') {
+                window.initMermaid();
+              }
+            </script>
+
+        </div>
+
+        
+        
+        
+        
+        
+        <div id="sidebar" class="drawer-side pt-16 border-e border-gray-500/15 overflow-hidden">
+            
+                
+
+
+
+    
+
+
+
+    
+
+<label for="my-drawer-2" class="drawer-overlay"></label>
+<div class="pt-4 w-68 h-[calc(100vh-4rem)] bg-base-100 text-base-content flex flex-col overflow-auto thin-scrollbar">
+    
+    <div class="px-2 pt-4 pb-0 flex flex-col items-center gap-2">
+        <div class="w-full flex items-center gap-2">
+            <label for="search-modal" class="input w-full flex items-center justify-between text-left bg-base-100 cursor-pointer border-gray-500/15 hover:border-gray-500/55 hover:border-1 transition" aria-label="검색">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span class="text-gray-400"><kbd class="kbd">⌘</kbd><kbd class="kbd">K</kbd></span>
+            </label>
+        </div>
+    </div>
+    
+    <!--  Sidebar is to control the double hover effect in src/main.css  -->
+    <ul class="menu sidebar w-full flex-grow">
+        
+        
+        
+        
+            
+            <li>
+                
+                    <details open>
+                        <summary ><a class="hover:no-underline" href="https://docs.baluard.app/es/install">Instalar</a></summary>
+                        <ul>
+                            
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/install/installation">Instalación</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/install/linux-appimage">El AppImage de Linux</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/install/macos-gatekeeper">El aviso de Gatekeeper en macOS</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/install/android">App de Android y autocompletado móvil</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/install/windows-smartscreen">El aviso de SmartScreen en Windows</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/install/connect-existing-vault">Conecta la CLI a una bóveda existente</a></li>
+                            
+                            
+                        </ul>
+                    </details>
+                
+            </li>
+        
+            
+            <li>
+                
+                    <details open>
+                        <summary ><a class="hover:no-underline" href="https://docs.baluard.app/es/sync">Sincronizar</a></summary>
+                        <ul>
+                            
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/sync/syncing-your-vault">Sincronizar tu bóveda</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/sync/peer-to-peer-sync">Sincronización entre pares (P2P)</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/sync/folder-sync">Sincronización por carpeta</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/sync/git-providers">Elegir un proveedor de Git</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/sync/ssh-agent">El agente SSH</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/sync/provider-2fa">Autenticación de dos factores (2FA) y tu proveedor de Git</a></li>
+                            
+                            
+                        </ul>
+                    </details>
+                
+            </li>
+        
+            
+            <li>
+                
+                    <details open>
+                        <summary ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault">Tu bóveda</a></summary>
+                        <ul>
+                            
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/importing-from-bitwarden">Importar desde Bitwarden</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/attachments">Adjuntos</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/recovery-phrase">Tu frase de recuperación de 24 palabras</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/recover-without-password">Recuperar una bóveda sin tu contraseña</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/passkeys">Claves de acceso en tu navegador</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/logs-for-bug-reports">Encontrar logs para reportes de errores</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/legacy-contact">Contacto de confianza</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/browser-extension">Extensión de navegador</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/quick-unlock-and-hardware-protection">Desbloqueo rápido y protección por hardware</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/device-management">Gestión de dispositivos</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/exporting-and-backups">Exportación y copias de seguridad</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/mcp-agents">Agentes MCP en la app de escritorio</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/unraid-backup-server">Copias programadas en Unraid</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/everyday-vault-tools">Herramientas diarias de la bóveda</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/vault/migrate-from-a-backup">Migra a otro gestor de contraseñas</a></li>
+                            
+                            
+                        </ul>
+                    </details>
+                
+            </li>
+        
+            
+            <li>
+                
+                    <details open>
+                        <summary ><a class="hover:no-underline" href="https://docs.baluard.app/es/cli-and-agents">CLI y Agentes</a></summary>
+                        <ul>
+                            
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/cli-and-agents/cli-reference">Referencia diaria del CLI</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/cli-and-agents/agentic-workflows">Flujos agénticos con el CLI</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/cli-and-agents/browser-automation">Automatización de navegador con secretos</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/cli-and-agents/mcp-server">Servidor MCP (baluard mcp)</a></li>
+                            
+                            
+                        </ul>
+                    </details>
+                
+            </li>
+        
+            
+            <li>
+                
+                    <details open>
+                        <summary ><a class="hover:no-underline" href="https://docs.baluard.app/es/shared-spaces">Espacios compartidos</a></summary>
+                        <ul>
+                            
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/shared-spaces/family-sharing">Compartir en familia</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/shared-spaces/team-friends-sharing">Compartir con equipos y amistades</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/shared-spaces/workplace-organization-sharing">Compartir en el trabajo y organizaciones</a></li>
+                            
+                                <li ><a class="hover:no-underline" href="https://docs.baluard.app/es/shared-spaces/direct-sharing">Compartir directo (Contactos y Buzones)</a></li>
+                            
+                            
+                        </ul>
+                    </details>
+                
+            </li>
+        
+
+        
+        
+
+    </ul>
+
+    
+    
+
+    
+<footer class="footer py-2 px-4 mt-2 border-t border-gray-500/50">
+    <div class="w-full">
+        <!-- Main footer content -->
+        <div class="flex flex-col items-center gap-4 mb-4">
+            <!-- Powered by section with better styling -->
+            <div class="text-center">
+                <p class="text-sm text-base-content/60 leading-relaxed">
+                    Part of <a href='https://baluard.app'>baluard.app</a>. <a href='https://baluard.app/changelog/'>Changelog</a>. Built with <a href='https://www.getzola.org'>Zola</a> and the <a href='https://github.com/hahwul/goyo'>Goyo</a> theme.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</footer>
+
+</div>
+
+            
+        </div>
+    </div>
+
+    
+        <script>
+            
+                
+                
+            
+            window.GOYO_CONFIG = {
+                ...window.GOYO_CONFIG,
+                defaultThemeDark: "goyo-dark",
+                defaultThemeLight: "goyo-light",
+            };
+        </script>
+        <script defer type="text/javascript" src="https://docs.baluard.app/goyo.js"></script>
+        
+        <!-- Lazy load search functionality -->
+        <script>
+            var searchLoaded = false;
+            var searchLoadCallbacks = [];
+
+            function loadSearchLibraries(callback) {
+                // If already loaded, execute callback immediately
+                if (searchLoaded && typeof Fuse !== 'undefined' && window.searchIndex) {
+                    if (callback) callback();
+                    return;
+                }
+
+                // Add callback to queue
+                if (callback) searchLoadCallbacks.push(callback);
+
+                // If already loading, don't start again
+                if (searchLoaded) return;
+                searchLoaded = true;
+
+                // Show loading indicator in search input
+                var searchInput = document.getElementById('search');
+                if (searchInput) {
+                    searchInput.placeholder = 'Loading search...';
+                    searchInput.disabled = true;
+                }
+
+                // Load Fuse.js
+                var fuseScript = document.createElement('script');
+                fuseScript.src = 'https://docs.baluard.app/fuse.min.js';
+
+                // Load search index after Fuse.js
+                fuseScript.onload = function() {
+                    var searchIndexScript = document.createElement('script');
+                    searchIndexScript.src = 'https://docs.baluard.app/search_index.es.js';
+                    searchIndexScript.onload = function() {
+                        // Re-enable search input
+                        if (searchInput) {
+                            searchInput.placeholder = 'Search documentation...';
+                            searchInput.disabled = false;
+                            searchInput.focus();
+                        }
+
+                        // Initialize search functionality
+                        if (typeof initSearch === 'function') {
+                            initSearch();
+                        }
+
+                        // Execute all queued callbacks
+                        searchLoadCallbacks.forEach(function(cb) { cb(); });
+                        searchLoadCallbacks = [];
+                    };
+                    document.body.appendChild(searchIndexScript);
+                };
+
+                document.body.appendChild(fuseScript);
+            }
+
+            // Load search on first interaction with search modal
+            document.addEventListener('DOMContentLoaded', function() {
+                var searchModal = document.getElementById('search-modal');
+                if (searchModal) {
+                    searchModal.addEventListener('change', function() {
+                        if (this.checked) {
+                            loadSearchLibraries();
+                        }
+                    });
+                }
+
+                // Also load on Ctrl+K / Cmd+K
+                document.addEventListener('keydown', function(e) {
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                        loadSearchLibraries();
+                    }
+                });
+            });
+        </script>
+        
+    
+</body>
+</html>
