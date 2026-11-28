@@ -24,3 +24,4 @@ Everything in Baluard lives in one encrypted vault file tree that only your devi
 12. [MCP agents in the desktop app](@/vault/mcp-agents.md): pair coding agents in Settings, manage approvals, and revoke tokens.
 13. [Everyday vault tools](@/vault/everyday-vault-tools.md): multi-vault switching, entry types, password generator, and security check.
 14. [Scheduled backups on Unraid](@/vault/unraid-backup-server.md): run the baluard-unraid container on your NAS to snapshot your vaults to a share on a schedule.
+15. [Migrate to another password manager](@/vault/migrate-from-a-backup.md): turn a backup zip into a plaintext export with the `backup-extract` command.

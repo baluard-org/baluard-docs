@@ -24,3 +24,4 @@ Todo en Baluard vive en un único árbol de archivos cifrados que solo tus dispo
 12. [Agentes MCP en la app de escritorio](@/vault/mcp-agents.es.md): vincula agentes de código en Ajustes, gestiona aprobaciones y revoca tokens.
 13. [Herramientas diarias de la bóveda](@/vault/everyday-vault-tools.es.md): cambio entre bóvedas, tipos de entrada, generador de contraseñas y chequeo de seguridad.
 14. [Copias programadas en Unraid](@/vault/unraid-backup-server.es.md): corre el contenedor baluard-unraid en tu NAS para guardar snapshots de tus bóvedas en un share según un calendario.
+15. [Migra a otro gestor de contraseñas](@/vault/migrate-from-a-backup.es.md): convierte un zip de respaldo en una exportación en texto plano con el comando `backup-extract`.
